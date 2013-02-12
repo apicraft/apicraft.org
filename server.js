@@ -1,9 +1,12 @@
 var express = require('express');
 
 var app = express();
+app.engine('.html', require('ejs').__express);
+app.set('views', __dirname + '/views');
+app.set('view engine', 'html');
 
 app.get('/', function(req, res) {
-  res.send('<!doctype html><html><body><h1>apicraft.org</h1></body></html>');
+  res.render('index');
 });
 
 var port = process.env.PORT || 3000;
