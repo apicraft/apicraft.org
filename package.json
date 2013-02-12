@@ -1,0 +1,19 @@
+{
+  "name": "apicraft.org",
+  "version": "0.0.0",
+  "description": "Public Web Site for API Craft",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "keywords": [
+    "api",
+    "craft"
+  ],
+  "author": "Kevin Swiber <kswiber@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "~3.1.0"
+  }
+}
