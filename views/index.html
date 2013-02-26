@@ -1,6 +1,79 @@
 <!doctype html>
 <html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/reset.css" /> <!-- normalize styles -->
+				
+		<script type="text/javascript" src="//use.typekit.net/ejt3ecd.js"></script><!-- use a real font -->
+		<script type="text/javascript" >try{Typekit.load();}catch(e){}</script>
+		
+		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.css" /><!-- use a fancy map -->
+		<!--[if lte IE 8]> <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.ie.css" /> <![endif]-->
+		<script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script>
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		
+		<script type="text/javascript" src="js/functions.js"></script>
+		<script type="text/javascript" src="js/jquery.masonry.min.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="css/buttons.css" /><!-- delicious buttons-->
+		<link rel="stylesheet" type="text/css" href="css/styles.css" /><!-- our main stylesheet -->
+		
+	</head>
   <body>
-    <h1>apicraft.org</h1>
+	<div id="header">
+		<h1>#api<strong>craft</strong><i>conf</i></h1>
+		<h2>Tuesday, July 30-31, Detroit MI. <a href="#register" class="button">Register Now</a></h2>
+	</div><!-- /#header -->
+    <div id="page">
+		<div class="section">
+			<a name="about"></a>
+			<h3>about:</h3>
+			<p>We’ve had inspiring discussions online. We’ve met at regional meetups. We’ve gathered at other people’s conferences. <i>Is it time the global API Craft community gets together for our own <del>party</del> conference?</i> <strong>Absolutely!</strong></p>
+			
+			<p>We are still working out the details, but here’s the plan so far:</p>
+			<ul>
+				<li>Date: Tuesday July 30th &amp; Wednesday 31st, 2013</li>
+				<li>Place: To Be Determined</li>
+				<li>Who: API Craftsmen and Craftswomen</li>
+				<li>Spots: 150-200</li>
+				<li>Format: <a href="http://en.wikipedia.org/wiki/Open-space_technology" target="_blank">Open Space</a></li>
+				<li>Rules: No Corporate Logos, No Pitches, Represent Thyself Not Thycompany</li>
+				<li>Cost: ~$300 (Expenses / Number of Attendees)</li>
+				<li>Pre-Party: Yes</li>
+				<li>Intra-Party: Yes</li>
+				<li>Post-Party: Yes</li>
+		</div><!-- /.section -->
+	
+		<div class="section">
+			<a name="schedule"></a>
+			<h3>schedule:</h3>
+		</div><!-- /.section -->
+
+		<div class="section">
+			<a name="detroit"></a>
+			<h3>detroit:</h3>
+			<div id="map"></div>
+		</div><!-- /.section -->
+		
+		<div class="section">
+			<a name="nosponsors"></a>
+			<h3>keep_it_real:</h3>
+			<p>We want honest discussions between people about their craft, not pitches. Most of us work for companies - we get it. Many of us will also be working for a different company 'round this time next year. There are 1000 other events you can go to where you can hear other people's sales pitches. Let's keep apicraftconf about the people, ideas, and technology - just like the apicraft forum. </p>
+		</div><!-- /.section -->
+		
+		<div class="section">
+			<a name="register"></a>
+			<h3>register:</h3>
+		</div><!-- /.section -->
+		
+		<div class="section">
+			<a name="api"></a>
+			<h3>api:</h3>
+		</div><!-- /.section -->
+	</div><!-- /#page -->
+	
+	<div id="footer">
+		The footer!
+	</div><!-- /#footer -->
+
   </body>
 </html>

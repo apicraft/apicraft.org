@@ -14,8 +14,9 @@
   "author": "Kevin Swiber <kswiber@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "express": "~3.1.0",
-    "ejs": "~0.8.3"
+    "express": "~3.1.x",
+    "ejs": "~0.8.x",
+    "less-middleware": "~0.1.9"
   },
   "engines": {
     "node": ">= 0.8.0",
