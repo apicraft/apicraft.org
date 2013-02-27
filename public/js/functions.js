@@ -27,7 +27,7 @@ $(function(){
 	}).addTo(map);
 
 	// add a marker in the given location, attach some popup content to it and open the popup
-	L.marker([42.336076,-83.049292]).addTo(map).bindPopup('<h1>apicraftconf:</h1> M@dison Building<br/>1555 Broadway St')
+	L.marker([42.336076,-83.049292]).addTo(map).bindPopup('<h4>apicraftconf:</h4> M@dison Building<br/>1555 Broadway St')
 	    .openPopup();	
 	
 	
