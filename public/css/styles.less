@@ -15,8 +15,9 @@ h1 {
 	line-height: .8em; 
 	font-weight: 700; 
 	}
+strong {font-weight: 400;}
 #map {
-	height: 25em;
+	height: 40em;
 	.leaflet-popup-content {
 		text-shadow: none;
 		h4{
@@ -30,11 +31,11 @@ h1 {
 h2 {font-size: 2em; font-weight: 700;}
 h3 {font-size: 1.5em; color: #444; margin: 0 0 1em 0;}
 p {margin: 1em 0;}
-ul {margin: 0 0 0 2em; list-style-type: square;}
+
 
 a {text-decoration: none; color: #b30209; font-weight: 400;}
 a:hover {text-decoration: underline;}
-.fineprint {font-size: .5em;}
+.fineprint {font-size: .8em;}
 blockquote {
 	font-family: serif; 
 	margin-left: 2em; margin-right: 2em; 
@@ -50,8 +51,11 @@ blockquote {
 		padding: .5em 3em 0em 3em;
 			@media (max-width: 700px), (-webkit-min-device-pixel-ratio : 2) {padding: .5em 1em 0 1em;}
 		}
+	.schedule li strong {	
+		
+		}
 	.section {
-		padding: .5em 3em 1em 3em;
+		padding: 1em 3em 2em 3em;
 		@media (max-width: 700px), (-webkit-min-device-pixel-ratio : 2) {padding: .5em 1em 0 1em;}
 		&.even {
 			background-color: #f8f8f8;
@@ -61,10 +65,15 @@ blockquote {
 	background: #fff;
 	.register {
 		p {margin-bottom: 2em;}
-		button {
-			font-size: .8em;
-			@media (max-width: 700px), (-webkit-min-device-pixel-ratio : 2) {font-size: 1.4em }
-			padding: 1em;
+		a#eventbrite_button {
+			span{display: none;}
+			display: block;
+			height: 141px;
+			width: 400px;
+			cursor: pointer;
+			background: url('../images/eventbrite.png') top no-repeat;
+			&:hover{background-position: center;};
+			&:active{background-position: bottom;};
 			}
 		label {font-family: Arial, Helvetica, sans-serif;}
 		ol {
@@ -77,65 +86,15 @@ blockquote {
 			}
 		}
 	}
-}
-
-
-button::-moz-focus-inner {
-  border: 0; }
-
-/* clean gray
-*******************************************************************************/
-.buttonBG(@light: #eee, @dark: #ccc){
-	background-color: @light;
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, @light), color-stop(100%, @dark));
-	background-image: -webkit-linear-gradient(top, @light, @dark);
-	background-image: -moz-linear-gradient(top, @light, @dark);
-	background-image: -ms-linear-gradient(top, @light, @dark);
-	background-image: -o-linear-gradient(top, @light, @dark);
-	background-image: linear-gradient(top, @light, @dark);	
-}
-
-
-button{
-		
-	text-align: center;
-	border-radius: .5em;
-	padding: .5em 1em !important;
-	
-	img {
-		height: 30px;
-		@media (max-width: 700px), (-webkit-min-device-pixel-ratio : 2) {height: 60px; }
-	}
-	&.clean-gray {
-	  .buttonBG(#eee, #ccc);
-	  border: 1px solid #ccc;
-	  border-bottom: 1px solid #bbb;
-	 
-	  color: #333;
-	  padding: 8px 0;
-	  text-shadow: 0 1px 0 #eee;
-	  
-	  	&.paynow {
-			color: #fff;
-			text-shadow: 0 -1px 0 #666;
-		 	.buttonBG(#d1676b, #b30209);
-		 	&:hover { .buttonBG(#b30209, #860207); }
-		}
-		&:hover {
-		    .buttonBG(#ddd, #bbb);
-		    border: 1px solid #bbb;
-		    border-bottom: 1px solid #999;
-		    cursor: pointer;
-		    text-shadow: 0 1px 0 #ddd; }
-		  &:active {
-		    border: 1px solid #aaa;
-		    border-bottom: 1px solid #888;
-		    -webkit-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eee;
-		    box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eee; 
-		}
+	#footer {
+		ul {
+			li{
+				display: inline;
+				padding-right: 1em;
+				}
+			}
 	}
 }
-  
 
 
 	
