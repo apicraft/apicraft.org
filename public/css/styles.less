@@ -5,11 +5,16 @@ body {
 	color: #707077;
 	text-shadow: 0 -1px 0 #000;
 	strong {color: #555;}
-	@media (max-width: 700px), (-webkit-min-device-pixel-ratio : 2) {font-size: 2.5em;}
+	@media (-webkit-min-device-pixel-ratio : 2) {font-size: 2.5em;}
 }
 
 h1, h2, h3, h4, h5, h6 {text-transform: uppercase; color: #222; font-weight: 400;}
-h1 { font-size: 5em; line-height: .8em; font-weight: 700; }
+h1 { 
+	font-size: 5em; 
+	@media (-webkit-min-device-pixel-ratio : 2) {font-size: 4em;}
+	line-height: .8em; 
+	font-weight: 700; 
+	}
 #map {
 	height: 25em;
 	.leaflet-popup-content {
@@ -58,14 +63,19 @@ blockquote {
 		p {margin-bottom: 2em;}
 		button {
 			font-size: .8em;
+			@media (max-width: 700px), (-webkit-min-device-pixel-ratio : 2) {font-size: 1.4em }
 			padding: 1em;
 			}
-		select {
-			font-size: 1em;
-			background-color: #ddd;
-			padding: .5em;
+		label {font-family: Arial, Helvetica, sans-serif;}
+		ol {
+			@media (max-width: 700px), (-webkit-min-device-pixel-ratio : 2) {text-align: center;}
+			li {
+				list-style-type: decimal;
+					@media (max-width: 700px), (-webkit-min-device-pixel-ratio : 2) {list-style-type: none;}
+				margin: 1em;
+				min-height: 5em;
+			}
 		}
-		
 	}
 }
 
@@ -86,38 +96,46 @@ button::-moz-focus-inner {
 }
 
 
-button.clean-gray {
-  .buttonBG(#eee, #ccc);
-  border: 1px solid #ccc;
-  border-bottom: 1px solid #bbb;
-  border-radius: .8em;
-  color: #333;
-  padding: 8px 0;
-  text-align: center;
-  text-shadow: 0 1px 0 #eee;
-   }
-  button.clean-gray:hover {
-    .buttonBG(#ddd, #bbb);
-    border: 1px solid #bbb;
-    border-bottom: 1px solid #999;
-    cursor: pointer;
-    text-shadow: 0 1px 0 #ddd; }
-  button.clean-gray:active {
-    border: 1px solid #aaa;
-    border-bottom: 1px solid #888;
-    -webkit-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eee;
-    box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eee; }
-
-/* paynow 
-****************************************************************************/
-	button.clean-gray.paynow {
-		color: #fff;
-		text-shadow: 0 -1px 0 #666;
-		font-size: 1.2em !important;
-		padding: .8em 1.5em !important;
-	  .buttonBG(#d1676b, #b30209);
-	  }
-	  button.clean-gray.paynow:hover {
-	    .buttonBG(#b30209, #860207);
-
+button{
+		
+	text-align: center;
+	border-radius: .5em;
+	padding: .5em 1em !important;
+	
+	img {
+		height: 30px;
+		@media (max-width: 700px), (-webkit-min-device-pixel-ratio : 2) {height: 60px; }
 	}
+	&.clean-gray {
+	  .buttonBG(#eee, #ccc);
+	  border: 1px solid #ccc;
+	  border-bottom: 1px solid #bbb;
+	 
+	  color: #333;
+	  padding: 8px 0;
+	  text-shadow: 0 1px 0 #eee;
+	  
+	  	&.paynow {
+			color: #fff;
+			text-shadow: 0 -1px 0 #666;
+		 	.buttonBG(#d1676b, #b30209);
+		 	&:hover { .buttonBG(#b30209, #860207); }
+		}
+		&:hover {
+		    .buttonBG(#ddd, #bbb);
+		    border: 1px solid #bbb;
+		    border-bottom: 1px solid #999;
+		    cursor: pointer;
+		    text-shadow: 0 1px 0 #ddd; }
+		  &:active {
+		    border: 1px solid #aaa;
+		    border-bottom: 1px solid #888;
+		    -webkit-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eee;
+		    box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eee; 
+		}
+	}
+}
+  
+
+
+	
