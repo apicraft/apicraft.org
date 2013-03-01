@@ -1,4 +1,4 @@
-body{font-size:1.5em;background:#fff;font-weight:100;color:#707077;text-shadow:0 -1px 0 #000000;}body strong{color:#555;}
+body{font-size:1.3em;background:#fff;font-weight:100;color:#707077;text-shadow:0 -1px 0 #000000;}body strong{color:#555;}
 @media (-webkit-min-device-pixel-ratio:2){body{font-size:2.5em;}}
 h1,h2,h3,h4,h5,h6{text-transform:uppercase;color:#222;font-weight:400;}
 h1{font-size:5em;line-height:.8em;font-weight:700;}@media (-webkit-min-device-pixel-ratio:2){h1{font-size:4em;}}
@@ -14,7 +14,7 @@ blockquote{font-family:serif;margin-left:2em;margin-right:2em;color:#aaa;font-st
 #page{padding:2em 0;background:#fff;}#page #header{padding:.5em 3em 0em 3em;}@media (max-width:700px),(-webkit-min-device-pixel-ratio:2){#page #header{padding:.5em 1em 0 1em;}}
 #page .section{padding:1em 3em 2em 3em;}@media (max-width:700px),(-webkit-min-device-pixel-ratio:2){#page .section{padding:.5em 1em 0 1em;}}#page .section.even{background-color:#f8f8f8;border-bottom:2px solid #f0f0f0;}
 #page .register p{margin-bottom:2em;}
-#page .register a#eventbrite_button{display:block;height:141px;width:400px;cursor:pointer;background:url('../images/eventbrite.png') top no-repeat;}#page .register a#eventbrite_button span{display:none;}
+#page .register a#eventbrite_button{display:block;height:110px;width:312px;cursor:pointer;background:url('../images/eventbrite.png') top no-repeat;}#page .register a#eventbrite_button span{display:none;}
 #page .register a#eventbrite_button:hover{background-position:center;}
 #page .register a#eventbrite_button:active{background-position:bottom;}
 #page .register label{font-family:Arial,Helvetica,sans-serif;}
