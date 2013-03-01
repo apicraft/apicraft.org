@@ -1,6 +1,8 @@
 var express = require('express');
 var lessMiddleware = require('less-middleware');
 
+var config = require('./config');
+
 var app = express();
 app.engine('.html', require('ejs').__express);
 app.set('views', __dirname + '/views');
@@ -13,7 +15,7 @@ app.use(lessMiddleware({
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res) {
-  res.render('index');
+  res.render('index', { proxyUrl: config.proxyUrl });
 });
 
 var port = process.env.PORT || 3000;
