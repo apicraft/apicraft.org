@@ -1,12 +1,59 @@
-Hotels
-Book Cadillac @42.331907634947264,-83.05044806382573
-Ren Cen Marriot @42.328941236974146,-83.03971922800841
-Holiday Inn @42.33132071170106,-83.05057680985679
-Milner Hotel @42.336368865741186,-83.04733133701946
-Courtyard Marriot @42.33036893263178,-83.04165578287035
-Greektown Casino/Hotel @42.33608732184024,-83.04093695087067
-MGM Casino Hotel @42.33302198087228,-83.05973387124693
- The Atheneum Suite Hotel @42.334021306393915,-83.04275817076226
-Double Tree Hotel @42.329363600366605,-83.0529183782932
-Madison Building @42.33607591793456,-83.04948449132719
-Hilton Garden Inn @42.33581419994153,-83.04502934225265
+{
+	locations: [
+		{
+			"yelpID": "the-madison-building-detroit",
+			"apicraftType": "main_venue",
+			"apicraftTitle": "APICRAFTCONF",
+			"apicraftDescription": "The Main Event!"
+			
+		},
+		{
+			"yelpID": "detroit-beer-company-detroit",
+			"apicraftType": "venue",
+			"apicraftTitle": "Dinner",
+			"apicraftDescription": "Day 1 post conference drinks!"
+			
+		},
+		{
+			"yelpID": "the-westin-book-cadillac-detroit-detroit",
+			"apicraftType": "hotel"
+		},
+		
+		{
+			"yelpID": "detroit-marriott-at-the-renaissance-center-detroit",
+			"apicraftType": "hotel"
+		},
+		{
+			"yelpID": "courtyard-detroit-downtown-detroit",
+			"apicraftType": "hotel"
+		},
+		{
+			"yelpID": "doubletree-suites-by-hilton-fort-shelby-detroit",
+			"apicraftType": "hotel"
+		},
+		{
+			"yelpID": "holiday-inn-express-hotel-and-suites-detroit-downtown-detroit",
+			"apicraftType": "hotel"
+		},
+		{
+			"yelpID": "hilton-garden-inn-detroit",
+			"apicraftType": "hotel"
+		},
+		{
+			"yelpID": "mgm-grand-detroit-detroit",
+			"apicraftType": "hotel"
+		},
+		{
+			"yelpID": "atheneum-suite-hotel-detroit",
+			"apicraftType": "hotel"
+		},
+		{
+			"yelpID": "milner-hotel-detroit",
+			"apicraftType": "hotel"
+		},
+		{
+			"yelpID": "greektown-casino-detroit",
+			"apicraftType": "hotel"
+		}
+	]
+}
