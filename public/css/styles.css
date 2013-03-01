@@ -5,7 +5,7 @@ h1{font-size:5em;line-height:.8em;font-weight:700;}@media (-webkit-min-device-pi
 strong{font-weight:400;}
 #map{height:40em;}#map .leaflet-popup-content{text-shadow:none;}#map .leaflet-popup-content h4{text-transform:none;font-size:2em;font-weight:700;}
 h2{font-size:2em;font-weight:700;}
-h3{font-size:1.5em;color:#444;margin:0 0 1em 0;}
+h3{font-size:2em;color:#444;margin:0 0 1em 0;}
 p{margin:1em 0;}
 a{text-decoration:none;color:#b30209;font-weight:400;}
 a:hover{text-decoration:underline;}
@@ -13,10 +13,11 @@ a:hover{text-decoration:underline;}
 blockquote{font-family:serif;margin-left:2em;margin-right:2em;color:#aaa;font-style:italic;text-shadow:0 -1px 0 #888888;line-height:1.8em;}
 #page{padding:2em 0;background:#fff;}#page #header{padding:.5em 3em 0em 3em;}@media (max-width:700px),(-webkit-min-device-pixel-ratio:2){#page #header{padding:.5em 1em 0 1em;}}
 #page .section{padding:1em 3em 2em 3em;}@media (max-width:700px),(-webkit-min-device-pixel-ratio:2){#page .section{padding:.5em 1em 0 1em;}}#page .section.even{background-color:#f8f8f8;border-bottom:2px solid #f0f0f0;}
+#page .api_craft ul{margin:0 0 0 2em;}#page .api_craft ul li{list-style-type:square;padding-bottom:1em;}
 #page .register p{margin-bottom:2em;}
 #page .register a#eventbrite_button{display:block;height:110px;width:312px;cursor:pointer;background:url('../images/eventbrite.png') top no-repeat;}#page .register a#eventbrite_button span{display:none;}
 #page .register a#eventbrite_button:hover{background-position:center;}
 #page .register a#eventbrite_button:active{background-position:bottom;}
 #page .register label{font-family:Arial,Helvetica,sans-serif;}
 @media (max-width:700px),(-webkit-min-device-pixel-ratio:2){#page .register ol{text-align:center;}}#page .register ol li{list-style-type:decimal;margin:1em;min-height:5em;}@media (max-width:700px),(-webkit-min-device-pixel-ratio:2){#page .register ol li{list-style-type:none;}}
-#page #footer ul li{display:inline;padding-right:1em;}
+#page #footer ul li{display:inline;}

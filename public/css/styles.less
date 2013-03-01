@@ -29,7 +29,7 @@ strong {font-weight: 400;}
 		}
 	}
 h2 {font-size: 2em; font-weight: 700;}
-h3 {font-size: 1.5em; color: #444; margin: 0 0 1em 0;}
+h3 {font-size: 2em; color: #444; margin: 0 0 1em 0;}
 p {margin: 1em 0;}
 
 
@@ -47,6 +47,8 @@ blockquote {
 
 #page {
 	padding: 2em 0;
+	background: #fff;
+	
 	#header {
 		padding: .5em 3em 0em 3em;
 			@media (max-width: 700px), (-webkit-min-device-pixel-ratio : 2) {padding: .5em 1em 0 1em;}
@@ -62,7 +64,15 @@ blockquote {
 			border-bottom: 2px solid #f0f0f0;
 		}
 		}
-	background: #fff;
+	.api_craft {
+			ul {
+		margin: 0 0 0 2em;
+		li {
+			list-style-type: square;
+			padding-bottom: 1em;
+			}
+		}
+		}
 	.register {
 		p {margin-bottom: 2em;}
 		a#eventbrite_button {
@@ -90,7 +100,6 @@ blockquote {
 		ul {
 			li{
 				display: inline;
-				padding-right: 1em;
 				}
 			}
 	}
