@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+	<head>
+		<title>API Craft Conference</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css" /> <!-- normalize styles -->
+				
+    <script type="text/javascript">
+      window.config = {
+        proxyUrl: "<%= proxyUrl %>"
+      };
+    </script>
+		<script type="text/javascript" src="//use.typekit.net/ejt3ecd.js"></script><!-- use a real font -->
+		<script type="text/javascript" >try{Typekit.load();}catch(e){}</script>
+		
+		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.css" /><!-- use a fancy map -->
+		<!--[if lte IE 8]> <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.ie.css" /> <![endif]-->
+		<script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script>
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		
+		<script type="text/javascript" src="js/functions.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="css/buttons.css" /><!-- delicious buttons-->
+		<link rel="stylesheet" type="text/css" href="css/styles.css" /><!-- our main stylesheet -->
+		
+	</head>
+  <body>
+    <div id="page">
+		<div id="header">
+			<h1>#apicraftconf </h1>
+			<h2>July 30-31, Detroit MI. <a href="#register" class="button">Register Now</a></h2>
+
+		</div><!-- /#header -->
+		<div class="section about">
+			<a name="about"></a>
+			<p>We’ve had inspiring discussions online. We’ve met at regional meetups. We’ve gathered at other people’s conferences. <i>Is it time the global API Craft community gets together for our own <del>party</del> conference?</i> <strong>Absolutely!</strong></p>
+			
+		</div><!-- /.section -->
+	
+		<div class="section even schedule">
+			<a name="schedule"></a>
+			<h3>schedule</h3>
+			<p>We are still working out the details, but here’s the plan so far:</p>
+			<ul>
+				<li><strong>Date:</strong> 	Tuesday July 30th &amp; Wednesday 31st, 2013</li>
+				<li><strong>Place:</strong> Detroit, Michigan, USA.</li>
+				<li><strong>Who:</strong> API Craftsmen and Craftswomen</li>
+				<li><strong>Spots:</strong> 150-200</li>
+				<li><strong>Format:</strong> <a href="#open_space">Open Space</a></li>
+				<li><strong>Rules:</strong> No Corporate Logos, No Pitches, Represent Thyself Not Thycompany</li>
+				<li><strong>Cost:</strong> ~$300 (Expenses / Number of Attendees)</li>
+				<li><strong>Pre-Party:</strong> Yes</li>
+				<li><strong>Intra-Party:</strong> Yes</li>
+				<li><strong>Post-Party:</strong> Yes</li>
+		</div><!-- /.section -->
+
+		<div class="section detroit">
+			<a name="detroit"></a>
+			<h3>detroit</h3>
+		
+			<div id="map"></div>
+		</div><!-- /.section -->
+		
+		<div class="section even register">
+			<a name="register"></a>
+			<h3>register</h3>
+			<a href="http://apicraftconf.eventbrite.com" id="eventbrite_button" title="Register on Eventbrite" target="_blank"><span>Register on Eventbrite</span></a>
+			<p>Tickets start at $82.10, and we're using eventbrite to handle your payment info. Click the big 'ole button above to complete the registration process on their website. You'll come back here when you're done. </p>
+		</div><!-- /.section -->
+		
+		<div class="section api_craft">
+			<a name="api_craft"></a>
+			<h3>API Craft</h3>
+			<p>Our standards are simple - we are a community of individual API practitioners who see building APIs as a craft.</p>
+			<p>Join the discussion on <a href="http://groups.google.com/group/api-craft/" target="_blank">Google Groups.</a>
+			<ul>
+				<li>We represent our own opinions, and not that of employers or anyone else.</li>
+				<li>The forum <i>is open</i> to thoughtful posts from prospective employers who want great API thinkers and doers.</li>
+				<li>The forum <i>is not open</i> to posts from vendors who are promoting their products or spamming recruiters.</li>
+			</ul>
+		</div><!-- /.section -->
+		
+		<div class="section open_space even ">
+			<a name="open_space"></a>
+			<h3>open spaces</h3>
+			<p>We're holding this as an Open Space because that's an awesome format. We believe the ethos of Open Spaces fits very well with the premise of the api craft forum.</p>
+			<blockquote>Open Space Technology is an approach to hosting events focused on a specific and important purpose or task — but beginning without any formal agenda, beyond the overall purpose or theme. The meeting's participants create the agenda for themselves. All participants are given both the right and the responsibility to maximize their own learning and contribution. When you lose interest and get bored in a group, or accomplish and share all that you can, the charge is to move on...use your two feet, go to a different breakout session.</blockquote>
+			<p>Adapted from <a href="http://en.wikipedia.org/wiki/Open-space_technology" target="_blank">Open Space Technology</a> on Wikipedia.
+		</div><!-- /.section -->
+		<div class="section nosponsors">
+			<a name="nosponsors"></a>
+			<h3>keep it real</h3>
+			<p class="fineprint"><strong>Positive Environment: </strong>First rule: Don't be a jerk. Last rule: Don't be a jerk. Let's hope we don't have to spell this one out; we welcome people to attend apicraftconf regardless of gender, race, religion, you name it. If anyone at the conference is hating on anyone else for things like that, then they gotta go - no refunds. If it's only a "what is REST" argument...try to keep it civil.</p>
+			<p class="fineprint"><strong>No Sponsors: </strong>We want honest discussions between people about their craft, not pitches. Most of us work for companies - we get it. Many of us will also be working for a different company 'round this time next year. Nobody want's to hear sales pitches. Let's keep apicraftconf about the people, ideas, and technology - just like the apicraft forum. </p>
+			
+		</div><!-- /.section -->
+		<div class="section even api">
+			<a name="api"></a>
+			<h3>api</h3>
+			<p>This conference has an API?! You betchya.</p>
+		</div><!-- /.section -->
+		
+		<div id="footer" class="section">
+			<ul>
+				<li><a href="http://groups.google.com/group/api-craft/">API Craft Forum</a></li>
+				<li><a href="#">Other API Craft Meetups</a></li>
+			</ul>
+			<p>2013 apicraft.org</p>
+		</div><!-- /#footer -->
+	</div><!-- /#page -->
+	
+	
+
+  </body>
+</html>

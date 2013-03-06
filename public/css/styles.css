@@ -1,23 +1,19 @@
-body{font-size:1.3em;background:#fff;font-weight:100;color:#707077;text-shadow:0 -1px 0 #000000;}body strong{color:#555;}
-@media (-webkit-min-device-pixel-ratio:2){body{font-size:2.5em;}}
-h1,h2,h3,h4,h5,h6{text-transform:uppercase;color:#222;font-weight:400;}
-h1{font-size:5em;line-height:.8em;font-weight:700;}@media (-webkit-min-device-pixel-ratio:2){h1{font-size:4em;}}
-strong{font-weight:400;}
-#map{height:40em;}#map .leaflet-popup-content{text-shadow:none;}#map .leaflet-popup-content h4{text-transform:none;font-size:2em;font-weight:700;}
-h2{font-size:2em;font-weight:700;}
-h3{font-size:2em;color:#444;margin:0 0 1em 0;}
-p{margin:1em 0;}
-a{text-decoration:none;color:#b30209;font-weight:400;}
-a:hover{text-decoration:underline;}
-.fineprint{font-size:.8em;}
-blockquote{font-family:serif;margin-left:2em;margin-right:2em;color:#aaa;font-style:italic;text-shadow:0 -1px 0 #888888;line-height:1.8em;}
-#page{padding:2em 0;background:#fff;}#page #header{padding:.5em 3em 0em 3em;}@media (max-width:700px),(-webkit-min-device-pixel-ratio:2){#page #header{padding:.5em 1em 0 1em;}}
-#page .section{padding:1em 3em 2em 3em;}@media (max-width:700px),(-webkit-min-device-pixel-ratio:2){#page .section{padding:.5em 1em 0 1em;}}#page .section.even{background-color:#f8f8f8;border-bottom:2px solid #f0f0f0;}
-#page .api_craft ul{margin:0 0 0 2em;}#page .api_craft ul li{list-style-type:square;padding-bottom:1em;}
-#page .register p{margin-bottom:2em;}
-#page .register a#eventbrite_button{display:block;height:110px;width:312px;cursor:pointer;background:url('../images/eventbrite.png') top no-repeat;}#page .register a#eventbrite_button span{display:none;}
-#page .register a#eventbrite_button:hover{background-position:center;}
-#page .register a#eventbrite_button:active{background-position:bottom;}
-#page .register label{font-family:Arial,Helvetica,sans-serif;}
-@media (max-width:700px),(-webkit-min-device-pixel-ratio:2){#page .register ol{text-align:center;}}#page .register ol li{list-style-type:decimal;margin:1em;min-height:5em;}@media (max-width:700px),(-webkit-min-device-pixel-ratio:2){#page .register ol li{list-style-type:none;}}
-#page #footer ul li{display:inline;}
+body{width:100%;*zoom:1;}body:before,body:after{content:"";display:table;}
+body:after{clear:both;}
+body{font-family:"source-sans-pro",Arial,sans-serif;font-size:.9em;}
+#page{font-weight:400;width:480px;color:#333;margin:0 auto;float:none;height:100px;}@media screen and (min-width:640px){#page{width:800px;}}
+.wf-active #page{font-size:1.2em;}@media screen and (min-width:640px){.wf-active #page{font-size:1.5em;}}
+#header{display:inline;float:left;width:100%;margin:0 0%;text-align:center;}#header .bracket{display:inline;float:left;width:12.5%;margin:0 0%;font-size:13em;line-height:.5em;margin-top:.3em;font-weight:400;}#header .bracket.left{text-alight:right;}
+#header .content{display:inline;float:left;width:75%;margin:0 0%;font-size:.8em;margin-top:3.5em;}@media screen and (min-width:640px){#header .content{margin-top:2em;font-size:1em;}}#header .content h1{font-weight:640;font-size:5em;line-height:.3em;margin-top:.5em;}
+#header .content h2{font-weight:200;font-size:4.3em;line-height:.7em;margin-top:.3em;color:#808080;}
+#header .content p{margin-bottom:1em;}
+#header .content a.button{width:50%;font-size:1.4em;margin:.4em;background:#8cc63f;border-radius:.2em;padding:.2em 3em;letter-spacing:.1em;color:#fff;border:none;cursor:pointer;}
+#api{display:inline;float:left;width:100%;margin:0 0%;margin-top:2em;font-size:1.2em;}@media screen and (min-width:640px){#api{font-size:1em;}}#api .resource{display:inline;float:left;width:100%;margin:0 0%;margin-left:0;margin-top:1em;}#api .resource h3{display:inline;float:left;width:100%;margin:0 0%;}
+#api .resource .verb{display:inline;float:left;width:100%;margin:0 0%;margin-left:0;margin-top:.2em;border:1px solid #ccc;}#api .resource .verb .post,#api .resource .verb .get{display:inline;float:left;width:12.5%;margin:0 0%;font-weight:640;text-align:center;margin-left:0;padding:.2em 0;text-transform:uppercase;}
+#api .resource .verb .get{background:#a9ddf3;color:#1d7ba2;}
+#api .resource .verb .post{background:#fcd4a5;color:#c68a45;}
+#api .resource .verb code{display:inline;float:left;width:47.5%;margin:0 0%;padding-top:.4em;padding-left:.4em;}
+#api .resource .verb p{display:inline;float:left;width:37.5%;margin:0 0%;font-size:.8em;text-align:right;padding-top:.4em;color:#888;}
+#api .resource .rendered{display:inline;float:left;width:100%;margin:0 0%;font-size:.9em;display:none;}
+#footer{display:inline;float:left;width:100%;margin:0 0%;margin-top:2em;font-size:.9em;background-color:#888;color:#fff;}#footer ul{padding:1em 1em 5em 1em;}
+#footer li{display:inline;padding:.2em;}#footer li a{color:#fff;}
