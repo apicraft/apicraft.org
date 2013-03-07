@@ -2,20 +2,16 @@
 <html>
 	<head>
 		<title>API Craft Conference</title>
-		<meta name="viewport" content="width=device-width; initial-scale=.65;">
 		
-		<link rel="stylesheet" type="text/css" href="css/reset.css" /> <!-- normalize styles -->
-				
-    	<script type="text/javascript"> window.config = { proxyUrl: "<%= proxyUrl %>" }; </script>
-
-		<script type="text/javascript" src="//use.typekit.net/ejt3ecd.js"></script><!-- use a real font -->
+		
+		<script type="text/javascript" src="//use.typekit.net/ejt3ecd.js"></script><!-- use some real fonts -->
 		<script type="text/javascript" >try{Typekit.load();}catch(e){}</script>
 		
-		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=.65"><!-- Makes iPhones behave better -->
 		
-		<script type="text/javascript" src="js/functions.js"></script>
-		
-		<link rel="stylesheet" type="text/css" href="css/styles.css" /><!-- our main stylesheet -->
+		<link rel="stylesheet" type="text/css" href="css/reset.css" /> <!-- normalize browser styles -->
+    	<link rel="stylesheet" type="text/css" href="css/prism.css" /><!-- pretty code :) -->
+		<link rel="stylesheet" type="text/css" href="css/styles.css" /><!-- the main stylesheet, compiled @runtime by less-middleware -->
 		
 	</head>
 	<body>
@@ -33,27 +29,59 @@
 			</div><!-- /#header -->
 			<div id="api">
 				<div class="resource">
+					<h3>/conferences/{city}</h3>
+					<div class="verb" data-verb="get" data-resource="/conferences">
+						<span class="get">GET</span>
+						<code>/conferences</code>
+						<p class="description">List conferences</p>
+					</div><!-- /.verb -->
+					<div class="response">
+						<p class="request_url"></p>
+						<p class="raw_response"><a href="#" target="_blank" title="Raw Response" >< ></a></p>
+						<pre><code>Code Here</code></pre>
+					</div><!-- /.response> -->
+					<div class="rendered"></div><!-- /.rendered -->
+				</div><!-- /.resource -->
+				
+				<div class="resource">
 					<h3>/goals</h3>
-					<div class="verb">
+					<div class="verb" data-verb="get" data-resource="/goals">
 						<span class="get">get</span>
 						<code>/goals</code>
 						<p class="description">Goals and Philosophy</p>
 					</div><!-- /.verb -->
+					<div class="response">
+						<p class="request_url"></p>
+						<p class="raw_response"><a href="#" target="_blank" title="Raw Response" >< ></a></p>
+						<pre><code>Code Here</code></pre>
+					</div><!-- /.response> -->
 					<div class="rendered"></div><!-- /.rendered -->
 				</div><!-- /.resource -->
 				
 				<div class="resource">
 					<h3>/questions</h3>
-					<div class="verb">
+					<div class="verb" data-verb="post" data-resource="/questions">
 						<span class="post">post</span>
 						<code>/questions</code>
 						<p class="description">Q's about the event</p>
 					</div><!-- /.verb -->
-					<div class="verb">
+					<div class="response">
+						<p class="request_url"></p>
+						<p class="raw_response"><a href="#" target="_blank" title="Raw Response" >< ></a></p>
+						<pre><code>Code Here</code></pre>
+					</div><!-- /.response> -->
+					<div class="rendered"></div><!-- /.rendered -->
+					
+					<div class="verb" data-verb="get" data-resource="/questions">
 						<span class="get">get</span>
 						<code>/questions</code>
 						<p class="description">Ask a Question</p>
 					</div><!-- /.verb -->
+					<div class="response">
+						<p class="request_url"></p>
+						<p class="raw_response"><a href="#" target="_blank" title="Raw Response" >< ></a></p>
+						<pre><code>Code Here</code></pre>
+					</div><!-- /.response> -->
 					<div class="rendered"></div><!-- /.rendered -->
 				</div><!-- /.resource -->	
 			</div><!-- /#api -->
@@ -71,4 +99,12 @@
 		
 		
 	</body>
+	
+	<script type="text/javascript"> window.config = { proxyUrl: "<%= proxyUrl %>" }; </script><!-- import environment vars from node -->
+	
+	
+	
+	<script type="text/javascript" src="js/prism.js"></script><!-- pretty code :) -->
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script><!-- duh -->
+	<script type="text/javascript" src="js/functions.js"></script><!-- giterdone -->
 </html>
