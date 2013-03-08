@@ -6,15 +6,14 @@
 body {
 	font-family: "source-sans-pro", Arial, sans-serif;
 	font-size: .9em;
-	
+	font-weight: 400;
+	color: #333;
 }
 .wf-loading {visibility: hidden}
 #page {
-	font-weight: 400;
-	width: 480px;
-	color: #333;
 	
-	margin: 0 auto;
+	width: 480px;
+	margin: 0 auto 1em auto;
 	float: none;
 	height: 100px;
 	
@@ -199,17 +198,29 @@ body {
 			}
 		}
 	}
-	#footer {
+	#content {
 		.column(8);
+	}
+	
+	#footer {
+		float: left;
+		clear: both;
+		width: 100%;
 		margin-top: 2em;
 		
-		font-size: .9em;
+		font-size: 1.1em;
 		background-color: #888;
 		color: #fff;
-		ul{padding: 1em 1em 5em 1em;}
+		ul{
+			text-align: center;
+			padding: 1em 1em 5em 1em;
+			width: 480px;
+			margin: 0 auto;
+			@media screen and (min-width: 640px) {  width: 800px; }
+			}
 		li {
 			a {color: #fff;}
-			display: inline; 
+			display: inline;
 			padding: .2em;
 			}
 	}

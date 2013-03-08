@@ -1,6 +1,7 @@
 var express = require('express');
 var lessMiddleware = require('less-middleware');
 var fs = require('fs');
+var http = require('http');
 
 var config = require('./config');
 
@@ -23,69 +24,39 @@ fs.readFile(file, 'utf8', function (err, data) {
   apipage = JSON.parse(data);
 });
 
-var apipage = {
-	title: "API Craft Conference",
-	footer: {
-		devs: {
-			text: "Non-Developers",
-			link: "/nondev"
-		}
-	},
-	resources: [
-		{
-			title: "/conferences/{city}",
-			verbs: [
-				{
-					type: "get",
-					url: "/conferences",
-					description: "List Conferences"
-				}
-				]
-		},
-		{
-			title: "/goals",
-			verbs: [
-				{
-					type: "get",
-					url: "/goals",
-					description: "Goals and Philosiphy"
-				}
-				]
-		},
-		{
-			title: "/questions",
-			verbs: [
-				{
-					type: "post",
-					url: "/questions",
-					description: "Ask a question"
-				},
-				{
-					type: "get",
-					url: "/questions",
-					description: "Q's about the event"
-				}
-				]
-		}
-		]
-}
-
 app.get('/', function(req, res) {
   res.render('index', { proxyUrl: config.proxyUrl, page: apipage });
 });
 
 app.get('/nondev', function(req, res) {
-  res.render('nondev', { 
-	proxyUrl: config.proxyUrl	,  
-	page: {
-		title: "API Craft Conference - Non Developers",
-		footer: {
-			devs: {
-				text: "Developers",
-				link: "/"
+	//load data right off of the api
+	http.request({
+		host: "api.apicraft.org",
+		path: "/conferences/detroit"
+	}, function(http_response) {
+		var str = '';
+	    http_response.on('data', function(d) {
+			//collect that stream...
+	        str += d;
+	    });
+		http_response.on('end', function () {
+		    //ok, now render the template
+			var page_data = JSON.parse(str);
+			page_data.footer = {
+				"devs": {
+					"text": "Developers",
+					"link": "/"
+				}
 			}
-		}
-	} });
+			res.render('nondev', { 
+				proxyUrl: config.proxyUrl	,  
+				page: page_data
+				
+				});
+		  });
+
+	}).end();
+	
 });
 
 

@@ -1,8 +1,8 @@
 body{width:100%;*zoom:1;}body:before,body:after{content:"";display:table;}
 body:after{clear:both;}
-body{font-family:"source-sans-pro",Arial,sans-serif;font-size:.9em;}
+body{font-family:"source-sans-pro",Arial,sans-serif;font-size:.9em;font-weight:400;color:#333;}
 .wf-loading{visibility:hidden;}
-#page{font-weight:400;width:480px;color:#333;margin:0 auto;float:none;height:100px;}@media screen and (min-width:640px){#page{width:800px;}}
+#page{width:480px;margin:0 auto 1em auto;float:none;height:100px;}@media screen and (min-width:640px){#page{width:800px;}}
 .wf-active #page{font-size:1.2em;}@media screen and (min-width:640px){.wf-active #page{font-size:1.5em;}}
 a{color:#666;}a:hover{color:#000;}
 #header{display:inline;float:left;width:100%;margin:0 0%;text-align:center;}#header .bracket{display:inline;float:left;width:12.5%;margin:0 0%;font-size:13em;line-height:.5em;margin-top:.3em;font-weight:400;}#header .bracket.left{text-alight:right;}
@@ -25,5 +25,6 @@ a{color:#666;}a:hover{color:#000;}
 #api .resource .response p.raw_response a:active{background-color:#ffffff;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffffff), to(#aaaaaa));background:-webkit-linear-gradient(top, #aaaaaa, #ffffff);background:-moz-linear-gradient(top, #aaaaaa, #ffffff);background:-ms-linear-gradient(top, #aaaaaa, #ffffff);background:-o-linear-gradient(top, #aaaaaa, #ffffff);}
 #api .resource .response pre{display:inline;float:left;width:93.75%;margin:0 0%;border-top:1px solid #ccc;font-size:.8em;max-height:20em;}@media screen and (min-width:640px){#api .resource .response pre{display:inline;float:left;width:95.99999999999999%;margin:0 0%;}}
 #api .resource .rendered{display:inline;float:left;width:100%;margin:0 0%;font-size:.9em;display:none;}
-#footer{display:inline;float:left;width:100%;margin:0 0%;margin-top:2em;font-size:.9em;background-color:#888;color:#fff;}#footer ul{padding:1em 1em 5em 1em;}
+#content{display:inline;float:left;width:100%;margin:0 0%;}
+#footer{float:left;clear:both;width:100%;margin-top:2em;font-size:1.1em;background-color:#888;color:#fff;}#footer ul{text-align:center;padding:1em 1em 5em 1em;width:480px;margin:0 auto;}@media screen and (min-width:640px){#footer ul{width:800px;}}
 #footer li{display:inline;padding:.2em;}#footer li a{color:#fff;}
