@@ -15,8 +15,34 @@ app.use(lessMiddleware({
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res) {
-  res.render('index', { proxyUrl: config.proxyUrl });
+  res.render('index', { 
+	proxyUrl: config.proxyUrl,  
+	page: {
+		title: "API Craft Conference",
+		footer: {
+			devs: {
+				text: "Non-Developers",
+				link: "/nondev"
+			}
+		}
+	}
+	});
 });
+
+app.get('/nondev', function(req, res) {
+  res.render('nondev', { 
+	proxyUrl: config.proxyUrl	,  
+	page: {
+		title: "API Craft Conference - Non Developers",
+		footer: {
+			devs: {
+				text: "Developers",
+				link: "/"
+			}
+		}
+	} });
+});
+
 
 var port = process.env.PORT || 3000;
 app.listen(port);

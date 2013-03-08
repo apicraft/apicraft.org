@@ -28,22 +28,18 @@
 				
 			</div><!-- /#header -->
 			<div id="api">
-				<div class="resource">
-					<h3>/conferences/{city}</h3>
-					<div class="resource_group">
-						<div class="verb" data-verb="get" data-resource="/conferences">
-							<span class="get">GET</span>
-							<code>/conferences</code>
-							<p class="description">List conferences</p>
-						</div><!-- /.verb -->
-						<div class="response get" >
-							<p class="request_url"></p>
-							<p class="raw_response"><a href="#" target="_blank" title="Raw Response" >< ></a></p>
-							<pre><code></code></pre>
-						</div><!-- /.response> -->
-						<div class="rendered"></div><!-- /.rendered -->
-					</div><!-- /.resource_group -->
-				</div><!-- /.resource -->
+				<% api_resource = new EJS({url: '/api_resource'}).render({
+					title: "/conferences/{city}",
+					verbs: [
+						{
+							type: "get",
+							url: "/conferences"
+							description: "List Conferences"
+						}
+						]
+				}); %>
+				
+				
 				
 				<div class="resource">
 					<h3>/goals</h3>
@@ -96,7 +92,7 @@
 			
 			<div id="footer">
 				<ul>
-					<li><a href="#">Non-Developers</a><li>
+					<li><a href="<%= page.footer.devs.link %>"><%= page.footer.devs.text %></a><li>
 					<li><a href="#">API-CRAFT</a><li>
 					<li><a href="#">GitHub</a><li>
 					<li><a href="#">Twitter</a><li>
