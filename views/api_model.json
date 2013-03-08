@@ -1,0 +1,46 @@
+{
+	"title": "API Craft Conference",
+	"footer": {
+		"devs": {
+			"text": "Non-Developers",
+			"link": "/nondev"
+		}
+	},
+	"resources": [
+		{
+			"title": "/conferences/{city}",
+			"verbs": [
+				{
+					"type": "get",
+					"url": "/conferences",
+					"description": "List Conferences"
+				}
+				]
+		},
+		{
+			"title": "/goals",
+			"verbs": [
+				{
+					"type": "get",
+					"url": "/goals",
+					"description": "Goals and Philosiphy"
+				}
+				]
+		},
+		{
+			"title": "/questions",
+			"verbs": [
+				{
+					"type": "post",
+					"url": "/questions",
+					"description": "Ask a question"
+				},
+				{
+					"type": "get",
+					"url": "/questions",
+					"description": "Q's about the event"
+				}
+				]
+		}
+		]
+}

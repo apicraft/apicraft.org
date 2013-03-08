@@ -1,114 +1,13 @@
-<!doctype html>
-<html>
-	<head>
-		<title>API Craft Conference</title>
-		
-		
-		<script type="text/javascript" src="//use.typekit.net/ejt3ecd.js"></script><!-- use some real fonts -->
-		<script type="text/javascript" >try{Typekit.load();}catch(e){}</script>
-		
-		<meta name="viewport" content="width=device-width, initial-scale=.65"><!-- Makes iPhones behave better -->
-		
-		<link rel="stylesheet" type="text/css" href="css/reset.css" /> <!-- normalize browser styles -->
-    	<link rel="stylesheet" type="text/css" href="css/prism.css" /><!-- pretty code :) -->
-		<link rel="stylesheet" type="text/css" href="css/styles.css" /><!-- the main stylesheet, compiled @runtime by less-middleware -->
-		
-	</head>
-	<body>
-		<div id="page">
-			<div id="header">
-					<div class="bracket left">{</div>
-					<div class="content">
-						<h1>API-CRAFT</h1>
-						<h2>CONFERENCE</h2>
-						<p><a href="#">July 29-31, 2013</a> - <a href="#">1555 Broadway St. Detroit, MI, USA</a></p>
-						<a href="#" class="button register">register</a>
-					</div>
-					<div class="bracket right">}</div>
-				
-			</div><!-- /#header -->
+<% include header %>
 			<div id="api">
-				<% api_resource = new EJS({url: '/api_resource'}).render({
-					title: "/conferences/{city}",
-					verbs: [
-						{
-							type: "get",
-							url: "/conferences"
-							description: "List Conferences"
-						}
-						]
-				}); %>
-				
-				
-				
-				<div class="resource">
-					<h3>/goals</h3>
-					<div class="resource_group">
-						<div class="verb" data-verb="get" data-resource="/goals">
-							<span class="get">get</span>
-							<code>/goals</code>
-							<p class="description">Goals and Philosophy</p>
-						</div><!-- /.verb -->
-						<div class="response">
-							<p class="request_url"></p>
-							<p class="raw_response"><a href="#" target="_blank" title="Raw Response" >< ></a></p>
-							<pre><code></code></pre>
-						</div><!-- /.response> -->
-						<div class="rendered"></div><!-- /.rendered -->
-					</div><!-- /.resource_group -->
-				</div><!-- /.resource -->
-				
-				<div class="resource">
-					<h3>/questions</h3>
-					<div class="resource_group">
-						<div class="verb" data-verb="post" data-resource="/questions">
-							<span class="post">post</span>
-							<code>/questions</code>
-							<p class="description">Q's about the event</p>
-						</div><!-- /.verb -->
-						<div class="response">
-							<p class="request_url"></p>
-							<p class="raw_response"><a href="#" target="_blank" title="Raw Response" >< ></a></p>
-							<pre><code></code></pre>
-						</div><!-- /.response> -->
-						<div class="rendered"></div><!-- /.rendered -->
-					</div><!-- /.resource_group -->
-					
-					<div class="resource_group">
-						<div class="verb" data-verb="get" data-resource="/questions">
-							<span class="get">get</span>
-							<code>/questions</code>
-							<p class="description">Ask a Question</p>
-						</div><!-- /.verb -->
-						<div class="response">
-							<p class="request_url"></p>
-							<p class="raw_response"><a href="#" target="_blank" title="Raw Response" >< ></a></p>
-							<pre><code></code></pre>
-						</div><!-- /.response> -->
-						<div class="rendered"></div><!-- /.rendered -->
-					</div><!-- /.resource_group -->
-				</div><!-- /.resource -->	
+				<% 
+				var current_resource;
+				for(var i=0; i<page.resources.length; i++){
+					_resource = page.resources[i];
+					console.log(_resource);
+				%>
+				<%	include api_resource %>
+				<% } %>
 			</div><!-- /#api -->
 			
-			<div id="footer">
-				<ul>
-					<li><a href="<%= page.footer.devs.link %>"><%= page.footer.devs.text %></a><li>
-					<li><a href="#">API-CRAFT</a><li>
-					<li><a href="#">GitHub</a><li>
-					<li><a href="#">Twitter</a><li>
-					<li><a href="#">Facebook</a><li>
-				</ul>	
-			</div><!-- /#footer -->
-		</div><!-- /#page -->
-		
-		
-	</body>
-	
-	<script type="text/javascript"> window.config = { proxyUrl: "<%= proxyUrl %>" }; </script><!-- import environment vars from node -->
-	
-	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script><!-- duh -->
-	
-	<script type="text/javascript" src="js/prism.js"></script><!-- pretty code :) -->
-	<script type="text/javascript" src="js/spin.min.js"></script><!-- giterdone -->
-	<script type="text/javascript" src="js/functions.js"></script><!-- giterdone -->
-</html>
+<% include footer %>

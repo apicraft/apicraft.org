@@ -1,14 +1,14 @@
 <div class="resource">
-	<h3><%= title %></h3>
-	<% for(var i=0, i<verbs.length, i++){ %>
+	<h3><%= _resource.title %></h3>
+	<% for(var i=0; i< _resource.verbs.length; i++){ %>
 		
 	<div class="resource_group">
-		<div class="verb verb_<%= i %>" data-verb="<%= verbs[i].type %>" data-resource="/conferences">
-			<span class="<%= verbs[i].type %>"><%= verbs[i].type %></span>
-			<code><%= verbs[i].url %></code>
-			<p class="description"><%= verbs[i].description %></p>
+		<div class="verb verb_<%= i %>" data-verb="<%= _resource.verbs[i].type %>" data-resource="<%= _resource.verbs[i].url %>">
+			<span class="<%= _resource.verbs[i].type %>"><%= _resource.verbs[i].type %></span>
+			<code><%= _resource.verbs[i].url %></code>
+			<p class="description"><%= _resource.verbs[i].description %></p>
 		</div><!-- /.verb -->
-		<div class="response response_<%= i %> <%= verbs[i].type %>" >
+		<div class="response response_<%= i %> <%= _resource.verbs[i].type %>" >
 			<p class="request_url"></p>
 			<p class="raw_response"><a href="#" target="_blank" title="Raw Response" >< ></a></p>
 			<pre><code></code></pre>
