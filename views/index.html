@@ -4,6 +4,7 @@
 				var current_resource;
 				for(var i=0; i<page.resources.length; i++){
 					_resource = page.resources[i];
+					_resource.index = i;
 					console.log(_resource);
 				%>
 				<%	include api_resource %>

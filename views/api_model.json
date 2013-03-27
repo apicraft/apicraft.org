@@ -33,7 +33,13 @@
 				{
 					"type": "post",
 					"url": "/questions",
-					"description": "Ask a question"
+					"description": "Ask a question",
+					"inputs": [
+						{
+							"name": "question",
+							"description": "Question"
+						}
+					]
 				},
 				{
 					"type": "get",
