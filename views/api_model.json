@@ -8,6 +8,7 @@
 	},
 	"resources": [
 		{
+			"name": "conferences",
 			"title": "/conferences/{city}",
 			"verbs": [
 				{
@@ -18,6 +19,7 @@
 				]
 		},
 		{
+			"name": "goals",
 			"title": "/goals",
 			"verbs": [
 				{
@@ -28,6 +30,7 @@
 				]
 		},
 		{
+			"name": "questions",
 			"title": "/questions",
 			"verbs": [
 				{

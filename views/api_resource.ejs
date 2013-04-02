@@ -1,5 +1,5 @@
-
-<div class="resource resource_<%= _resource.index %>">
+<% console.log(_resource); %>
+<div class="resource resource_<%= _resource.index + ' ' + _resource.name %> ">
 	<h3><%= _resource.title %></h3>
 	<% for(var v=0; v< _resource.verbs.length; v++){ 
 		$v = _resource.verbs[v];
@@ -31,7 +31,7 @@
 			<p class="raw_response"><a href="#" target="_blank" title="Raw Response" >< ></a></p>
 			<pre><code></code></pre>
 		</div><!-- /.response> -->
-		<div class="rendered"></div><!-- /.rendered -->
+		<div class="rendered rendered_<%= $v.type %>"></div><!-- /.rendered -->
 	</div><!-- /.resource_group -->
 	
 	<%	} %>

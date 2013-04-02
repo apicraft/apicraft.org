@@ -225,6 +225,97 @@ body {
 	#content {
 		.column(8);
 	}
+
+	.rendered  {
+		background-color: #f4ebe2;
+		border: 1px solid #cccccc;
+		border-top: none;
+		.content{ padding: 1em; }
+	}
+
+	.goals, .guidelines {
+			.rendered {
+				ul {
+					margin-left: 1em;
+				}
+				li {
+					list-style-type: disc;
+					margin-bottom: .5em;
+				}
+			}
+		}
+	
+	.goals .rendered{
+
+	}
+
+	.guidelines .rendered{
+
+	}
+
+	.attendees .rendered{
+		max-height: 400px;
+		overflow: scroll;
+		li {
+			height: 120px; padding: .5em 0;
+			img {
+				height: 120px;
+				float: left;
+				margin-right: 15px;
+				border: 1px solid #888;
+			}
+		}
+	}
+
+	.agenda .rendered{
+		min-height: 500px;
+		div  {
+			width: 220px;
+			margin: 10px;
+		}
+	}
+
+	.parties .rendered{
+		.party {min-height: 350px; margin-bottom: 1em;}
+		.hero, .party_map {width: 50%; float: left;}
+		.party_map {clear: right;}
+		.hero {
+			
+			img {width: 100%;}
+		}
+	}
+
+
+	.sessions .rendered{
+		table {
+			width: 100%;
+			font-size: .85em;
+			td {
+				margin: 5px; padding: .5em;
+				background-color: #fff;
+				color: #0071bc;
+				border: 1px solid #888;
+
+				&.header {background-color: transparent;border: none; color: inherit;}
+				&.spacer {color: transparent; background-color: transparent;border: none;}
+			}
+		}
+	}
+
+	.questions .rendered{
+		color: #777;
+		h3 {
+			color: #0071bc; font-weight: normal;
+			border-bottom: 1px dotted #888;
+			padding-bottom: .5em; margin-bottom: .5em;
+		}
+		li {
+			border-bottom: 1px dotted #888;
+			padding: .5em 0 .8em 0;
+		}
+		ul :last-child {border-bottom: none; padding-bottom: none;}
+	}
+
 	
 	#footer {
 		float: left;
