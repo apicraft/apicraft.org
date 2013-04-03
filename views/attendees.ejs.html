@@ -1,0 +1,26 @@
+<ul>
+	<% 
+	var attendees = data.attendees;
+
+	for(var i=0; i<attendees.length; i++){ 
+		attendee = attendees[i];
+		%>
+
+		<li>
+			<img src="<%= attendee.img %>"/>
+			<h2><%= attendee.name %></h2>
+			<p>
+				<% if(attendee.twitter){ %>
+					<a href="http://twitter.com/<%= attendee.twitter %>">@<%= attendee.twitter %></a> 
+				<% } %>
+
+				<% if(attendee.github){ %>
+					<a href="http://github.com/<%= attendee.github %>">github.com/<%= attendee.github %></a> 
+				<% } %>
+			</p>
+			<p><%= attendee.city %></p>
+		</li>
+
+	<% } %>
+</ul>
+			

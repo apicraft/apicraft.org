@@ -27,20 +27,23 @@ a{color:#666;}a:hover{color:#000;}
 #api .resource .response p.raw_response a:active{background-color:#ffffff;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffffff), to(#aaaaaa));background:-webkit-linear-gradient(top, #aaaaaa, #ffffff);background:-moz-linear-gradient(top, #aaaaaa, #ffffff);background:-ms-linear-gradient(top, #aaaaaa, #ffffff);background:-o-linear-gradient(top, #aaaaaa, #ffffff);}
 #api .resource .response pre{display:inline;float:left;width:93.75%;margin:0 0%;border-top:1px solid #ccc;font-size:.8em;max-height:20em;}@media screen and (min-width:640px){#api .resource .response pre{display:inline;float:left;width:95.99999999999999%;margin:0 0%;}}
 #api .resource .rendered{display:inline;float:left;width:100%;margin:0 0%;font-size:.9em;display:none;}
-#content{display:inline;float:left;width:100%;margin:0 0%;}
-.rendered{background-color:#f4ebe2;border:1px solid #cccccc;border-top:none;}.rendered .content{padding:1em;}
+#content{padding-top:1em;display:inline;float:left;width:100%;margin:0 0%;}#content .rendered{background-color:#f4ebe2;border:1px solid #cccccc;border-top:none;margin-top:1em;}#content .rendered .content{padding:1em;}
 .goals .rendered ul,.guidelines .rendered ul{margin-left:1em;}
 .goals .rendered li,.guidelines .rendered li{list-style-type:disc;margin-bottom:.5em;}
 .attendees .rendered{max-height:400px;overflow:scroll;}.attendees .rendered li{height:120px;padding:.5em 0;}.attendees .rendered li img{height:120px;float:left;margin-right:15px;border:1px solid #888;}
-.agenda .rendered{min-height:500px;}.agenda .rendered div{width:220px;margin:10px;}
+.agenda .rendered{max-height:650px;overflow:scroll;background:url("../images/agenda.png") repeat;}.agenda .rendered .column{font-size:.8em;width:28%;float:left;padding-right:1%;}.agenda .rendered .column.times{width:12%;}
+.agenda .rendered .column div{padding:4px .5em;border:1px solid #888;background-color:#fff;}.agenda .rendered .column div.spacer,.agenda .rendered .column div.time,.agenda .rendered .column div.header{border:none;padding:5px;background-color:transparent;}
+.agenda .rendered .column div.header{border-bottom:1px solid #888;}
+.agenda .rendered .column div.spacer{color:transparent;}
 .parties .rendered .party{min-height:350px;margin-bottom:1em;}
 .parties .rendered .hero,.parties .rendered .party_map{width:50%;float:left;}
 .parties .rendered .party_map{clear:right;}
 .parties .rendered .hero img{width:100%;}
 .sessions .rendered table{width:100%;font-size:.85em;}.sessions .rendered table td{margin:5px;padding:.5em;background-color:#fff;color:#0071bc;border:1px solid #888;}.sessions .rendered table td.header{background-color:transparent;border:none;color:inherit;}
 .sessions .rendered table td.spacer{color:transparent;background-color:transparent;border:none;}
+.hotels .rendered #hotel_map{height:500px;}
 .questions .rendered{color:#777;}.questions .rendered h3{color:#0071bc;font-weight:normal;border-bottom:1px dotted #888;padding-bottom:.5em;margin-bottom:.5em;}
-.questions .rendered li{border-bottom:1px dotted #888;padding:.5em 0 .8em 0;}
+.questions .rendered li{border-bottom:1px dotted #888;padding:.5em 0 .8em 0;}.questions .rendered li blockquote{background-color:#99bfa3;padding-left:2em;font-size:.9em;color:#e9e9f0;}
 .questions .rendered ul :last-child{border-bottom:none;padding-bottom:none;}
 #footer{float:left;clear:both;width:100%;margin-top:2em;font-size:1.1em;background-color:#888;color:#fff;}#footer ul{text-align:center;padding:1em 1em 5em 1em;width:480px;margin:0 auto;}@media screen and (min-width:640px){#footer ul{width:800px;}}
 #footer li{display:inline;padding:.2em;}#footer li a{color:#fff;}

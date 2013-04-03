@@ -114,21 +114,26 @@ $(function(){
 		return false;
 	});
 
+	$(window).load(function(){
+		log("window loaded.");
+		load_hotel_map();
+	});
+
 	function load_hotel_map(){
 		var hotelIcon = L.icon({
-		    iconUrl: 'images/hotel_icon.png',
-		    iconRetinaUrl: 'images/hotel_icon@2x.png',
-		    iconSize: [40, 48],
-		    iconAnchor: [20, 48],
-		    popupAnchor: [0, -40],
-		    shadowUrl: 'images/hotel_icon_shadow.png',
-		    shadowRetinaUrl: 'images/hotel_icon_shadow@2x.png',
-		    shadowSize: [53, 46],
-		    shadowAnchor: [24, 48]
+		    iconUrl: 			'images/hotel_icon.png',
+		    iconRetinaUrl: 		'images/hotel_icon@2x.png',
+		    iconSize: 			[40, 48],
+		    iconAnchor: 		[20, 48],
+		    popupAnchor: 		[0, -40],
+		    shadowUrl: 			'images/hotel_icon_shadow.png',
+		    shadowRetinaUrl: 	'images/hotel_icon_shadow@2x.png',
+		    shadowSize: 		[53, 46],
+		    shadowAnchor: 		[24, 48]
 		});
 
 		// create a map in the "map" div, set the view to a given place and zoom
-		var map = L.map('map', {"scrollWheelZoom": false}).setView([42.335000,-83.049292], 15);
+		var map = L.map('hotel_map', {"scrollWheelZoom": false}).setView([42.335000,-83.049292], 15);
 
 		/*
 		// add Cloudmade tile layer (better vis)
@@ -144,7 +149,7 @@ $(function(){
 		}).addTo(map);
 
 		$.ajax({
-			url: window.config.proxyUrl + "/locations/detroit/", 
+			url: "http://api.api-craft.org/conferences/detroit/places", 
 			crossDomain: true,
 			success: function(d){ 
 				console.log(d);

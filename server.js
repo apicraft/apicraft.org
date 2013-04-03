@@ -4,8 +4,8 @@ var fs = require('fs');
 var http = require('http');
 
 var config = require('./config');
-
 var app = express();
+
 app.engine('.html', require('ejs').__express);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'html');

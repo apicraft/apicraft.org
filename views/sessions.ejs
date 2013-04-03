@@ -1,0 +1,11 @@
+<table>
+	<% for(var r=0; r<table.rows.length; r++){ %>
+		<tr>
+			<% for(var c=0; c<table.rows[r].columns.length; c++){ 
+				var cell = table.rows[r].columns[c];
+				%>
+				<td class="<%= cell.class%>"><%= cell.content %></td>
+			<% } %>
+		</tr>
+	<% } %>
+</table>

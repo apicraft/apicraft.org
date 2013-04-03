@@ -223,15 +223,19 @@ body {
 		}
 	}
 	#content {
+		padding-top: 1em;
 		.column(8);
+
+		.rendered  {
+			background-color: #f4ebe2;
+			border: 1px solid #cccccc;
+			border-top: none;
+			.content{ padding: 1em; }
+			margin-top: 1em;
+		}
 	}
 
-	.rendered  {
-		background-color: #f4ebe2;
-		border: 1px solid #cccccc;
-		border-top: none;
-		.content{ padding: 1em; }
-	}
+	
 
 	.goals, .guidelines {
 			.rendered {
@@ -268,10 +272,33 @@ body {
 	}
 
 	.agenda .rendered{
-		min-height: 500px;
-		div  {
-			width: 220px;
-			margin: 10px;
+		max-height: 650px;
+		overflow: scroll;
+		background: url("../images/agenda.png") repeat;
+
+		.column {
+			font-size: .8em;
+			width: 28%;
+			float: left;
+			padding-right: 1%;
+			&.times {width: 12%;}
+			div {
+				padding: 4px .5em;
+				border: 1px solid #888;
+				background-color: #fff;
+				&.spacer, &.time, &.header {
+					border: none;
+					padding: 5px;
+					background-color: transparent;
+
+				}
+				&.header {
+					border-bottom: 1px solid #888;
+				}
+				&.spacer {
+					color: transparent;
+				}
+			}
 		}
 	}
 
@@ -301,7 +328,11 @@ body {
 			}
 		}
 	}
-
+	.hotels .rendered {
+		#hotel_map {
+			height: 500px;
+		}
+	}
 	.questions .rendered{
 		color: #777;
 		h3 {
@@ -312,6 +343,12 @@ body {
 		li {
 			border-bottom: 1px dotted #888;
 			padding: .5em 0 .8em 0;
+			blockquote{
+				background-color: #99bfa3;
+				padding-left: 2em;
+				font-size: .9em;
+				color: #e9e9f0;
+			}
 		}
 		ul :last-child {border-bottom: none; padding-bottom: none;}
 	}
