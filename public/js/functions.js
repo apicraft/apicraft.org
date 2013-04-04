@@ -13,14 +13,19 @@ $(function(){
 	$(".resource .verb").click(function(){
 			if($(this).data('verb')=="get"){
 				var verb = $(this);
-				var target = verb.parent().find(".response");
+				var group = verb.parent();
+				var target = group.find(".response");
 
 				if(verb.hasClass("active")){ 
 					verb.toggleClass('active');
 					target.slideUp("fast"); 
 				}else{
 					
-					var requestURL = baseURL + $(this).data("resource");
+					var $resource = $(this).data("resource");
+					var requestURL = api_url + $resource;
+					var template = $(this).data("render") + ".ejs";
+
+					if($resource == "/conferences"){ requestURL = baseURL + $resource; }
 					target.addClass("language-javascript");
 					
 					target.find(".request_url").html("GET " + requestURL);
@@ -35,7 +40,9 @@ $(function(){
 									target.find("code").text(html);
 									
 									target.find(".raw_response a").attr({"href": requestURL});
-									target.find(".raw_response a").show();	
+									target.find(".raw_response a").show();
+
+									//group.find(".rendered .content").html( render_template($resource, data) ).slideDown();
 								},
 						error: function(){
 								target.find("code").text("Sorry, resource not available (404)");	
@@ -116,10 +123,24 @@ $(function(){
 
 	$(window).load(function(){
 		log("window loaded.");
-		load_hotel_map();
+		//load_hotel_map("/places");
 	});
 
-	function load_hotel_map(){
+	function render_template(resource, data){
+		log(resource);
+		//grab a template
+		if(resource == "/places"){
+			template_url = "hotel_map.ejs"
+		}else if(resource == ""){
+
+		}else{
+			return "Sorry, couldn't find a template for "+ resource +" (404)"
+		}
+		//massage any data, as necessary
+		return ejs.render(template, data);
+	}
+
+	function load_hotel_map(resource){
 		var hotelIcon = L.icon({
 		    iconUrl: 			'images/hotel_icon.png',
 		    iconRetinaUrl: 		'images/hotel_icon@2x.png',
@@ -149,7 +170,7 @@ $(function(){
 		}).addTo(map);
 
 		$.ajax({
-			url: "http://api.api-craft.org/conferences/detroit/places", 
+			url: api_url + resource, 
 			crossDomain: true,
 			success: function(d){ 
 				console.log(d);
