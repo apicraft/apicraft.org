@@ -2,93 +2,72 @@ $(function(){
 	var baseURL = "http://api.apicraft.org";
 	var api_url = baseURL + "/conferences/detroit2013";
 	var template_dir = "templates/";
-	/*
-	$.getJSON(api_url, function(response){
-		//console.log(response);
+	$verb = {self: $(window.location.hash).find(".verb")};
+
+	routie({
+		"resource/close": function(){
+			log("closed");
+		},
+		"conferences": function(){
+			log('conferences');
+			toggle_resource($verb.self);
+		},
+		"goals": function(){
+			log('goals');
+			toggle_resource($verb.self);
+		},
+		"parties": function(){
+			log('parties');
+			toggle_resource($verb.self);
+		},
+		"guidelines": function(){
+			log('guidelines');
+			toggle_resource($verb.self);
+
+		},
+		"agenda": function(){
+			log('agenda');
+			toggle_resource($verb.self);
+		},
+		"hotels": function(){
+			log('hotels');
+			toggle_resource($verb.self);
+		},
+		"sessions": function(){
+			log('sessions');
+			toggle_resource($verb.self);
+		},
+		"places": function(){
+			log('places');
+			toggle_resource($verb.self);
+			//animations don't play nice with rendering the map...
+			setTimeout(function(){
+				load_hotel_map("/places");
+			}, 500); 
+		},
+		"questions": function(){
+			log('questions');
+			toggle_resource($verb.self);
+		},
+
+
 	});
-	*/
+
 	var spin_options = {lines:9,length:3,width:2,radius:4,corners:1,rotate:0,color:'#fff',speed:1.2,trail:35,shadow:false,hwaccel:false,className:'spinner',zIndex:2e9,top:'2px',left:'10'};
 
 	$(".verb").hover(function(){ $(this).addClass("hover"); }, function(){ $(this).removeClass("hover"); });
 	
-	$(".resource .verb").click(function(){
-			$this = $(this);
+	$(".resource .verb").click(function(){ 
+		log(window.location.hash + ", " + $(this).data("name"));
+		$verb = {self: $(this)};
 
-			var $verb = {
-				self: $this,
-				group: $this.parent(),
-				target: $this.parent().find(".response"),
-				url: $this.data('resource'),
-				name: $this.data('resource').replace(/^(?:\/)+/, "")
-			}
-
-			if($verb.self.data('verb')=="get"){
-
-				if($verb.self.hasClass("active")){ 
-					$verb.self.toggleClass('active');
-					$verb.target.slideUp(); 
-					$verb.group.find(".rendered .content").slideUp();
-
-				}else{
-					$verb.self.toggleClass('active');
-					var requestURL = api_url + $verb.url;
-					var template_url = template_dir + $verb.self.data("render") + ".ejs";
-
-					if($verb.url == "/conferences"){ requestURL = baseURL + $verb.url; }
-					$verb.target.addClass("language-javascript");
-					
-					$verb.target.find(".request_url").html("GET " + requestURL);
-					$verb.target.find(".raw_response a").hide();
-					$verb.target.find(".raw_response").spin(spin_options);
-					$verb.target.slideDown();
-					
-					$.ajax({
-						url: requestURL, 
-						success: function(data){
-									log("response success")
-									var html = JSON.stringify(data, undefined, 1);
-									$verb.target.find("code").text(html);
-									
-									$verb.target.find(".raw_response a").attr({"href": requestURL});
-									$verb.target.find(".raw_response a").show();
-									var rendered_response = render_template(template_url, data)
-									$verb.group.find(".rendered .content").html(rendered_response);
-
-									
-									routie($verb.name); //(need to remove leading slash)
-									
-								},
-						error: function(){
-								log("response error")
-								$verb.target.find("code").text("Sorry, resource not available (404)");	
-						},
-						complete: function(){
-							log("response complete")
-							$verb.target.find(".raw_response").spin(false);
-							Prism.highlightAll();
-							//group.toggleClass('active');
-
-							//followup functions
-							
-							$verb.group.find(".rendered .content").slideDown();
-
-							
-						}	
-					});
-					
-				}
-			} 
-			else if($verb.self.data('verb')=="post"){
-				var request = $verb.group.find(".request");
-				if($verb.self.hasClass("active")){ 
-					//hide
-					request.slideUp("fast"); $verb.target.slideUp("fast");
-				}else{
-					request.slideDown();
-				}
-				$verb.self.toggleClass('active');
-
-			}
+		if(window.location.hash == "#" + $(this).data("name")){
+			log("toggle it");
+			toggle_resource($verb.self);
+		}else{
+			log("routie it");
+			routie($(this).data("name"));
+		}
 	});
 	
 	$(".request_form").submit(function(e){
@@ -103,7 +82,6 @@ $(function(){
 			var target = $(".resource_" + $(this).data("resource-index") + " .response_" + $(this).data("post-index"));
 			
 			var requestURL = baseURL + verb.data("resource");
-			log(requestURL);
 			target.addClass("language-javascript");
 					
 			target.find(".request_url").html("POST " + requestURL);
@@ -141,14 +119,79 @@ $(function(){
 		return false;
 	});
 
-	$(window).load(function(){
-		log("window loaded.");
-		//load_hotel_map("/places");
-	});
+	function toggle_resource(element){
+			log("toggle: " + element);
+			$this = element;
+			
+			var $verb = {
+				self: $this,
+				group: $this.parent(),
+				target: $this.parent().find(".response"),
+				url: $this.data('resource'),
+				name: $this.data('resource').replace(/^(?:\/)+/, "")
+			}
+
+			if($verb.self.data('verb')=="get"){
+				
+				
+					if($verb.self.hasClass("active")){ 
+						$verb.self.toggleClass('active');
+						$verb.target.slideUp(); 
+						$verb.group.find(".rendered .content").slideUp();
+
+					}else{
+						$verb.self.toggleClass('active');
+						var requestURL = api_url + $verb.url;
+						var template_url = template_dir + $verb.self.data("render") + ".ejs";
+
+						if($verb.url == "/conferences"){ requestURL = baseURL + $verb.url; }
+						$verb.target.addClass("language-javascript");
+						
+						$verb.target.find(".request_url").html("GET " + requestURL);
+						$verb.target.find(".raw_response a").hide();
+						$verb.target.find(".raw_response").spin(spin_options);
+						$verb.target.slideDown();
+						
+						$.ajax({
+							url: requestURL, 
+							success: function(data){
+										var html = JSON.stringify(data, undefined, 1);
+										$verb.target.find("code").text(html);
+										
+										$verb.target.find(".raw_response a").attr({"href": requestURL});
+										$verb.target.find(".raw_response a").show();
+										var rendered_response = render_template(template_url, data)
+										$verb.group.find(".rendered .content").html(rendered_response);
+										
+									},
+							error: function(){
+									$verb.target.find("code").text("Sorry, resource not available (404)");	
+							},
+							complete: function(){
+								$verb.target.find(".raw_response").spin(false);
+								Prism.highlightAll();
+								$verb.group.find(".rendered .content").slideDown();
+								$verb.self.data("busy", false);
+							}	
+						});
+						
+					}
+			} 
+			else if($verb.self.data('verb')=="post"){
+				var request = $verb.group.find(".request");
+				if($verb.self.hasClass("active")){ 
+					//hide
+					request.slideUp("fast"); $verb.target.slideUp("fast");
+				}else{
+					request.slideDown();
+				}
+				$verb.self.toggleClass('active');
+
+			}
+	}//toggle resource
 
 	function render_template(resource, data){
 		var response = "Sorry, couldn't find a template at "+ resource +" (404)";
-		log(resource);
 		$.ajax({
 			url: resource,
 			async: false,
@@ -172,44 +215,6 @@ $(function(){
 		return response;
 			
 	}
-		
-	routie({
-		"conferences": function(){
-
-		},
-		"goals": function(){
-
-		},
-		"parties": function(){
-
-		},
-		"guidelines": function(){
-
-		},
-		"agenda": function(){
-
-		},
-		"hotels": function(){
-
-		},
-		"sessions": function(){
-
-		},
-		"places": function(){
-			//animations don't play nice with rendering the map...
-			setTimeout(function(){
-				load_hotel_map("/places");
-			}, 500); 
-		},
-		"questions": function(){
-
-		}
-
-	});
-
-	
-
-	
 
 	function load_hotel_map(resource){
 		// create a map in the "hotel_map" div, set the view to a given place and zoom
@@ -244,7 +249,7 @@ $(function(){
 			url: api_url + resource, 
 			crossDomain: true,
 			success: function(d){ 
-				console.log(d);
+				log(d);
 				$.each(d, function(i, v){
 					if(!v.is_closed){
 						var options = null;
