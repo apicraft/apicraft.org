@@ -8,18 +8,6 @@
 	},
 	"resources": [
 		{
-			"name": "hotels",
-			"title": "/hotels/{hotel}",
-			"verbs": [
-				{
-					"type": "get",
-					"url": "/places",
-					"description": "List Hotels",
-					"render": "hotel_map"
-				}
-				]
-		},
-		{
 			"name": "conferences",
 			"title": "/conferences/{city}",
 			"verbs": [
@@ -44,9 +32,87 @@
 				]
 		},
 		{
+			"name": "parties",
+			"title": "/parties",
+			"verbs": [
+				{
+					"type": "get",
+					"url": "/parties",
+					"description": "All work and no play makes...",
+					"render": "list"
+				}
+				]
+		},
+		{
+			"name": "guidelines",
+			"title": "/guidelines",
+			"verbs": [
+				{
+					"type": "get",
+					"url": "/guidelines",
+					"description": "Rules of the road.",
+					"render": "list"
+				}
+				]
+		},
+		{
+			"name": "agenda",
+			"title": "/agenda",
+			"verbs": [
+				{
+					"type": "get",
+					"url": "/agenda",
+					"description": "And outline of the conference schedule.",
+					"render": "list"
+				}
+				]
+		},
+		{
+			"name": "hotels",
+			"title": "/hotels",
+			"verbs": [
+				{
+					"type": "get",
+					"url": "/places",
+					"description": "Where to stay in downtown Detroit.",
+					"render": "hotel_map"
+				}
+				]
+		},
+		{
+			"name": "sessions",
+			"title": "/sessions",
+			"verbs": [
+				{
+					"type": "get",
+					"url": "/sessions",
+					"description": "Discussion topics - available post-conference.",
+					"render": "list"
+				}
+				]
+		},
+		{
+			"name": "places",
+			"title": "/places",
+			"verbs": [
+				{
+					"type": "get",
+					"url": "/places",
+					"description": "All the locations you'll need to know about.",
+					"render": "list"
+				}
+				]
+		},
+		{
 			"name": "questions",
 			"title": "/questions",
 			"verbs": [
+				{
+					"type": "get",
+					"url": "/questions",
+					"description": "Q's about the event",
+					"render": "list"
+				},
 				{
 					"type": "post",
 					"url": "/questions",
@@ -58,12 +124,6 @@
 							"description": "Question"
 						}
 					]
-				},
-				{
-					"type": "get",
-					"url": "/questions",
-					"description": "Q's about the event",
-					"render": "list"
 				}
 				]
 		}

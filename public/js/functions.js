@@ -1,6 +1,7 @@
 $(function(){
 	var baseURL = "http://api.apicraft.org";
-	var api_url = baseURL + "/conferences/detroit";
+	var api_url = baseURL + "/conferences/detroit2013";
+	var template_dir = "templates/";
 	/*
 	$.getJSON(api_url, function(response){
 		//console.log(response);
@@ -11,63 +12,82 @@ $(function(){
 	$(".verb").hover(function(){ $(this).addClass("hover"); }, function(){ $(this).removeClass("hover"); });
 	
 	$(".resource .verb").click(function(){
-			if($(this).data('verb')=="get"){
-				var verb = $(this);
-				var group = verb.parent();
-				var target = group.find(".response");
+			$this = $(this);
 
-				if(verb.hasClass("active")){ 
-					verb.toggleClass('active');
-					target.slideUp("fast"); 
+			var $verb = {
+				self: $this,
+				group: $this.parent(),
+				target: $this.parent().find(".response"),
+				url: $this.data('resource'),
+				name: $this.data('resource').replace(/^(?:\/)+/, "")
+			}
+
+			if($verb.self.data('verb')=="get"){
+
+				if($verb.self.hasClass("active")){ 
+					$verb.self.toggleClass('active');
+					$verb.target.slideUp(); 
+					$verb.group.find(".rendered .content").slideUp();
+
 				}else{
-					
-					var $resource = $(this).data("resource");
-					var requestURL = api_url + $resource;
-					var template = $(this).data("render") + ".ejs";
+					$verb.self.toggleClass('active');
+					var requestURL = api_url + $verb.url;
+					var template_url = template_dir + $verb.self.data("render") + ".ejs";
 
-					if($resource == "/conferences"){ requestURL = baseURL + $resource; }
-					target.addClass("language-javascript");
+					if($verb.url == "/conferences"){ requestURL = baseURL + $verb.url; }
+					$verb.target.addClass("language-javascript");
 					
-					target.find(".request_url").html("GET " + requestURL);
-					target.find(".raw_response a").hide();
-					target.find(".raw_response").spin(spin_options);
-					target.slideDown();
+					$verb.target.find(".request_url").html("GET " + requestURL);
+					$verb.target.find(".raw_response a").hide();
+					$verb.target.find(".raw_response").spin(spin_options);
+					$verb.target.slideDown();
 					
 					$.ajax({
 						url: requestURL, 
 						success: function(data){
+									log("response success")
 									var html = JSON.stringify(data, undefined, 1);
-									target.find("code").text(html);
+									$verb.target.find("code").text(html);
 									
-									target.find(".raw_response a").attr({"href": requestURL});
-									target.find(".raw_response a").show();
+									$verb.target.find(".raw_response a").attr({"href": requestURL});
+									$verb.target.find(".raw_response a").show();
+									var rendered_response = render_template(template_url, data)
+									$verb.group.find(".rendered .content").html(rendered_response);
 
-									//group.find(".rendered .content").html( render_template($resource, data) ).slideDown();
+									
+									routie($verb.name); //(need to remove leading slash)
+									
 								},
 						error: function(){
-								target.find("code").text("Sorry, resource not available (404)");	
+								log("response error")
+								$verb.target.find("code").text("Sorry, resource not available (404)");	
 						},
 						complete: function(){
-							target.find(".raw_response").spin(false);
+							log("response complete")
+							$verb.target.find(".raw_response").spin(false);
 							Prism.highlightAll();
-							verb.toggleClass('active');
+							//group.toggleClass('active');
+
+							//followup functions
+							
+							$verb.group.find(".rendered .content").slideDown();
+
+							
 						}	
 					});
 					
 				}
 			} 
-			else if($(this).data('verb')=="post"){
-				var verb = $(this);
-				var request = verb.parent().find(".request");
-				var response = verb.parent().find(".response");
-				if(verb.hasClass("active")){ 
+			else if($verb.self.data('verb')=="post"){
+				var request = $verb.group.find(".request");
+				if($verb.self.hasClass("active")){ 
 					//hide
-					verb.toggleClass('active');
-					request.slideUp("fast"); response.slideUp("fast");
+					request.slideUp("fast"); $verb.target.slideUp("fast");
 				}else{
 					request.slideDown();
-					verb.toggleClass('active');
 				}
+				$verb.self.toggleClass('active');
+
 			}
 	});
 	
@@ -99,7 +119,7 @@ $(function(){
 				success: function(d){
 					//display the response
 					var html = JSON.stringify(d, undefined, 1);
-					target.find("code").text(html);
+					target.find("code").text("Question POSTed successfully.");
 					
 					target.find(".raw_response a").attr({"href": api_url+"/questions"});
 					target.find(".raw_response a").show();
@@ -127,20 +147,74 @@ $(function(){
 	});
 
 	function render_template(resource, data){
+		var response = "Sorry, couldn't find a template at "+ resource +" (404)";
 		log(resource);
-		//grab a template
-		if(resource == "/places"){
-			template_url = "hotel_map.ejs"
-		}else if(resource == ""){
+		$.ajax({
+			url: resource,
+			async: false,
+			type: "GET",
+			success: function(template){
+				try{
+					 response = ejs.render(template, data);
+				}catch(e){
+					log(e);
+					response = "Sorry, but there is a problem with "+ resource +" (" + e + ")";
+				}
+			},
+			error: function(e){
+				log(e);
+			},
+			complete: function(){
 
-		}else{
-			return "Sorry, couldn't find a template for "+ resource +" (404)"
-		}
-		//massage any data, as necessary
-		return ejs.render(template, data);
+			}
+		});
+
+		return response;
+			
 	}
+		
+	routie({
+		"conferences": function(){
+
+		},
+		"goals": function(){
+
+		},
+		"parties": function(){
+
+		},
+		"guidelines": function(){
+
+		},
+		"agenda": function(){
+
+		},
+		"hotels": function(){
+
+		},
+		"sessions": function(){
+
+		},
+		"places": function(){
+			//animations don't play nice with rendering the map...
+			setTimeout(function(){
+				load_hotel_map("/places");
+			}, 500); 
+		},
+		"questions": function(){
+
+		}
+
+	});
+
+	
+
+	
 
 	function load_hotel_map(resource){
+		// create a map in the "hotel_map" div, set the view to a given place and zoom
+		var hotel_map = L.map('hotel_map', {"scrollWheelZoom": false}).setView([42.335000,-83.049292], 15);
+		
 		var hotelIcon = L.icon({
 		    iconUrl: 			'images/hotel_icon.png',
 		    iconRetinaUrl: 		'images/hotel_icon@2x.png',
@@ -153,21 +227,18 @@ $(function(){
 		    shadowAnchor: 		[24, 48]
 		});
 
-		// create a map in the "map" div, set the view to a given place and zoom
-		var map = L.map('hotel_map', {"scrollWheelZoom": false}).setView([42.335000,-83.049292], 15);
-
 		/*
 		// add Cloudmade tile layer (better vis)
 		L.tileLayer('http://{s}.tile.cloudmade.com/5278d1bee38f4ebabc822e8d5a6faa2e/997/256/{z}/{x}/{y}.png', {
 		    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
 		    maxZoom: 18
-		}).addTo(map);
+		}).addTo(hotel_map);
 		*/
 
 		// add an OpenStreetMap tile layer
 		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 		    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-		}).addTo(map);
+		}).addTo(hotel_map);
 
 		$.ajax({
 			url: api_url + resource, 
@@ -199,7 +270,7 @@ $(function(){
 						//plot it on the map
 						// add a marker in the given location, attach some popup content to it and open the popup
 						var a = L.marker([v.location.coordinate.latitude, v.location.coordinate.longitude], options)
-							.addTo(map)
+							.addTo(hotel_map)
 							.bindPopup(html);
 						if(typeof(v.apicraftType) != "undefined" && v.apicraftType == "main_venue"){a.openPopup();}
 
@@ -209,8 +280,6 @@ $(function(){
 		});
 
 	}
-	
-	
 
 	function log(x){console.log(x);} //silence is close at hand
 	//$(".resource .verb:first").click();
