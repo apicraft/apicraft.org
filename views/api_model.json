@@ -27,7 +27,7 @@
 					"type": "get",
 					"url": "/goals",
 					"description": "Goals and Philosiphy",
-					"render": "list"
+					"render": "goals"
 				}
 				]
 		},
@@ -51,7 +51,7 @@
 					"type": "get",
 					"url": "/guidelines",
 					"description": "Rules of the road.",
-					"render": "list"
+					"render": "guidelines"
 				}
 				]
 		},
@@ -73,7 +73,7 @@
 			"verbs": [
 				{
 					"type": "get",
-					"url": "/places",
+					"url": "/hotels",
 					"description": "Where to stay in downtown Detroit.",
 					"render": "hotel_map"
 				}
@@ -87,18 +87,6 @@
 					"type": "get",
 					"url": "/sessions",
 					"description": "Discussion topics - available post-conference.",
-					"render": "list"
-				}
-				]
-		},
-		{
-			"name": "places",
-			"title": "/places",
-			"verbs": [
-				{
-					"type": "get",
-					"url": "/places",
-					"description": "All the locations you'll need to know about.",
 					"render": "list"
 				}
 				]

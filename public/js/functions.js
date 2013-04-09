@@ -4,70 +4,91 @@ $(function(){
 	var template_dir = "templates/";
 	$verb = {self: $(window.location.hash).find(".verb")};
 
-	routie({
-		"resource/close": function(){
-			log("closed");
-		},
+	routes = {
 		"conferences": function(){
 			log('conferences');
-			toggle_resource($verb.self);
+			toggle_resource($verb.self, function(data){
+				return data;
+			});
 		},
 		"goals": function(){
 			log('goals');
-			toggle_resource($verb.self);
+			toggle_resource($verb.self, function(data){
+				delete data.links;
+				return data;
+			});
 		},
 		"parties": function(){
 			log('parties');
-			toggle_resource($verb.self);
+			toggle_resource($verb.self, function(data){
+				return {"parties": data};
+			});
 		},
 		"guidelines": function(){
 			log('guidelines');
-			toggle_resource($verb.self);
-
+			toggle_resource($verb.self, function(data){
+				delete data.links;
+				return {"guidelines": data};
+			});
 		},
 		"agenda": function(){
 			log('agenda');
-			toggle_resource($verb.self);
+			toggle_resource($verb.self, function(data){
+				delete data.links;
+				data.days = [ [], [], [], [], [], [], [] ]; 
+				
+				$.each(data.agenda, function(i, v){
+					var start = new Date(Date.parse(v.start));
+					var end = new Date(Date.parse(v.end));
+					var add = {
+						"duration_minutes": (Date.parse(v.end) - Date.parse(v.start))/1000/60,
+						"start_minutes": (start.getHours() * 60) + start.getMinutes(),
+						"end_minutes": (end.getHours() * 60) + end.getMinutes(),
+						"day": start.getDay(),
+					}
+					$.extend(data.agenda[i], add);
+					data.days[add.day].push(data.agenda[i]);
+				});
+
+				log(data);
+				return data;
+			});
 		},
 		"hotels": function(){
-			log('hotels');
-			toggle_resource($verb.self);
+			toggle_resource($verb.self, function(data){
+				//animations don't play nice with rendering the map...
+				setTimeout(function(){
+					load_hotel_map("/hotels");
+				}, 500); 
+				return data;
+			});
 		},
 		"sessions": function(){
 			log('sessions');
-			toggle_resource($verb.self);
-		},
-		"places": function(){
-			log('places');
-			toggle_resource($verb.self);
-			//animations don't play nice with rendering the map...
-			setTimeout(function(){
-				load_hotel_map("/places");
-			}, 500); 
+			toggle_resource($verb.self, function(data){
+				return data;
+			});
 		},
 		"questions": function(){
 			log('questions');
-			toggle_resource($verb.self);
-		},
+			toggle_resource($verb.self, function(data){
+				delete data.links;
+				return {"questions": data};
+			});
+		}
+	}
 
-
-	});
+	routie(routes);
 
 	var spin_options = {lines:9,length:3,width:2,radius:4,corners:1,rotate:0,color:'#fff',speed:1.2,trail:35,shadow:false,hwaccel:false,className:'spinner',zIndex:2e9,top:'2px',left:'10'};
 
 	$(".verb").hover(function(){ $(this).addClass("hover"); }, function(){ $(this).removeClass("hover"); });
 	
 	$(".resource .verb").click(function(){ 
-		log(window.location.hash + ", " + $(this).data("name"));
 		$verb = {self: $(this)};
-
-		if(window.location.hash == "#" + $(this).data("name")){
-			log("toggle it");
-			toggle_resource($verb.self);
-		}else{
-			log("routie it");
-			routie($(this).data("name"));
-		}
+		var route = $(this).data("name");
+		window.location.hash == "#" + route ? routes[route]() : routie(route);
+		
 	});
 	
 	$(".request_form").submit(function(e){
@@ -119,10 +140,9 @@ $(function(){
 		return false;
 	});
 
-	function toggle_resource(element){
-			log("toggle: " + element);
+	function toggle_resource(element, render_callback){
 			$this = element;
-			
+
 			var $verb = {
 				self: $this,
 				group: $this.parent(),
@@ -130,6 +150,10 @@ $(function(){
 				url: $this.data('resource'),
 				name: $this.data('resource').replace(/^(?:\/)+/, "")
 			}
+
+			$('html,body').stop().animate({
+				scrollTop: $verb.group.offset().top -50
+			}, 500);
 
 			if($verb.self.data('verb')=="get"){
 				
@@ -160,12 +184,15 @@ $(function(){
 										
 										$verb.target.find(".raw_response a").attr({"href": requestURL});
 										$verb.target.find(".raw_response a").show();
-										var rendered_response = render_template(template_url, data)
+
+										var template_data = render_callback(data);
+										var rendered_response = render_template(template_url, template_data)
 										$verb.group.find(".rendered .content").html(rendered_response);
 										
 									},
-							error: function(){
-									$verb.target.find("code").text("Sorry, resource not available (404)");	
+							error: function(e){
+								log(e);
+									$verb.target.find("code").text("Sorry, Resource "+ e.statusText + " (" + e.status + ")");	
 							},
 							complete: function(){
 								$verb.target.find(".raw_response").spin(false);
@@ -198,7 +225,7 @@ $(function(){
 			type: "GET",
 			success: function(template){
 				try{
-					 response = ejs.render(template, data);
+					response = ejs.render(template, data);
 				}catch(e){
 					log(e);
 					response = "Sorry, but there is a problem with "+ resource +" (" + e + ")";
@@ -249,37 +276,23 @@ $(function(){
 			url: api_url + resource, 
 			crossDomain: true,
 			success: function(d){ 
-				log(d);
-				$.each(d, function(i, v){
-					if(!v.is_closed){
-						var options = null;
-						//build up the html
-						v.popupTitle = v.name
-						if(typeof(v.apicraftTitle) != "undefined"){v.popupTitle = v.apicraftTitle;}
+				$.get(template_dir + "hotel_popup.ejs", function(popup_template){
+					$.each(d.hotels, function(i, v){
+						if(!v.is_closed){
+							var options = null;
+							v.popupTitle = v.name
+							if(typeof(v.apicraftTitle) != "undefined"){v.popupTitle = v.apicraftTitle;}
+							if(typeof(v.apicraftType) != "undefined" && v.apicraftType == "hotel") {options = {icon: hotelIcon};}
 
-						var html ='<h4><a href="'+v.url+'" title="Click to view on yelp">'+v.popupTitle+'</a></h4>'; //popup title
-						html +='<table><tr><td>';	//using a table
-						html +='<Strong>'+v.name+'</strong><br/>'; //name
-						html +='<p>Address</p>'; //address
-
-						html +='</td><td>'; //cell #2
-
-						html +='<img src="" alt="venue image" /><br />'; //venue image
-						html +='<img src="'+v.rating_img_url_small+'" alt="/5 Stars" /><br />'; //yelp rating
-						html +='<span class="phone">Phone Number</span>';//phone
-
-						html +='</td></tr></table>'; //end of the table
-
-						if(typeof(v.apicraftType) != "undefined" && v.apicraftType == "hotel") {options = {icon: hotelIcon};}
-
-						//plot it on the map
-						// add a marker in the given location, attach some popup content to it and open the popup
-						var a = L.marker([v.location.coordinate.latitude, v.location.coordinate.longitude], options)
-							.addTo(hotel_map)
-							.bindPopup(html);
-						if(typeof(v.apicraftType) != "undefined" && v.apicraftType == "main_venue"){a.openPopup();}
-
-					}
+							var html = ejs.render(popup_template, {"v": v});
+							//plot it on the map
+							// add a marker in the given location, attach some popup content to it and open the popup
+							var a = L.marker([v.location.coordinate.latitude, v.location.coordinate.longitude], options)
+								.addTo(hotel_map)
+								.bindPopup(html);
+							if(typeof(v.apicraftType) != "undefined" && v.apicraftType == "main_venue"){a.openPopup();}
+						}
+					});
 				}); 
 			}
 		});

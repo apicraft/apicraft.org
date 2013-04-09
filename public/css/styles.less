@@ -218,7 +218,8 @@ body {
 				.column(8);
 				font-size: .9em;
 				
-				
+				max-height: 550px;
+				overflow-x: auto;
 
 				background-color: #f4ebe2;
 				border: 1px solid #cccccc;
@@ -248,17 +249,18 @@ body {
 	.goals, .guidelines {
 			.rendered {
 				ul {
-					margin-left: 1em;
+					margin-left: 1.5em;
 				}
 				li {
-					list-style-type: disc;
-					margin-bottom: .5em;
+					margin-bottom: .6em;
+					h4 {font-weight: 300;}
+					p {font-size: .7em; color: #888;}
 				}
 			}
 		}
 	
 	.goals .rendered{
-
+		li {list-style-type: disc;}
 	}
 
 	.guidelines .rendered{
@@ -339,6 +341,15 @@ body {
 	.hotels .rendered {
 		#hotel_map {
 			height: 500px;
+			.leaflet-popup-content-wrapper {
+				min-width: 300px;
+				h4 {font-size: 1.2em;}
+				table {width: 100%;
+					td {
+						padding: 5px;
+					}
+				}
+			}
 		}
 	}
 	.questions .rendered{

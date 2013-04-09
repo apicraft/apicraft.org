@@ -8,7 +8,7 @@ if (!Object.create) {
 }
 
 $(function($){
-	var ejs = require('ejs');
+	var ejs; //= require('ejs');
 	
 	$.Ejs = function(options) {
 		var view = Object.create(EjsView);

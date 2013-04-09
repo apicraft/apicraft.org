@@ -1,15 +1,2 @@
-<ul>
-	<% for(var i=0; i<list.length; i++){ 
+<p>Default Template</p>
 
-		if(list[i].answer){ %>
-			<li><%= list[i].question; %></li>
-
-			<% if(list[i].answer.length > 0){ %>
-				<blockquote><%= list[i].answer; %></blockquote>
-			<% } %>
-		<% } else { %>
-			<li><%= list[i]; %></li>
-		<% } %>
-
-	<% } %>
-</ul>

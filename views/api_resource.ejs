@@ -7,7 +7,6 @@
 		%>
 	
 		<div class="resource_group">
-			<a name="#<%= $v.url.replace(/^(?:\/)+/, "") %>"></a>
 			<% if($v.type == "get") { %>
 				<div class="verb verb_<%= v %>" data-verb="<%= $v.type %>" data-resource="<%= $v.url %>" data-name="<%= $v.url.replace(/^(?:\/)+/, "") %>" data-render="<%= $v.render %>">
 					<span class="<%= $v.type %>"><%= $v.type %></span>
