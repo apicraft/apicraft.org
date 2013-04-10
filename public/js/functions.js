@@ -8,11 +8,27 @@ $(function(){
 		"conferences": function(){
 			log('conferences');
 			toggle_resource($verb.self, function(data){
-				return data;
+
+				var start = new Date(Date.parse(data.start));
+				var end = new Date(Date.parse(data.end));
+				var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+				var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+				data.dateText = days[start.getDay()] + ", " + months[start.getMonth()] + " " + start.getDate() + " - " + days[end.getDay()] + ", " + months[end.getMonth()] + " " + end.getDate() + " " + end.getFullYear();
+				log(data.dateText);
+
+				return {"conference": data};
 			});
 		},
 		"goals": function(){
 			log('goals');
+			toggle_resource($verb.self, function(data){
+
+				delete data.links;
+				return data;
+			});
+		},
+		"attendees": function(){
+			log('attendees');
 			toggle_resource($verb.self, function(data){
 				delete data.links;
 				return data;
@@ -42,15 +58,14 @@ $(function(){
 					var end = new Date(Date.parse(v.end));
 					var add = {
 						"duration_minutes": (Date.parse(v.end) - Date.parse(v.start))/1000/60,
-						"start_minutes": (start.getHours() * 60) + start.getMinutes(),
-						"end_minutes": (end.getHours() * 60) + end.getMinutes(),
+						"start_minutes": (start.getHours() * 60) + start.getMinutes() - 480, /* Nothing starts before 8am */
+						"end_minutes": (end.getHours() * 60) + end.getMinutes() -480,
 						"day": start.getDay(),
 					}
 					$.extend(data.agenda[i], add);
 					data.days[add.day].push(data.agenda[i]);
 				});
 
-				log(data);
 				return data;
 			});
 		},
@@ -73,7 +88,7 @@ $(function(){
 			log('questions');
 			toggle_resource($verb.self, function(data){
 				delete data.links;
-				return {"questions": data};
+				return data;
 			});
 		}
 	}
@@ -168,7 +183,7 @@ $(function(){
 						var requestURL = api_url + $verb.url;
 						var template_url = template_dir + $verb.self.data("render") + ".ejs";
 
-						if($verb.url == "/conferences"){ requestURL = baseURL + $verb.url; }
+						if($verb.url == "/conferences"){ requestURL = api_url; }
 						$verb.target.addClass("language-javascript");
 						
 						$verb.target.find(".request_url").html("GET " + requestURL);
@@ -292,6 +307,20 @@ $(function(){
 								.bindPopup(html);
 							if(typeof(v.apicraftType) != "undefined" && v.apicraftType == "main_venue"){a.openPopup();}
 						}
+					});
+					$.get("http://api.apicraft.org/conferences/detroit2013", function(data){
+						var madison = L.marker([data.location.coordinate.latitude, data.location.coordinate.longitude])
+							.addTo(hotel_map)
+							.bindPopup(data.name)
+							.openPopup();
+
+						var circle = L.circle([data.location.coordinate.latitude, data.location.coordinate.longitude], 800, {
+							    color: 'green',
+							    fillColor: '#0f0',
+							    fillOpacity: 0.0
+							})
+							.addTo(hotel_map)
+							.bindPopup("15 Minute Walking Distance");
 					});
 				}); 
 			}

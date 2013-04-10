@@ -1,3 +1,10 @@
+<% if(sessions.length >= 1){ %>
+	<%= sessions[0].description %>
+<%	} else {   %>
+
+
+
+
 <table>
 	<% for(var r=0; r<table.rows.length; r++){ %>
 		<tr>
@@ -9,3 +16,4 @@
 		</tr>
 	<% } %>
 </table>
+<%	}	%>

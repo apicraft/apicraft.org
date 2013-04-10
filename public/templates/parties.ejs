@@ -1,32 +1,51 @@
-<% for(var i=0; i<parties.length; i++){ 
-	var party = parties.length;
+<% 
+
+for(var i=0; i<parties.length; i++){ 
+	var party = parties[i];
+	var partial = "partial";
+	if(typeof(party.yelpID) != "undefined"){ 
+		partial = ""; 
+		var map_image = "";
+		var map_image_data = [
+				"http://maps.googleapis.com/maps/api/staticmap",
+				"?center=" + party.location.coordinate.latitude + ",+" + party.location.coordinate.longitude,
+				"&zoom=16",
+				"&size=360x360",
+				"&maptype=roadmap",
+				"&markers=",
+					"color:blue %7C", 
+					"label:S %7C",
+					party.location.coordinate.latitude + "," + party.location.coordinate.longitude,
+				"&sensor=false"
+			]
+		for(var m=0;m<map_image_data.length;m++){
+			map_image += map_image_data[m];
+		}
+	}
 	%>
 	
-	<div class="party">
-		<h2><%= party.title %></h2>
-		<p class="time"><%= party.times.rendered %></p>
-		<div class="hero">
-			<img src="<%= party.hero_img %>" alt="Party Hero Image" />
-		</div>
-		<div class="party_map">		
-			<a href="<%= party.map_link %>" title="Click to view interactive map"><img src="<%= party.map_img %>" alt="Party Location" /></a>
-		</div>
+	<div class="party <%= partial %>">
+		<h2><%= party.name %>
+		<span class="what">{<% for(activity in party.what){ %><%= party.what[activity] %><% if(activity < party.what.length -1){ %>, <% } } %>}</span>
+		</h2>
+		<p ><strong>When:</strong> <%= party.when %> <strong>Where:</strong> <%= party.where %></p>
+		<% if(partial.length <= 0){ %>
+			<div class="hero">
+				<img src="<%= party.image.replace("http://api.apicraft.org/", "") %>" alt="Party Hero Image" />
+			</div>
+			<div class="party_map">		
+				<a href="<%= party.url %>" title="Click to view on Yelp" target="_blank">
+					<img src="<%= map_image %>" alt="Party Location" />
+				</a>
+			</div>
+		<% } %>
 	</div>
-
 <% } %>
 
 <!-- 
 	google static map image api
 		https://developers.google.com/maps/documentation/staticmaps/index 
 
-		http://maps.googleapis.com/maps/api/staticmap
-			?center=1441+Woodward+Ave,+Detroit,+Michigan+48226
-			&zoom=14
-			&size=600x300
-			&maptype=roadmap
-			&markers=
-				color:blue %7C 
-				label:S %7C
-				42.334738,-83.049256
-			&sensor=false
+http://maps.googleapis.com/maps/api/staticmap?center=42.3362303,+-83.0491634&zoom=14&size=600x300&maptype=roadmap&markers=color:blue %7Clabel:S %7C42.3362303,-83.0491634&sensor=false
+		
 -->

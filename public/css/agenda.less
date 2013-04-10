@@ -4,7 +4,9 @@
 
 .cell_height(@rows: 0){
 	height: unit((@rows * @minute_height), px);
-	margin-bottom: unit(@margin,px);
+	.row_content{
+		height: unit( ((@rows * @minute_height) - 16), px);
+	}
 }
 
 .row_0	{ .cell_height(0); }

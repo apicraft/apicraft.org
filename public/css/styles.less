@@ -217,6 +217,7 @@ body {
 			.rendered {
 				.column(8);
 				font-size: .9em;
+				font-weight: 300;
 				
 				max-height: 550px;
 				overflow-x: auto;
@@ -241,6 +242,7 @@ body {
 			border-top: none;
 			.content{ padding: 1em; }
 			margin-top: 1em;
+
 		}
 	}
 
@@ -287,18 +289,18 @@ body {
 		background: url("../images/agenda.png") repeat;
 
 		.column {
-			font-size: .8em;
+			font-size: .75em;
 			width: 28%;
 			float: left;
 			padding-right: 1%;
 			&.times {width: 12%;}
 			div {
-				padding: 4px .5em;
-				border: 1px solid #888;
-				background-color: #fff;
+				
+				
+				overflow: hidden;
+				line-height: 1.2em;
 				&.spacer, &.time, &.header {
 					border: none;
-					padding: 5px;
 					background-color: transparent;
 
 				}
@@ -308,18 +310,45 @@ body {
 				&.spacer {
 					color: transparent;
 				}
+				.row_content{
+					padding: 4px .5em;
+					border: 1px solid #888;
+					background-color: #fff;
+					margin: 4px 0;
+				}
 			}
 		}
 	}
 
 	.parties .rendered{
-		.party {min-height: 350px; margin-bottom: 1em;}
-		.hero, .party_map {width: 50%; float: left;}
-		.party_map {clear: right;}
-		.hero {
-			
-			img {width: 100%;}
+		.party { 
+			padding-top: 1em;
+			min-height: 360px; 
+			margin-bottom: 1em;
+			padding-bottom: 1em;
+			&.partial {
+				min-height: 0;
+			}
+			width: 100%;
+			clear: both;
+
+			h2{
+				font-size: 1.5em;
+				span {
+					font-weight: 300;
+					font-size: .75em;
+				}
+			}
+			.hero, .party_map {width: 50%; float: left; margin-top: .5em;}
+			.party_map {clear: right;}
+			.hero {
+				height: 360px;
+				overflow: hidden;
+				img {width: 100%; }
+			}
 		}
+		.content:firstChild{padding-top: 0em;}
+
 	}
 
 

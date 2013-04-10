@@ -15,7 +15,7 @@
 					"type": "get",
 					"url": "/conferences",
 					"description": "List Conferences",
-					"render": "conferences"
+					"render": "conferences.detroit2013"
 				}
 				]
 		},
@@ -32,6 +32,18 @@
 				]
 		},
 		{
+			"name": "attendees",
+			"title": "/attendees",
+			"verbs": [
+				{
+					"type": "get",
+					"url": "/attendees",
+					"description": "The people that will be there",
+					"render": "attendees"
+				}
+				]
+		},
+		{
 			"name": "parties",
 			"title": "/parties",
 			"verbs": [
@@ -39,7 +51,7 @@
 					"type": "get",
 					"url": "/parties",
 					"description": "All work and no play makes...",
-					"render": "list"
+					"render": "parties"
 				}
 				]
 		},
@@ -63,7 +75,7 @@
 					"type": "get",
 					"url": "/agenda",
 					"description": "And outline of the conference schedule.",
-					"render": "list"
+					"render": "agenda"
 				}
 				]
 		},
@@ -87,7 +99,7 @@
 					"type": "get",
 					"url": "/sessions",
 					"description": "Discussion topics - available post-conference.",
-					"render": "list"
+					"render": "sessions"
 				}
 				]
 		},
@@ -99,7 +111,7 @@
 					"type": "get",
 					"url": "/questions",
 					"description": "Q's about the event",
-					"render": "list"
+					"render": "questions_list"
 				},
 				{
 					"type": "post",
