@@ -205,7 +205,7 @@ $(function(){
 							success: function(data){
                     var text = typeof data === 'object' 
                       ? JSON.stringify(data, undefined, 1)
-                      : data;
+                      : JSON.stringify(JSON.parse(data), undefined, 1);
 
                     var obj = typeof data === 'string'
                       ? JSON.parse(data)
