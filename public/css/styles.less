@@ -343,7 +343,10 @@ body {
 	.parties .rendered{
 		.party { 
 			padding-top: 1em;
-			min-height: 450px; 
+			min-height: 330px; 
+			@media screen and (min-width: 640px) {
+					height: 450px;
+					}
 			margin-bottom: 1em;
 			padding-bottom: 1em;
 			&.partial {
