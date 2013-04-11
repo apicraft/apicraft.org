@@ -12,7 +12,15 @@ $(function(){
 			$("#header .button.register").hide();
 			$("#header .thank_you").show();
 		},
-		"goals": function(){ 		toggle_resource({ "target": $verb.self }); },
+		"goals": function(){
+			toggle_resource({ 
+				"target": $verb.self, 
+				"data_callback": function(data){
+					log("goals");
+					return data
+				} 
+			}); 
+		},
 		"attendees": function(){ 	toggle_resource({ "target": $verb.self }); },
 		"transit": function(){ 		toggle_resource({ "target": $verb.self }); },
 		"parties": function(){
@@ -195,7 +203,9 @@ $(function(){
 						$.ajax({
 							url: requestURL, 
 							success: function(data){
-										var html = JSON.stringify(data, undefined, 1);
+										log(data);
+										var html = JSON.stringify(data, null, '\t');
+										log(html);
 										$verb.target.find("code").text(html);
 										
 										$verb.target.find(".raw_response a").attr({"href": requestURL});
