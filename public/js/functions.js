@@ -41,7 +41,14 @@ $(function(){
 				}
 			});
 		},
-		"guidelines": function(){ 	toggle_resource({ "target": $verb.self }); },
+		"guidelines": function(){ 	toggle_resource({ 
+			"target": $verb.self, 
+			"data_callback": function(data){
+		       delete data.links;
+		       return {"guidelines": data};
+		     }
+		 }); 
+		},
 		"agenda": function(){
 			toggle_resource({
 				"target": $verb.self, 
