@@ -12,7 +12,15 @@ $(function(){
 			$("#header .button.register").hide();
 			$("#header .thank_you").show();
 		},
-		"goals": function(){ 		toggle_resource({ "target": $verb.self }); },
+		"goals": function(){
+			toggle_resource({ 
+				"target": $verb.self, 
+				"data_callback": function(data){
+					log("goals");
+					return data
+				} 
+			}); 
+		},
 		"attendees": function(){ 	toggle_resource({ "target": $verb.self }); },
 		"transit": function(){ 		toggle_resource({ "target": $verb.self }); },
 		"parties": function(){
@@ -204,7 +212,6 @@ $(function(){
                       : data;
 
 										$verb.target.find("code").text(text);
-										
 										$verb.target.find(".raw_response a").attr({"href": requestURL});
 										$verb.target.find(".raw_response a").show();
 
