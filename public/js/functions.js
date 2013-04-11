@@ -12,33 +12,9 @@ $(function(){
 			$("#header .button.register").hide();
 			$("#header .thank_you").show();
 		},
-		"goals": function(){
-			toggle_resource({
-				"target": $verb.self, 
-				"data_callback": function(data){
-				delete data.links;
-				return data;
-				}
-			});
-		},
-		"attendees": function(){
-			toggle_resource({
-				"target": $verb.self, 
-				"data_callback": function(data){
-				delete data.links;
-				return data;
-				}
-			});
-		},
-		"transit": function(){
-			toggle_resource({
-				"target": $verb.self, 
-				"data_callback": function(data){
-				delete data.links;
-				return data;
-				}
-			});
-		},
+		"goals": function(){ 		toggle_resource({ "target": $verb.self }); },
+		"attendees": function(){ 	toggle_resource({ "target": $verb.self }); },
+		"transit": function(){ 		toggle_resource({ "target": $verb.self }); },
 		"parties": function(){
 			toggle_resource({
 				"target": $verb.self, 
@@ -65,15 +41,7 @@ $(function(){
 				}
 			});
 		},
-		"guidelines": function(){
-			toggle_resource({
-				"target": $verb.self, 
-				"data_callback": function(data){
-				delete data.links;
-				return {"guidelines": data};
-				}
-			});
-		},
+		"guidelines": function(){ 	toggle_resource({ "target": $verb.self }); },
 		"agenda": function(){
 			toggle_resource({
 				"target": $verb.self, 
@@ -110,41 +78,9 @@ $(function(){
 				}
 			});
 		},
-		"sessions": function(){
-			toggle_resource({
-				"target": $verb.self, 
-				"data_callback": function(data){
-				return data;
-				}
-			});
-		},
-		"questions": function(){
-			toggle_resource({
-				"target": $verb.self, 
-				"data_callback": function(data){
-				delete data.links;
-				return data;
-				}
-			});
-		}
+		"sessions": function(){ 	toggle_resource({ "target": $verb.self }); },
+		"questions": function(){ 	toggle_resource({ "target": $verb.self }); }
 	}
-
-	/*
-	"conferences": function(){
-			log('conferences');
-			toggle_resource($verb.self, function(data){
-
-				var start = new Date(Date.parse(data.start));
-				var end = new Date(Date.parse(data.end));
-				var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-				var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-				data.dateText = days[start.getDay()] + ", " + months[start.getMonth()] + " " + start.getDate() + " - " + days[end.getDay()] + ", " + months[end.getMonth()] + " " + end.getDate() + " " + end.getFullYear();
-				log(data.dateText);
-
-				return {"conference": data};
-			});
-		},
-	*/
 
 	routie(routes);
 
@@ -153,13 +89,13 @@ $(function(){
 	$(".resource .verb").click(function(){ 
 		$verb = {self: $(this)};
 		var route = $(this).data("name");
-		//workaround for onHashChange not catching some interations (routie is a hash-based router)
+		//workaround for browser's onHashChange() not catching some interations (routie is a hash-based router)
 		window.location.hash == "#" + route ? routes[route]() : routie(route);
 		
 	});
 	
 	$(".request_form").submit(function(e){
-		//try/catch stops errors from bypassing the "return false" statement at the end of this callback
+		// try/catch stops errors from bypassing the "return false" statement at the end of this callback
 		try{
 			var $data = {}
 			$(this).find("input").each(function(i, v){
@@ -210,7 +146,7 @@ $(function(){
 	function toggle_resource(options){
 			var params = {
 				"target": $(".verb:first"), 
-				"data_callback": function(d){}, 
+				"data_callback": function(d){delete d.links; return d;}, 
 				"complete_callback": function(d){}
 			}
 			$.extend(params, options);
@@ -325,6 +261,7 @@ $(function(){
 		// create a map in the "hotel_map" div, set the view to a given place and zoom
 		var hotel_map = L.map('hotel_map', {"scrollWheelZoom": false}).setView([42.335000,-83.049292], 15);
 		
+		//just a custom icon
 		var hotelIcon = L.icon({
 		    iconUrl: 			'images/hotel_icon.png',
 		    iconRetinaUrl: 		'images/hotel_icon@2x.png',
@@ -379,10 +316,9 @@ $(function(){
 						var circle = L.circle([data.location.coordinate.latitude, data.location.coordinate.longitude], 800, {
 							    color: 'green',
 							    fillColor: '#0f0',
-							    fillOpacity: 0.1
+							    fillOpacity: 0.05
 							})
-							.addTo(hotel_map)
-							.bindPopup("15 Minute Walking Distance");
+							.addTo(hotel_map);
 					});
 				}); 
 			}
