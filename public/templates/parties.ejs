@@ -9,9 +9,8 @@ for(var i=0; i<parties.length; i++){
 	%>
 	
 	<div class="party <%= partial %>">
-		<h2><%= party.name %>
-		<span class="what">{ <% for(activity in party.what){ %><%= party.what[activity] %><% if(activity < party.what.length -1){ %>, <% } } %> }</span>
-		</h2>
+		<h2><%= party.name %></h2>
+		<p class="what">{ <% for(activity in party.what){ %><%= party.what[activity] %><% if(activity < party.what.length -1){ %>, <% } } %> }</p>
 		<p ><strong>When:</strong> <%= party.when %> <br/><strong>Where:</strong> <%= party.where %></p>
 		<% if(partial.length <= 0){ %>
 			<div class="hero">

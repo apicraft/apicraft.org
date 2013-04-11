@@ -51,7 +51,7 @@
 				{
 					"type": "get",
 					"url": "/agenda",
-					"description": "And outline of the conference schedule.",
+					"description": "Outline of the conference schedule.",
 					"render": "agenda"
 				}
 				]
@@ -75,7 +75,7 @@
 				{
 					"type": "get",
 					"url": "/sessions",
-					"description": "Discussion topics - available post-conference.",
+					"description": "Discussion topics.",
 					"render": "sessions"
 				}
 				]
@@ -99,7 +99,7 @@
 				{
 					"type": "get",
 					"url": "/transit",
-					"description": "How to get around in downtown Detroit.",
+					"description": "How to get around.",
 					"render": "transit"
 				}
 				]
