@@ -1,5 +1,5 @@
 $(function(){
-	var baseURL = "http://localhost:3001";
+	var baseURL = "http://api.api-craft.org";
 	var api_url = baseURL + "/conferences/detroit2013";
 	var template_dir = "templates/";
 	var spin_options = {lines:9,length:3,width:2,radius:4,corners:1,rotate:0,color:'#fff',speed:1.2,trail:35,shadow:false,hwaccel:false,className:'spinner',zIndex:2e9,top:'2px',left:'10'};
