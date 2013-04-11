@@ -1,5 +1,5 @@
 $(function(){
-	var baseURL = "http://api.apicraft.org";
+	var baseURL = "http://localhost:3001";
 	var api_url = baseURL + "/conferences/detroit2013";
 	var template_dir = "templates/";
 	var spin_options = {lines:9,length:3,width:2,radius:4,corners:1,rotate:0,color:'#fff',speed:1.2,trail:35,shadow:false,hwaccel:false,className:'spinner',zIndex:2e9,top:'2px',left:'10'};
@@ -195,14 +195,21 @@ $(function(){
 						$.ajax({
 							url: requestURL, 
 							success: function(data){
-										var html = JSON.stringify(data, undefined, 1);
-										$verb.target.find("code").text(html);
+                    var text = typeof data === 'object' 
+                      ? JSON.stringify(data, undefined, 1)
+                      : data;
+
+                    var obj = typeof data === 'string'
+                      ? JSON.parse(data)
+                      : data;
+
+										$verb.target.find("code").text(text);
 										
 										$verb.target.find(".raw_response a").attr({"href": requestURL});
 										$verb.target.find(".raw_response a").show();
 
 										//execute the pre-processor function
-										var template_data = params.data_callback(data);
+										var template_data = params.data_callback(obj);
 										//send processed data to template
 										var rendered_response = render_template(template_url, template_data)
 										$verb.group.find(".rendered .content").html(rendered_response);
