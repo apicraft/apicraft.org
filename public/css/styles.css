@@ -45,7 +45,7 @@ a{color:#666;}a:hover{color:#000;}
 .agenda .rendered .column div .row_content{padding:4px .5em;border:1px solid #888;background-color:#fff;margin:4px 0;}
 .parties .rendered .party{padding-top:1em;min-height:330px;margin-bottom:1em;padding-bottom:1em;width:100%;clear:both;}@media screen and (min-width:640px){.parties .rendered .party{height:450px;}}.parties .rendered .party.partial{min-height:0;}
 .parties .rendered .party h2{font-size:1.5em;}.parties .rendered .party h2 span{font-weight:300;font-size:.75em;padding-left:.75em;color:#888;}
-.parties .rendered .party .hero,.parties .rendered .party .party_map{width:50%;float:left;margin-top:.5em;}
+.parties .rendered .party .hero,.parties .rendered .party .party_map{width:50%;float:left;margin-top:0em;}
 .parties .rendered .party .party_map{clear:right;height:210px;}@media screen and (min-width:640px){.parties .rendered .party .party_map{height:360px;}}
 .parties .rendered .party .hero{height:210px;overflow:hidden;}.parties .rendered .party .hero img{width:100%;}
 @media screen and (min-width:640px){.parties .rendered .party .hero{height:360px;}}
