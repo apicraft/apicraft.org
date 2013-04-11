@@ -6,42 +6,78 @@ $(function(){
 
 	$verb = {self: $(window.location.hash).find(".verb.verb_get")};
 
+	//what to do when clicking on a resource or landing on the corresponding hash
 	var routes = {
 		"registered": function(){
 			$("#header .button.register").hide();
 			$("#header .thank_you").show();
 		},
 		"goals": function(){
-			log('goals');
-			toggle_resource($verb.self, function(data){
-
+			toggle_resource({
+				"target": $verb.self, 
+				"data_callback": function(data){
 				delete data.links;
 				return data;
+				}
 			});
 		},
 		"attendees": function(){
-			log('attendees');
-			toggle_resource($verb.self, function(data){
+			toggle_resource({
+				"target": $verb.self, 
+				"data_callback": function(data){
 				delete data.links;
 				return data;
+				}
+			});
+		},
+		"transit": function(){
+			toggle_resource({
+				"target": $verb.self, 
+				"data_callback": function(data){
+				delete data.links;
+				return data;
+				}
 			});
 		},
 		"parties": function(){
-			log('parties');
-			toggle_resource($verb.self, function(data){
-				return {"parties": data};
+			toggle_resource({
+				"target": $verb.self, 
+				"data_callback": function(data){
+					return {"parties": data};
+				},
+				"complete_callback": function(data){
+					log("party complete");
+					for(p in data){
+						var party = data[p]
+						if(typeof(party.yelpID) != "undefined"){
+							party.mapID = 'party_map_' + p;
+							var party_map = L.map(party.mapID, {"scrollWheelZoom": false}).setView([party.location.coordinate.latitude,party.location.coordinate.longitude], 17);
+							// add an OpenStreetMap tile layer
+							L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+							    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+							}).addTo(party_map);
+							L.marker([party.location.coordinate.latitude, party.location.coordinate.longitude])
+									.addTo(party_map)
+									.bindPopup("<a href='"+party.url+"' target='_blank'>"+party.name+"</a> on Yelp")
+									.openPopup();
+						}
+					}
+				}
 			});
 		},
 		"guidelines": function(){
-			log('guidelines');
-			toggle_resource($verb.self, function(data){
+			toggle_resource({
+				"target": $verb.self, 
+				"data_callback": function(data){
 				delete data.links;
 				return {"guidelines": data};
+				}
 			});
 		},
 		"agenda": function(){
-			log('agenda');
-			toggle_resource($verb.self, function(data){
+			toggle_resource({
+				"target": $verb.self, 
+				"data_callback": function(data){
 				delete data.links;
 				data.days = [ [], [], [], [], [], [], [] ]; 
 				
@@ -59,28 +95,36 @@ $(function(){
 				});
 
 				return data;
+			 }
 			});
 		},
 		"hotels": function(){
-			toggle_resource($verb.self, function(data){
-				//animations don't play nice with rendering the map...
-				setTimeout(function(){
-					load_hotel_map("/hotels");
-				}, 500); 
-				return data;
+			toggle_resource({
+				"target": $verb.self, 
+				"data_callback": function(data){
+					//animations don't play nice with rendering the map...
+					setTimeout(function(){
+						load_hotel_map("/hotels");
+					}, 500); 
+					return data;
+				}
 			});
 		},
 		"sessions": function(){
-			log('sessions');
-			toggle_resource($verb.self, function(data){
+			toggle_resource({
+				"target": $verb.self, 
+				"data_callback": function(data){
 				return data;
+				}
 			});
 		},
 		"questions": function(){
-			log('questions');
-			toggle_resource($verb.self, function(data){
+			toggle_resource({
+				"target": $verb.self, 
+				"data_callback": function(data){
 				delete data.links;
 				return data;
+				}
 			});
 		}
 	}
@@ -109,6 +153,7 @@ $(function(){
 	$(".resource .verb").click(function(){ 
 		$verb = {self: $(this)};
 		var route = $(this).data("name");
+		//workaround for onHashChange not catching some interations (routie is a hash-based router)
 		window.location.hash == "#" + route ? routes[route]() : routie(route);
 		
 	});
@@ -162,9 +207,15 @@ $(function(){
 		return false;
 	});
 
-	function toggle_resource(element, render_callback){
-			$this = element;
+	function toggle_resource(options){
+			var params = {
+				"target": $(".verb:first"), 
+				"data_callback": function(d){}, 
+				"complete_callback": function(d){}
+			}
+			$.extend(params, options);
 
+			$this = params.target;
 			var $verb = {
 				self: $this,
 				group: $this.parent(),
@@ -207,7 +258,9 @@ $(function(){
 										$verb.target.find(".raw_response a").attr({"href": requestURL});
 										$verb.target.find(".raw_response a").show();
 
-										var template_data = render_callback(data);
+										//execute the pre-processor function
+										var template_data = params.data_callback(data);
+										//send processed data to template
 										var rendered_response = render_template(template_url, template_data)
 										$verb.group.find(".rendered .content").html(rendered_response);
 										
@@ -216,11 +269,14 @@ $(function(){
 								log(e);
 									$verb.target.find("code").text("Sorry, Resource "+ e.statusText + " (" + e.status + ")");	
 							},
-							complete: function(){
+							complete: function(data){
 								$verb.target.find(".raw_response").spin(false);
 								Prism.highlightAll();
 								$verb.group.find(".rendered .content").slideDown();
 								$verb.self.data("busy", false);
+
+								//send the response data to the callback
+								params.complete_callback($.parseJSON(data.responseText));
 							}	
 						});
 						
@@ -307,15 +363,14 @@ $(function(){
 							if(typeof(v.apicraftType) != "undefined" && v.apicraftType == "hotel") {options = {icon: hotelIcon};}
 
 							var html = ejs.render(popup_template, {"v": v});
-							//plot it on the map
-							// add a marker in the given location, attach some popup content to it and open the popup
+							// add a marker in the given location, attach some popup content to it
 							var a = L.marker([v.location.coordinate.latitude, v.location.coordinate.longitude], options)
 								.addTo(hotel_map)
 								.bindPopup(html);
 							if(typeof(v.apicraftType) != "undefined" && v.apicraftType == "main_venue"){a.openPopup();}
 						}
 					});
-					$.get("http://api.apicraft.org/conferences/detroit2013", function(data){
+					$.get(api_url, function(data){
 						var madison = L.marker([data.location.coordinate.latitude, data.location.coordinate.longitude])
 							.addTo(hotel_map)
 							.bindPopup(data.name)
@@ -324,7 +379,7 @@ $(function(){
 						var circle = L.circle([data.location.coordinate.latitude, data.location.coordinate.longitude], 800, {
 							    color: 'green',
 							    fillColor: '#0f0',
-							    fillOpacity: 0.0
+							    fillOpacity: 0.1
 							})
 							.addTo(hotel_map)
 							.bindPopup("15 Minute Walking Distance");

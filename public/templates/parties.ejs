@@ -5,39 +5,19 @@ for(var i=0; i<parties.length; i++){
 	var partial = "partial";
 	if(typeof(party.yelpID) != "undefined"){ 
 		partial = ""; 
-		var map_image = "";
-		var map_image_data = [
-				"http://maps.googleapis.com/maps/api/staticmap",
-				"?center=" + party.location.coordinate.latitude + ",+" + party.location.coordinate.longitude,
-				"&zoom=16",
-				"&size=360x360",
-				"&maptype=roadmap",
-				"&markers=",
-					"color:blue %7C", 
-					"label:S %7C",
-					party.location.coordinate.latitude + "," + party.location.coordinate.longitude,
-				"&sensor=false"
-			]
-		for(var m=0;m<map_image_data.length;m++){
-			map_image += map_image_data[m];
-		}
 	}
 	%>
 	
 	<div class="party <%= partial %>">
 		<h2><%= party.name %>
-		<span class="what">{<% for(activity in party.what){ %><%= party.what[activity] %><% if(activity < party.what.length -1){ %>, <% } } %>}</span>
+		<span class="what">{ <% for(activity in party.what){ %><%= party.what[activity] %><% if(activity < party.what.length -1){ %>, <% } } %> }</span>
 		</h2>
-		<p ><strong>When:</strong> <%= party.when %> <strong>Where:</strong> <%= party.where %></p>
+		<p ><strong>When:</strong> <%= party.when %> <br/><strong>Where:</strong> <%= party.where %></p>
 		<% if(partial.length <= 0){ %>
 			<div class="hero">
-				<img src="<%= party.image.replace("http://api.apicraft.org/", "") %>" alt="Party Hero Image" />
+				<img src="<%= party.image %>" alt="Party Hero Image" />
 			</div>
-			<div class="party_map">		
-				<a href="<%= party.url %>" title="Click to view on Yelp" target="_blank">
-					<img src="<%= map_image %>" alt="Party Location" />
-				</a>
-			</div>
+			<div class="party_map" id="party_map_<%= i %>"></div>
 		<% } %>
 	</div>
 <% } %>

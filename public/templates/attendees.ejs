@@ -6,9 +6,9 @@
 		<li>
 			<img src="<%= attendee.avatar %>"/>
 			<h2><%= attendee.firstName %> <%= attendee.lastName %></h2>
-				<% if(attendee.twitter){ %><p><a href="http://twitter.com/<%= attendee.twitter %>">@<%= attendee.twitter %></a></p>
+				<% if(attendee.twitter){ %><p><a href="<%= attendee.twitter %>"><%= attendee.twitter %></a></p>
 				<% } %>
-				<% if(attendee.github){ %><p><a href="http://github.com/<%= attendee.github %>">github.com/<%= attendee.github %></a></p> 
+				<% if(attendee.github){ %><p><a href="<%= attendee.github %>"><%= attendee.github %></a></p> 
 				<% } %>
 		</li>
 
