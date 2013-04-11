@@ -7,7 +7,7 @@
 		%>
 	
 		<div class="resource_group">
-				<div class="verb verb_<%= v %>" data-verb="<%= $v.type %>" data-resource="<%= $v.url %>" data-name="<%= $v.url.replace(/^(?:\/)+/, "") %>" data-render="<%= $v.render %>">
+				<div class="verb verb_<%= v %> verb_<%= $v.type %>" data-verb="<%= $v.type %>" data-resource="<%= $v.url %>" data-name="<%= $v.url.replace(/^(?:\/)+/, "") %>" data-render="<%= $v.render %>">
 					<span class="<%= $v.type %>"><%= $v.type %></span>
 					<code><%= $v.url %></code>
 					<p class="description"><%= $v.description %></p>

@@ -7,18 +7,7 @@
 		}
 	},
 	"resources": [
-		{
-			"name": "conferences",
-			"title": "/conferences/{city}",
-			"verbs": [
-				{
-					"type": "get",
-					"url": "/conferences",
-					"description": "List Conferences",
-					"render": "conferences.detroit2013"
-				}
-				]
-		},
+		
 		{
 			"name": "goals",
 			"title": "/goals",

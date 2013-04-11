@@ -2,22 +2,14 @@ $(function(){
 	var baseURL = "http://api.apicraft.org";
 	var api_url = baseURL + "/conferences/detroit2013";
 	var template_dir = "templates/";
-	$verb = {self: $(window.location.hash).find(".verb")};
+	var spin_options = {lines:9,length:3,width:2,radius:4,corners:1,rotate:0,color:'#fff',speed:1.2,trail:35,shadow:false,hwaccel:false,className:'spinner',zIndex:2e9,top:'2px',left:'10'};
 
-	routes = {
-		"conferences": function(){
-			log('conferences');
-			toggle_resource($verb.self, function(data){
+	$verb = {self: $(window.location.hash).find(".verb.verb_get")};
 
-				var start = new Date(Date.parse(data.start));
-				var end = new Date(Date.parse(data.end));
-				var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-				var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-				data.dateText = days[start.getDay()] + ", " + months[start.getMonth()] + " " + start.getDate() + " - " + days[end.getDay()] + ", " + months[end.getMonth()] + " " + end.getDate() + " " + end.getFullYear();
-				log(data.dateText);
-
-				return {"conference": data};
-			});
+	var routes = {
+		"registered": function(){
+			$("#header .button.register").hide();
+			$("#header .thank_you").show();
 		},
 		"goals": function(){
 			log('goals');
@@ -93,9 +85,24 @@ $(function(){
 		}
 	}
 
-	routie(routes);
+	/*
+	"conferences": function(){
+			log('conferences');
+			toggle_resource($verb.self, function(data){
 
-	var spin_options = {lines:9,length:3,width:2,radius:4,corners:1,rotate:0,color:'#fff',speed:1.2,trail:35,shadow:false,hwaccel:false,className:'spinner',zIndex:2e9,top:'2px',left:'10'};
+				var start = new Date(Date.parse(data.start));
+				var end = new Date(Date.parse(data.end));
+				var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+				var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+				data.dateText = days[start.getDay()] + ", " + months[start.getMonth()] + " " + start.getDate() + " - " + days[end.getDay()] + ", " + months[end.getMonth()] + " " + end.getDate() + " " + end.getFullYear();
+				log(data.dateText);
+
+				return {"conference": data};
+			});
+		},
+	*/
+
+	routie(routes);
 
 	$(".verb").hover(function(){ $(this).addClass("hover"); }, function(){ $(this).removeClass("hover"); });
 	
