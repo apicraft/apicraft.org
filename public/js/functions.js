@@ -84,12 +84,9 @@ $(function(){
 		"hotels": function(){
 			toggle_resource({
 				"target": $verb.self, 
-				"data_callback": function(data){
-					//animations don't play nice with rendering the map...
-					setTimeout(function(){
-						load_hotel_map("/hotels");
-					}, 500); 
-					return data;
+				"complete_callback": function(data){
+					load_hotel_map(data);
+					 
 				}
 			});
 		},
@@ -203,13 +200,13 @@ $(function(){
 						$.ajax({
 							url: requestURL, 
 							success: function(data){
-                    var text = typeof data === 'object' 
-                      ? JSON.stringify(data, undefined, 1)
-                      : JSON.stringify(JSON.parse(data), undefined, 1);
+					                    var text = typeof data === 'object' 
+					                      ? JSON.stringify(data, undefined, 1)
+					                      : JSON.stringify(JSON.parse(data), undefined, 1);
 
-                    var obj = typeof data === 'string'
-                      ? JSON.parse(data)
-                      : data;
+					                    var obj = typeof data === 'string'
+					                      ? JSON.parse(data)
+					                      : data;
 
 										$verb.target.find("code").text(text);
 										$verb.target.find(".raw_response a").attr({"href": requestURL});
@@ -278,10 +275,7 @@ $(function(){
 			
 	}
 
-	function load_hotel_map(resource){
-		// create a map in the "hotel_map" div, set the view to a given place and zoom
-		var hotel_map = L.map('hotel_map', {"scrollWheelZoom": false}).setView([42.335000,-83.049292], 15);
-		
+	function load_hotel_map(d){
 		//just a custom icon
 		var hotelIcon = L.icon({
 		    iconUrl: 			'images/hotel_icon.png',
@@ -295,6 +289,58 @@ $(function(){
 		    shadowAnchor: 		[24, 48]
 		});
 
+
+		// create a map in the "hotel_map" div, set the view to a given place and zoom
+		$.get(api_url, function(data){
+			//fix some JSON parsing issues for FF
+			var text = typeof data === 'object' ? JSON.stringify(data, undefined, 1) : JSON.stringify(JSON.parse(data), undefined, 1);
+            var obj = typeof data === 'string' ? JSON.parse(data) : data;
+
+            //create the map and center it on the conference
+			var hotel_map = L.map('hotel_map', {"scrollWheelZoom": false}).setView([obj.location.coordinate.latitude, obj.location.coordinate.longitude], 15);
+
+			// add an OpenStreetMap tile layer
+			L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+			    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+			}).addTo(hotel_map);
+
+			//add the main venue
+			var madison = L.marker([obj.location.coordinate.latitude, obj.location.coordinate.longitude])
+				.addTo(hotel_map)
+				.bindPopup(obj.name)
+				.openPopup();
+			//add a circle to call out walking distances
+			var circle = L.circle([obj.location.coordinate.latitude, obj.location.coordinate.longitude], 800, {
+				    color: 'green',
+				    fillColor: '#0f0',
+				    fillOpacity: 0.05
+				})
+				.addTo(hotel_map);
+
+			//get the popup template
+			$.get(template_dir + "hotel_popup.ejs", function(popup_template){
+					//iterate over the hotels
+					$.each(d.hotels, function(i, v){
+						if(!v.is_closed){
+							//render popup template with hotel data
+							var html = ejs.render(popup_template, {"v": v});
+							// add a marker in the given location, attach the popup content to it
+							var a = L.marker([v.location.coordinate.latitude, v.location.coordinate.longitude], {icon: hotelIcon})
+								.addTo(hotel_map)
+								.bindPopup(html);
+
+						}
+					});
+
+				}); 
+			
+		});
+
+
+
+		
+		
+
 		/*
 		// add Cloudmade tile layer (better vis)
 		L.tileLayer('http://{s}.tile.cloudmade.com/5278d1bee38f4ebabc822e8d5a6faa2e/997/256/{z}/{x}/{y}.png', {
@@ -303,48 +349,10 @@ $(function(){
 		}).addTo(hotel_map);
 		*/
 
-		// add an OpenStreetMap tile layer
-		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-		    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-		}).addTo(hotel_map);
+		
 
-		$.ajax({
-			url: api_url + resource, 
-			crossDomain: true,
-			success: function(d){ 
-				$.get(template_dir + "hotel_popup.ejs", function(popup_template){
-					$.each(d.hotels, function(i, v){
-						if(!v.is_closed){
-							var options = null;
-							v.popupTitle = v.name
-							if(typeof(v.apicraftTitle) != "undefined"){v.popupTitle = v.apicraftTitle;}
-							if(typeof(v.apicraftType) != "undefined" && v.apicraftType == "hotel") {options = {icon: hotelIcon};}
-
-							var html = ejs.render(popup_template, {"v": v});
-							// add a marker in the given location, attach some popup content to it
-							var a = L.marker([v.location.coordinate.latitude, v.location.coordinate.longitude], options)
-								.addTo(hotel_map)
-								.bindPopup(html);
-							if(typeof(v.apicraftType) != "undefined" && v.apicraftType == "main_venue"){a.openPopup();}
-						}
-					});
-					$.get(api_url, function(data){
-						var madison = L.marker([data.location.coordinate.latitude, data.location.coordinate.longitude])
-							.addTo(hotel_map)
-							.bindPopup(data.name)
-							.openPopup();
-
-						var circle = L.circle([data.location.coordinate.latitude, data.location.coordinate.longitude], 800, {
-							    color: 'green',
-							    fillColor: '#0f0',
-							    fillOpacity: 0.05
-							})
-							.addTo(hotel_map);
-					});
-				}); 
-			}
-		});
-
+		
+		
 	}
 
 	function log(x){console.log(x);} //silence is close at hand
