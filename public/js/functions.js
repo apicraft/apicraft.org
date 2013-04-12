@@ -320,6 +320,7 @@ $(function(){
 			//get the popup template
 			$.get(template_dir + "hotel_popup.ejs", function(popup_template){
 					//iterate over the hotels
+				$.get(template_dir + "hotel_popup.ejs", function(popup_template){
 					$.each(d.hotels, function(i, v){
 						if(!v.is_closed){
 							//render popup template with hotel data
