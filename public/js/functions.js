@@ -312,6 +312,10 @@ $(function(){
 			url: api_url + resource, 
 			crossDomain: true,
 			success: function(d){ 
+        console.log('hotels type:', typeof d);
+        if (typeof d === 'string') {
+          d = JSON.parse(d);
+        }
 				$.get(template_dir + "hotel_popup.ejs", function(popup_template){
 					$.each(d.hotels, function(i, v){
 						if(!v.is_closed){
