@@ -292,7 +292,6 @@ $(function(){
 
 		// create a map in the "hotel_map" div, set the view to a given place and zoom
 		$.get(api_url, function(data){
-			//fix some JSON parsing issues for FF
 			var text = typeof data === 'object' ? JSON.stringify(data, undefined, 1) : JSON.stringify(JSON.parse(data), undefined, 1);
             var obj = typeof data === 'string' ? JSON.parse(data) : data;
 
@@ -335,27 +334,12 @@ $(function(){
 
 				}); 
 			
-		});
+			});
 
-
-
-		
-		
-
-		/*
-		// add Cloudmade tile layer (better vis)
-		L.tileLayer('http://{s}.tile.cloudmade.com/5278d1bee38f4ebabc822e8d5a6faa2e/997/256/{z}/{x}/{y}.png', {
-		    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
-		    maxZoom: 18
-		}).addTo(hotel_map);
-		*/
-
-		
-
-		
+		});//get api_url
 		
 	}
-
+	
 	function log(x){console.log(x);} //silence is close at hand
 	//$(".resource .verb:first").click();
 });
