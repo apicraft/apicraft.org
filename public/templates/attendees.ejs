@@ -4,7 +4,7 @@
 		%>
 
 		<li>
-			<img src="<%= attendee.avatar %>"/>
+			<img src="<%= attendee.avatar %>?s=120"/>
 			<h2><%= attendee.firstName %> <%= attendee.lastName %></h2>
 				<% if(attendee.twitter){ %><p><a href="<%= attendee.twitter %>"><%= attendee.twitter %></a></p>
 				<% } %>
