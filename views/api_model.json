@@ -15,7 +15,7 @@
 				{
 					"type": "get",
 					"url": "/goals",
-					"description": "Goals and Philosiphy",
+					"description": "Goals and anticipated outcome",
 					"render": "goals"
 				}
 				]
@@ -27,7 +27,7 @@
 				{
 					"type": "get",
 					"url": "/guidelines",
-					"description": "Rules of the road.",
+					"description": "Open space guiding principles",
 					"render": "guidelines"
 				}
 				]
@@ -39,7 +39,7 @@
 				{
 					"type": "get",
 					"url": "/attendees",
-					"description": "The people that will be there",
+					"description": "The API crafters attending",
 					"render": "attendees"
 				}
 				]
@@ -51,7 +51,7 @@
 				{
 					"type": "get",
 					"url": "/agenda",
-					"description": "Outline of the conference schedule.",
+					"description": "Outline of the conference schedule",
 					"render": "agenda"
 				}
 				]
@@ -63,7 +63,7 @@
 				{
 					"type": "get",
 					"url": "/parties",
-					"description": "All work and no play makes...",
+					"description": "Time to relax and rejuvenate",
 					"render": "parties"
 				}
 				]
@@ -75,7 +75,7 @@
 				{
 					"type": "get",
 					"url": "/sessions",
-					"description": "Discussion topics.",
+					"description": "The sessions we create together",
 					"render": "sessions"
 				}
 				]
@@ -87,7 +87,7 @@
 				{
 					"type": "get",
 					"url": "/hotels",
-					"description": "Where to stay in downtown Detroit.",
+					"description": "Where to stay in downtown Detroit",
 					"render": "hotel_map"
 				}
 				]
@@ -99,7 +99,7 @@
 				{
 					"type": "get",
 					"url": "/transit",
-					"description": "How to get around.",
+					"description": "How to get around",
 					"render": "transit"
 				}
 				]
@@ -111,7 +111,7 @@
 				{
 					"type": "get",
 					"url": "/questions",
-					"description": "Q's about the event",
+					"description": "Questions and answers",
 					"render": "questions_list"
 				},
 				{
