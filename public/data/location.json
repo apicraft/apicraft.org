@@ -18,7 +18,10 @@
 			"yelpID": "the-westin-book-cadillac-detroit-detroit",
 			"apicraftType": "hotel"
 		},
-		
+		{
+			"yelpID": "greektown-casino-detroit",
+			"apicraftType": "hotel"
+		},
 		{
 			"yelpID": "detroit-marriott-at-the-renaissance-center-detroit",
 			"apicraftType": "hotel"
