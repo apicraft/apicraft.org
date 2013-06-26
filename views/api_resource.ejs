@@ -19,7 +19,7 @@
 					
 					<% for(var input=0; input < $v.inputs.length; input++){ %>
 						<label for="verb_<%= _resource.index %>_input_<%= input %>"><%= $v.inputs[input].description %>: </label>
-						<input type="text" name="<%= $v.inputs[input].name %>" id="verb_<%= _resource.index %>_input_<%= input %>"/>
+						<input type="text" name="<%= $v.inputs[input].name %>" id="verb_<%= _resource.index %>_input_<%= input %>"/ pattern=".{3,}" required><br />
 					<%	} %>
 					
 					<input type="submit" name="submit_<%= _resource.index %>" val="Submit" />
