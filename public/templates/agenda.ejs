@@ -49,7 +49,8 @@
 				<div class="row_<%= session.duration_minutes %>">
 					<div class="row_content">
 						<strong><%= session.title %></strong><br>
-						@<%= session.location %>
+						<span>@<%= session.location %></span><br/>
+						<%= session.start %> - <%= session.end %>
 					</div>
 				</div>
 			<% } %>

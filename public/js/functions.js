@@ -65,13 +65,29 @@ $(function(){
 				data.days = [ [], [], [], [], [], [], [] ]; 
 				
 				$.each(data.agenda, function(i, v){
-					var start = new Date(Date.parse(v.start));
-					var end = new Date(Date.parse(v.end));
+					var t = {}
+					t.start = new Date(Date.parse(v.start));
+					t.end = new Date(Date.parse(v.end));
+
+					t.start_hour = fix_hour( t.start.getHours() );
+					t.start_min = fix_min( t.start.getMinutes() );
+					t.start_period = get_period( t.start.getHours() );
+					
+					t.end_hour = fix_hour( t.end.getHours() );
+					t.end_min = fix_min( t.end.getMinutes() );
+					t.end_period = get_period( t.end.getHours() );
+					
+					if (t.start_min == 0){t.start_min = "00";}
+					if (t.end_min == 0){t.end_min = "00";}
+					
 					var add = {
 						"duration_minutes": (Date.parse(v.end) - Date.parse(v.start))/1000/60,
-						"start_minutes": (start.getHours() * 60) + start.getMinutes() - 480, /* Nothing starts before 8am */
-						"end_minutes": (end.getHours() * 60) + end.getMinutes() -480,
-						"day": start.getDay(),
+						"start_minutes": (t.start.getHours() * 60) + t.start.getMinutes() - 480, /* Nothing starts before 8am */
+						"end_minutes": (t.end.getHours() * 60) + t.end.getMinutes() -480,
+						"day": t.start.getDay(),
+						"start": t.start_hour + ":" + t.start_min + t.start_period,
+						"end": t.end_hour + ":" + t.end_min + t.end_period
+
 					}
 					$.extend(data.agenda[i], add);
 					data.days[add.day].push(data.agenda[i]);
@@ -274,7 +290,9 @@ $(function(){
 		return response;
 			
 	}
-
+	function fix_min(x){ if(x == 0){return "00";}else{return x;} }
+	function fix_hour(x){ if(x > 12){return x - 12; }else{return x;} }
+	function get_period(x){if(x < 12){return "am";} else {return "pm";}}
 	function load_hotel_map(d){
 		//just a custom icon
 		var hotelIcon = L.icon({
