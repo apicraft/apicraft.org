@@ -17,17 +17,18 @@ app.use(lessMiddleware({
 app.use(express.static(__dirname + '/public'));
 
 
+
 var file = __dirname + '/views/api_model.json';
  
 fs.readFile(file, 'utf8', function (err, data) {
   if (err) { console.log('Error: ' + err); return; }
   apipage = JSON.parse(data);
 });
-
 app.get('/', function(req, res) {
   res.render('index', { proxyUrl: config.proxyUrl, page: apipage });
 });
 
+/*
 app.get('/nondev', function(req, res) {
 	//load data right off of the api
 	http.request({
@@ -58,7 +59,7 @@ app.get('/nondev', function(req, res) {
 	}).end();
 	
 });
-
+*/
 
 var port = process.env.PORT || 3000;
 app.listen(port);
