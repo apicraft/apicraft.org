@@ -133,6 +133,8 @@ body {
 					.column(3);
 					.pull(.5);
 					}
+				background-color: #5F862B;
+				.gradient(#eee, #aaa);
 			}
 
 			a {
@@ -142,19 +144,38 @@ body {
 					font-size: .9em;
 					width: 100%;
 				}
+
 				display: block;
 				text-align: center;
 				color: #fff;
-				background-color: #5F862B;
-				.gradient(#eee, #aaa);
-				padding: .7em 0 .2em 0;
+				
+				padding: 6.5em .2em .2em .2em;
 				text-decoration: none;
 				&:hover{ color: #5F862B; }
 				border-radius: .2em;
-				img {
-					width: 80%;
-					margin-bottom: 1em;
-				}
+				
+				&.github{ background-image: url(../images/github.png); }
+				&.google_groups{ background-image: url(../images/google_groups.png); }
+				&.facebook{ background-image: url(../images/facebook.png); }
+				&.blog{ background-image: url(../images/blog.png); }
+
+				@media screen and (min-width: 640px) {
+					padding-top: 8em;
+					&.github { background-image: url(../images/github_bw.png); }
+					&.github:hover{ background-image: url(../images/github.png); }
+
+					&.google_groups { background-image: url(../images/google_groups_bw.png); }
+					&.google_groups:hover{ background-image: url(../images/google_groups.png); }
+
+					&.facebook { background-image: url(../images/facebook_bw.png); }
+					&.facebook:hover{ background-image: url(../images/facebook.png); }
+
+					&.blog { background-image: url(../images/blog_bw.png); }
+					&.blog:hover{ background-image: url(../images/blog.png); }
+					}
+
+				background-repeat:no-repeat;
+				background-position: center top;
 			}
 			.signup a {
 				.gradient(#BADD8C, #5F862B);
@@ -185,7 +206,10 @@ body {
 			padding: .2em;
 			}
 	}
-	
+	.cta(@name){
+
+	}
+
 	.gradient(@start: #fff, @end: #000){		
 		  background-color: @end; /* fallback */
 		  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@end), to(@start)); /* Safari 4-5, Chrome 1-9 */
