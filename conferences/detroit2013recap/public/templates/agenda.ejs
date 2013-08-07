@@ -1,0 +1,61 @@
+<div class="column times">
+	<div class="row_30 spacer"></div>
+	<div class="row_60 time">8:00 am</div>
+	<div class="row_60 time">9:00</div>
+	<div class="row_60 time">10:00</div>
+	<div class="row_60 time">11:00</div>
+	<div class="row_60 time">12:00 pm</div>
+	<div class="row_60 time">1:00</div>
+	<div class="row_60 time">2:00</div>
+	<div class="row_60 time">3:00</div>
+	<div class="row_60 time">4:00</div>
+	<div class="row_60 time">5:00</div>
+	<div class="row_60 time">6:00</div>
+	<div class="row_60 time">7:00</div>
+	<div class="row_60 time">8:00</div>
+	<div class="row_60 time">9:00</div>
+	<div class="row_60 time">10:00</div>
+	<div class="row_60 time">11:00</div>
+	<div class="row_30 time">12:00 am</div>
+</div>
+
+<%  
+	var days_array = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+	for(d in days){
+	var day = days[d];
+	if(day.length > 0){ %>
+		
+		<div class="column">
+			<div class="row_30 header"><%= days_array[d] %></div>
+			<%  for(s in day){
+				var session = day[s];
+				
+				if(s == 0){
+					var padding_block = session.start_minutes;
+					while(padding_block > 300){
+					%>
+						<div class="row_300 spacer"></div>
+					<%
+						padding_block -= 300;
+					}
+					%>
+					<div class="row_<%= padding_block %> spacer"></div>
+					<%	
+				}
+
+			%>
+
+				<div class="row_<%= session.duration_minutes %>">
+					<div class="row_content">
+						<strong><%= session.title %></strong><br>
+						<span>@<%= session.location %></span><br/>
+						<%= session.start %> - <%= session.end %>
+					</div>
+				</div>
+			<% } %>
+		</div>
+<% } } %>
+
+
+				

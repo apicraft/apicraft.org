@@ -1,0 +1,59 @@
+{
+	locations: [
+		{
+			"yelpID": "the-madison-building-detroit",
+			"apicraftType": "main_venue",
+			"apicraftTitle": "APICRAFTCONF",
+			"apicraftDescription": "The Main Event!"
+			
+		},
+		{
+			"yelpID": "detroit-beer-company-detroit",
+			"apicraftType": "venue",
+			"apicraftTitle": "Dinner",
+			"apicraftDescription": "Day 1 post conference drinks!"
+			
+		},
+		{
+			"yelpID": "the-westin-book-cadillac-detroit-detroit",
+			"apicraftType": "hotel"
+		},
+
+		{
+			"yelpID": "detroit-marriott-at-the-renaissance-center-detroit",
+			"apicraftType": "hotel"
+		},
+		{
+			"yelpID": "courtyard-detroit-downtown-detroit",
+			"apicraftType": "hotel"
+		},
+		{
+			"yelpID": "doubletree-suites-by-hilton-fort-shelby-detroit",
+			"apicraftType": "hotel"
+		},
+		{
+			"yelpID": "holiday-inn-express-hotel-and-suites-detroit-downtown-detroit",
+			"apicraftType": "hotel"
+		},
+		{
+			"yelpID": "hilton-garden-inn-detroit",
+			"apicraftType": "hotel"
+		},
+		{
+			"yelpID": "mgm-grand-detroit-detroit",
+			"apicraftType": "hotel"
+		},
+		{
+			"yelpID": "atheneum-suite-hotel-detroit",
+			"apicraftType": "hotel"
+		},
+		{
+			"yelpID": "milner-hotel-detroit",
+			"apicraftType": "hotel"
+		},
+		{
+			"yelpID": "greektown-casino-detroit",
+			"apicraftType": "hotel"
+		}
+	]
+}

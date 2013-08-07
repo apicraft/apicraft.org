@@ -7,7 +7,7 @@ body {
 	font-family: "source-sans-pro", Arial, sans-serif;
 	font-size: .9em;
 	font-weight: 400;
-	color: #333;
+	color: #666;
 	background: #fff url(../images/bg_pic.png) repeat-x top center;
 	@media screen and (min-width: 640px) { 
 		background-image: url(../images/bg_large_pic.png); 
@@ -36,7 +36,7 @@ body {
 		}
 	}
 	a {
-		color: #666;
+		color: #8cc63f;
 		&:hover{
 			color: #000;
 			}
@@ -114,11 +114,17 @@ body {
 		.column(14);
 		h3 {
 			margin: 1em 0;
+			font-size: 1.4em;
+			color: #000;
 		}
 		padding-top: 4em;
 		#thank_you {
 			.column(14);
-
+			padding-top: 1em;
+			p {
+				margin-bottom: 1em;
+				font-weight: 200;
+			}
 			
 		}
 		#actions {
@@ -148,11 +154,12 @@ body {
 				display: block;
 				text-align: center;
 				color: #fff;
+				&:hover {color: #000;}
 				
 				padding: 6.5em .2em .2em .2em;
 				text-decoration: none;
-				&:hover{ color: #5F862B; }
-				border-radius: .2em;
+				-webkit-border-radius: .4em;
+				border-radius: .4em;
 				
 				&.github{ background-image: url(../images/github.png); }
 				&.google_groups{ background-image: url(../images/google_groups.png); }
@@ -177,10 +184,7 @@ body {
 				background-repeat:no-repeat;
 				background-position: center top;
 			}
-			.signup a {
-				.gradient(#BADD8C, #5F862B);
-				&:hover{ color: #000 }
-			}
+
 		}
 	}
 	#footer {

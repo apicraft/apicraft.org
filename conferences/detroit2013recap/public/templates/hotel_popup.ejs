@@ -1,0 +1,18 @@
+<h4> <a href="<%= v.url %>" title="Click to view on yelp" target="_blank"><%= v.name %></a> </h4>
+<table>
+	<tr>
+		<td>
+			<img src="<%= v.rating_img_url_small %>" alt="/5 Stars" /><br/>
+			<span class="phone"><%= v.display_phone %></span>
+
+			<p>
+			<% for(var i=0; i<v.location.address.length; i++){ %> <%= v.location.address[i] %><br /> <% }%>
+			<%= v.location.city %>, <%= v.location.state_code %> <%= v.location.postal_code %>
+			</p>
+
+		</td>
+		<td>
+			<img src="<%= v.image_url %>" alt="venue image" /><br />
+		</td>
+	</tr>
+</table>

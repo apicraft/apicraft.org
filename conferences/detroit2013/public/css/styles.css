@@ -1,0 +1,63 @@
+body{width:100%;*zoom:1}body:before,body:after{content:"";display:table}
+body:after{clear:both}
+body{font-family:"source-sans-pro",Arial,sans-serif;font-size:.9em;font-weight:400;color:#333}
+.wf-loading{visibility:hidden}
+#page{width:480px;margin:0 auto 1em auto;float:none;height:100px;padding:10px}@media screen and (min-width:640px){#page{width:800px}}
+.wf-active #page{font-size:1.2em}@media screen and (min-width:640px){.wf-active #page{font-size:1.5em}}
+a{color:#666}a:hover{color:#000}
+#header{display:inline;float:left;width:100%;margin:0 0;text-align:center}#header .bracket{display:inline;float:left;width:12.5%;margin:0 0;font-size:13em;line-height:.5em;margin-top:.3em;font-weight:400;text-shadow:-7px 0 0 #777}#header .bracket.left{text-alight:right;text-shadow:7px 0 0 #777}
+#header .content{display:inline;float:left;width:75%;margin:0 0;font-size:.8em;margin-top:3.5em}@media screen and (min-width:640px){#header .content{margin-top:2em;font-size:1em}}#header .content h1{font-weight:640;font-size:5em;line-height:.3em;margin-top:.5em}
+#header .content h2{font-weight:200;font-size:4.3em;line-height:.7em;margin-top:.3em;color:#808080}
+#header .content p{margin-bottom:2em}#header .content p.theme{font-weight:100;font-size:1.4em;color:#f05a28}
+@media screen and (min-width:640px){#header .content p{margin-bottom:.5em}}
+#header .content a.button{width:50%;font-size:3em;font-weight:400;margin:.4em;border-radius:.2em;padding:.2em 1.5em;letter-spacing:.1em;color:#fff;border:none;cursor:pointer;text-decoration:none;background-color:#62a508;background:-webkit-gradient(linear, 0 0, 0 100%, from(#62a508), to(#d4edb2));background:-webkit-linear-gradient(top, #d4edb2, #62a508);background:-moz-linear-gradient(top, #d4edb2, #62a508);background:-ms-linear-gradient(top, #d4edb2, #62a508);background:-o-linear-gradient(top, #d4edb2, #62a508);}#header .content a.button:hover{background-color:#8cc63f;background:-webkit-gradient(linear, 0 0, 0 100%, from(#8cc63f), to(#d4edb2));background:-webkit-linear-gradient(top, #d4edb2, #8cc63f);background:-moz-linear-gradient(top, #d4edb2, #8cc63f);background:-ms-linear-gradient(top, #d4edb2, #8cc63f);background:-o-linear-gradient(top, #d4edb2, #8cc63f);}
+#header .content a.button:active{background-color:#d4edb2;background:-webkit-gradient(linear, 0 0, 0 100%, from(#d4edb2), to(#8cc63f));background:-webkit-linear-gradient(top, #8cc63f, #d4edb2);background:-moz-linear-gradient(top, #8cc63f, #d4edb2);background:-ms-linear-gradient(top, #8cc63f, #d4edb2);background:-o-linear-gradient(top, #8cc63f, #d4edb2);}
+@media screen and (min-width:640px){#header .content a.button{font-size:2em;padding:.1em 2.5em}}
+#header .thank_you{display:none}#header .thank_you h3{color:#62a508;font-size:1.5em}
+#header .thank_you p{margin-bottom:.1em}
+#header .thank_you .fineprint{font-size:.7em;color:#888}
+#api{display:inline;float:left;width:100%;margin:0 0;margin-top:2em;font-size:1.2em}@media screen and (min-width:640px){#api{font-size:1em}}#api .btt{font-size:.7em;text-align:right;margin-bottom:-3em}#api .btt a{color:#ccc}
+#api .resource{display:inline;float:left;width:100%;margin:0 0;margin-left:0;margin-top:1em}#api .resource .resource_group{display:inline;float:left;width:100%;margin:0 0;margin-bottom:.5em}
+#api .resource h3{display:inline;float:left;width:100%;margin:0 0}
+#api .resource .verb{display:inline;float:left;width:100%;margin:0 0;margin-left:0;margin-top:.2em;cursor:pointer;border:1px solid #ccc}#api .resource .verb.hover{border-color:#888;background:#ffffee}
+#api .resource .verb .post,#api .resource .verb .get{display:inline;float:left;width:12.5%;margin:0 0;font-weight:700;text-align:center;margin-left:0;padding:.2em 0;text-transform:uppercase}
+#api .resource .verb .get{background:#a9ddf3;color:#1d7ba2}
+#api .resource .verb .post{background:#fcd4a5;color:#c68a45}
+#api .resource .verb code{display:inline;float:left;width:35%;margin:0 0;padding-top:.2em;padding-left:.4em}
+#api .resource .verb p{display:inline;float:left;width:50%;margin:0 0;font-size:.7em;text-align:right;padding-top:.7em;color:#888}
+#api .resource .request{display:inline;float:left;width:100%;margin:0 0;background-color:#eee;overflow-x:hidden;border:1px solid #ccc;border-top:none;display:none}#api .resource .request form{padding:.3em .5em}#api .resource .request form label{color:#444;padding-right:.2em;min-width:30%;display:inline-block;border-bottom:1px dotted #999}
+#api .resource .request form input{padding:.2em;font-size:.9em;min-width:65%}
+#api .resource .response{display:inline;float:left;width:100%;margin:0 0;background-color:#888;overflow-x:hidden;border:1px solid #ccc;border-top:none;display:none}#api .resource .response p.request_url{display:inline;float:left;width:87.5%;margin:0 0;font-family:"source-code-pro",Courier,monospace;font-size:.8em;padding:.3em .5em;color:#dedede}
+#api .resource .response p.raw_response{display:inline;float:left;width:8.75%;margin:0 0;text-align:right;font-size:.8em;padding:.3em 0}#api .resource .response p.raw_response a{background-color:#999;background:-webkit-gradient(linear, 0 0, 0 100%, from(#999), to(#ddd));background:-webkit-linear-gradient(top, #ddd, #999);background:-moz-linear-gradient(top, #ddd, #999);background:-ms-linear-gradient(top, #ddd, #999);background:-o-linear-gradient(top, #ddd, #999);padding:0 .5em;text-decoration:none;border-radius:.3em;border:2px soild #fff;color:#666}#api .resource .response p.raw_response a:hover{background-color:#aaa;background:-webkit-gradient(linear, 0 0, 0 100%, from(#aaa), to(#fff));background:-webkit-linear-gradient(top, #fff, #aaa);background:-moz-linear-gradient(top, #fff, #aaa);background:-ms-linear-gradient(top, #fff, #aaa);background:-o-linear-gradient(top, #fff, #aaa);color:#000}
+#api .resource .response p.raw_response a:active{background-color:#fff;background:-webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#aaa));background:-webkit-linear-gradient(top, #aaa, #fff);background:-moz-linear-gradient(top, #aaa, #fff);background:-ms-linear-gradient(top, #aaa, #fff);background:-o-linear-gradient(top, #aaa, #fff);}
+#api .resource .response pre{display:inline;float:left;width:93.75%;margin:0 0;border-top:1px solid #ccc;font-size:.8em;max-height:20em}@media screen and (min-width:640px){#api .resource .response pre{display:inline;float:left;width:95.99999999999999%;margin:0 0}}
+#api .resource .rendered{display:inline;float:left;width:100%;margin:0 0;font-size:.9em;font-weight:300;overflow-x:auto;background-color:#f4ebe2;border:1px solid #cccccc;border-top:none}#api .resource .rendered .content{display:none;padding:30px}
+#content{padding-top:1em;display:inline;float:left;width:100%;margin:0 0}#content .rendered{background-color:#f4ebe2;border:1px solid #cccccc;border-top:none;margin-top:1em}#content .rendered .content{padding:1em}
+.goals .rendered ul,.guidelines .rendered ul{margin-left:1.5em}
+.goals .rendered li,.guidelines .rendered li{margin-bottom:.6em}.goals .rendered li h4,.guidelines .rendered li h4{font-weight:300}
+.goals .rendered li p,.guidelines .rendered li p{font-size:.7em;color:#888}
+.goals .rendered li{list-style-type:disc}
+.attendees .rendered li{height:120px;padding:.5em 0}.attendees .rendered li img{height:120px;float:left;margin-right:15px;border:1px solid #888}
+.agenda .rendered{background:url("../images/agenda.png") repeat}.agenda .rendered .column{font-size:.75em;width:28%;float:left;padding-right:1%}.agenda .rendered .column.times{width:12%}
+.agenda .rendered .column div{overflow:hidden;line-height:1.2em}.agenda .rendered .column div.spacer,.agenda .rendered .column div.time,.agenda .rendered .column div.header{border:none;background-color:transparent}
+.agenda .rendered .column div.header{border-bottom:1px solid #888}
+.agenda .rendered .column div.spacer{color:transparent}
+.agenda .rendered .column div .row_content{padding:4px .5em;border:1px solid #888;background-color:#fff;margin:4px 0}
+.parties .rendered .party{padding-top:1em;min-height:330px;margin-bottom:1em;padding-bottom:1em;width:100%;clear:both}@media screen and (min-width:640px){.parties .rendered .party{height:450px}}.parties .rendered .party.partial{min-height:0}
+.parties .rendered .party h2{font-size:1.5em}.parties .rendered .party h2 span{font-weight:300;font-size:.75em;padding-left:.75em;color:#888}
+.parties .rendered .party .hero,.parties .rendered .party .party_map{width:50%;float:left;margin-top:0em}
+.parties .rendered .party .party_map{clear:right;height:210px}@media screen and (min-width:640px){.parties .rendered .party .party_map{height:360px}}
+.parties .rendered .party .hero{height:210px;overflow:hidden}.parties .rendered .party .hero img{width:100%}
+@media screen and (min-width:640px){.parties .rendered .party .hero{height:360px}}
+.parties .rendered .content:firstChild{padding-top:0em}
+.sessions .rendered table{width:100%;font-size:.85em}.sessions .rendered table td{margin:5px;padding:.5em;background-color:#fff;color:#0071bc;border:1px solid #888}.sessions .rendered table td.header{background-color:transparent;border:none;color:inherit}
+.sessions .rendered table td.spacer{color:transparent;background-color:transparent;border:none}
+.transit .rendered li{border-bottom:1px dotted #888;padding:.5em 0 .8em 0;margin-bottom:.5em}
+.transit .rendered ul:last-child{border:none}
+.hotels .rendered #hotel_map{height:500px}.hotels .rendered #hotel_map .leaflet-popup-content-wrapper{min-width:300px}.hotels .rendered #hotel_map .leaflet-popup-content-wrapper h4{font-size:1.2em}
+.hotels .rendered #hotel_map .leaflet-popup-content-wrapper table{width:100%}.hotels .rendered #hotel_map .leaflet-popup-content-wrapper table td{padding:5px}
+.questions .rendered{color:#777}.questions .rendered h3{color:#0071bc;font-weight:normal;border-bottom:1px dotted #888;padding-bottom:.5em;margin-bottom:.5em}
+.questions .rendered li{border-bottom:1px dotted #888;padding:.5em 0 .8em 0}.questions .rendered li blockquote{background-color:#99bfa3;padding-left:2em;font-size:.9em;color:#e9e9f0}
+.questions .rendered ul :last-child{border-bottom:none;padding-bottom:none}
+#footer{float:left;clear:both;width:480px;padding:0 10px;margin-top:2em;font-size:1.1em;background-color:#888;color:#fff}@media screen and (min-width:640px){#footer{width:100%}}#footer ul{text-align:center;padding:1em 1em 5em 1em;width:480px;margin:0 auto}@media screen and (min-width:640px){#footer ul{width:800px}}
+#footer li{display:inline;padding:.2em}#footer li a{color:#fff}

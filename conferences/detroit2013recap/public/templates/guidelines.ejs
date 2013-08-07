@@ -1,0 +1,15 @@
+<% 
+for (var key in guidelines) {
+  if (!guidelines.hasOwnProperty(key)) { continue; } 
+%>
+
+<h3><%= key %></h3>
+<ul class="guideline_list guideline_<%= key %>">
+	<% for(var i = 0; i<guidelines[key].length; i++){ %>
+	<li><h4><%= guidelines[key][i].title %></h4> <p><%= guidelines[key][i].description %></p></li>
+	<% } %>
+</ul>
+
+<% } %>
+
+
