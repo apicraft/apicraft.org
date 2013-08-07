@@ -1,0 +1,9 @@
+<ul>
+	<% for(var i=0; i<questions.length; i++){ 
+		%> 
+		<li><%= questions[i].question %>
+		<% console.log(questions[i].answer); if(questions[i].answer){ %> <blockquote><%= questions[i].answer %></blockquote> <% } %>
+		</li>
+	<% } %>
+</ul>
+			

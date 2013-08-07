@@ -1,0 +1,40 @@
+<% console.log(_resource); %>
+<div class="resource resource_<%= _resource.index + ' ' + _resource.name %> " id="<%= _resource.name %>">
+	<h3><%= _resource.title %></h3>
+	<% for(var v=0; v< _resource.verbs.length; v++){ 
+		$v = _resource.verbs[v];
+		console.log($v);
+		%>
+	
+		<div class="resource_group">
+				<div class="verb verb_<%= v %> verb_<%= $v.type %>" data-verb="<%= $v.type %>" data-resource="<%= $v.url %>" data-name="<%= $v.url.replace(/^(?:\/)+/, "") %>" data-render="<%= $v.render %>">
+					<span class="<%= $v.type %>"><%= $v.type %></span>
+					<code><%= $v.url %></code>
+					<p class="description"><%= $v.description %></p>
+				</div><!-- /.verb -->
+			<% if($v.type == "post") { %>
+				<div class="request request_<%= v %> <%= $v.type %> <%= $v.type %>_v">
+
+					<form id="verb_<%= v %>_post" method="post" class="request_form" data-resource-index="<%= _resource.index %>" data-post-index="<%= v %>">	
+					
+					<% for(var input=0; input < $v.inputs.length; input++){ %>
+						<label for="verb_<%= _resource.index %>_input_<%= input %>"><%= $v.inputs[input].description %>: </label>
+						<input type="text" name="<%= $v.inputs[input].name %>" id="verb_<%= _resource.index %>_input_<%= input %>"/ pattern=".{3,}" required><br />
+					<%	} %>
+					
+					<input type="submit" name="submit_<%= _resource.index %>" val="Submit" />
+					</form>
+				</div>
+			<% } %>
+			<div class="response response_<%= v %> <%= $v.type %>" >
+				<p class="request_url"></p>
+				<p class="raw_response"><a href="#" target="_blank" title="Raw Response" >< ></a></p>
+				<pre><code></code></pre>
+			</div><!-- /.response> -->
+			<div class="rendered rendered_<%= $v.type %>">
+				<div class="content"></div>
+			</div><!-- /.rendered -->
+		</div><!-- /.resource_group -->
+	<%	} %>
+</div><!-- /.resource -->
+<div  class="btt"><a href="#top">back to top </a></div>
