@@ -1,0 +1,23 @@
+	<% for(var i=0; i<attendees.length; i++){ 
+		attendee = attendees[i];
+		%>
+
+		<div class="attendee" style="background-image: url('<%= attendee.avatar %>?s=120');">
+			<div class="name">
+				<strong><%= attendee.firstName %></strong><br /><%= attendee.lastName %>
+			</div>
+			<div class="contact">
+				
+			<% if(attendee.twitter){ %><a href="<%= attendee.twitter %>"><i class="fa fa-twitter"></i></a>
+				<% } %>
+			<% if(attendee.github){ %><a href="<%= attendee.github %>"><i class="fa fa-github"></i></a> 
+				<% } %>
+			</div>
+			
+			
+			
+		</div>
+
+	<% } %>
+<ul>
+			

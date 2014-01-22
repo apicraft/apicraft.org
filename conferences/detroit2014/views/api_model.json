@@ -1,0 +1,108 @@
+{
+	"name": "API Craft Conference",
+	"footer": {
+		"devs": {
+			"text": "Non-Developers",
+			"link": "/nondev"
+		}
+	},
+	"resources": [
+		
+		{
+			"name": "goals",
+			"title": "/goals",
+			"verbs": [
+				{
+					"type": "get",
+					"url": "/goals",
+					"description": "Goals and anticipated outcome",
+					"render": "goals"
+				}
+				]
+		},
+		{
+			"name": "guidelines",
+			"title": "/guidelines",
+			"verbs": [
+				{
+					"type": "get",
+					"url": "/guidelines",
+					"description": "Open space guiding principles",
+					"render": "guidelines"
+				}
+				]
+		},
+		{
+			"name": "attendees",
+			"title": "/attendees",
+			"verbs": [
+				{
+					"type": "get",
+					"url": "/attendees",
+					"description": "The API crafters attending",
+					"render": "attendees"
+				}
+				]
+		},
+		{
+			"name": "agenda",
+			"title": "/agenda",
+			"verbs": [
+				{
+					"type": "get",
+					"url": "/agenda",
+					"description": "Outline of the conference schedule",
+					"render": "agenda"
+				}
+				]
+		},
+		{
+			"name": "parties",
+			"title": "/parties",
+			"verbs": [
+				{
+					"type": "get",
+					"url": "/parties",
+					"description": "Time to relax and rejuvenate",
+					"render": "parties"
+				}
+				]
+		},
+		{
+			"name": "sessions",
+			"title": "/sessions",
+			"verbs": [
+				{
+					"type": "get",
+					"url": "/sessions",
+					"description": "The sessions we create together",
+					"render": "sessions"
+				}
+				]
+		},
+		{
+			"name": "hotels",
+			"title": "/hotels",
+			"verbs": [
+				{
+					"type": "get",
+					"url": "/hotels",
+					"description": "Where to stay in downtown Detroit",
+					"render": "hotel_map"
+				}
+				]
+		},
+		{
+			"name": "transit",
+			"title": "/transit",
+			"verbs": [
+				{
+					"type": "get",
+					"url": "/transit",
+					"description": "How to get around",
+					"render": "transit"
+				}
+				]
+		}
+		]
+}

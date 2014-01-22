@@ -1,0 +1,11 @@
+<ul>
+	<% for(var i=0; i< transit.length; i++){ 
+		var mode = transit[i];
+		%>
+		<li>
+			<h3><%= mode.name %> - <%= mode.cost %></h3>
+			<%= mode.phone || "" %> <a href="<%= mode.url || "" %>"><%= mode.url || "" %></a> 
+			<p><%= mode.description || "" %></p>
+		</li>
+	<% } %>
+</ul>

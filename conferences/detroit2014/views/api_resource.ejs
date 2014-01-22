@@ -1,0 +1,33 @@
+<% console.log(_resource); %>
+<div class="resource resource_<%= _resource.index + ' ' + _resource.name %>" id="<%= _resource.name %>">
+	<div class="pure-g"><h3 class="pure-u-1-2" data-parentid="<%= _resource.name %>"><i class="fa fa-caret-right fa-fw"></i><i class="fa fa-caret-down fa-fw"></i> <%= _resource.title %></h3><p class="description pure-u-1-2"><%= _resource.verbs[0].description %>&nbsp;&nbsp;</p></div>
+	<% for(var v=0; v< _resource.verbs.length; v++){ 
+		$v = _resource.verbs[v];
+		console.log($v);
+		%>
+	
+		<div class="resource_group">
+				<div class="verb verb_<%= v %> verb_<%= $v.type %> pure-g" data-verb="<%= $v.type %>" data-resource="<%= $v.url %>" data-name="<%= $v.url.replace(/^(?:\/)+/, "") %>" data-render="<%= $v.render %>">
+					<div class="pure-u-7-8">
+						<span class="<%= $v.type %> pure-button pure-button-primary"><%= $v.type %></span>
+						<span class="request_url">http://api.api-craft.org/conferences/detroit2014<%= $v.url %></span>
+					</div>
+					<div class="tab loading pure-u-1-8">
+						<div class="content">
+							<a href="http://api.api-craft.org/conferences/detroit2013<%= $v.url %>" title="Raw Response" class="raw_response"><i class="fa fa-code"></i></a>
+							<i class="fa fa-refresh fa-spin"></i>
+						</div>
+					</div>
+				</div><!-- /.verb -->
+		
+			<div class="response response_<%= v %> <%= $v.type %> pure-g" >
+				<pre class="pure-u-1"><code></code></pre>
+			</div><!-- /.response> -->
+			<div class="rendered rendered_<%= $v.type %>">
+				<div class="content"></div>
+			</div><!-- /.rendered -->
+		</div><!-- /.resource_group -->
+	<%	} %>
+	<div  class="btt"><a href="#top">back to top </a></div>
+
+</div><!-- /.resource -->
