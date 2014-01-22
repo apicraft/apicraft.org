@@ -12,7 +12,7 @@ body,
     font-family: "source-sans-pro", Helvetica, Arial, sans-serif;
 }
 
-@mobile: ~"only screen and (max-width: 640px)";
+@mobile: ~"only screen and (max-width: 768px)";
 body {
 	font-family: "source-sans-pro", Arial, sans-serif;
 	font-size: .9em;
@@ -122,10 +122,15 @@ body {
 			
 			&.active {
 				.btt {display: block;}
+				border-bottom: 1px solid #ccc;
 				padding-bottom: 3em;
 				h3 {
 					.fa-caret-right {display: none;}
 					.fa-caret-down {display: inline-block;}
+				}
+				.verb {
+					border-top: none;
+					
 				}
 			}
 		
@@ -489,9 +494,21 @@ body {
 
 	
 	#footer {
+	margin-top: 2em;
 		background-color: @black;
 		padding: 3em 0 5em 0;
-		.pure-menu-horizontal {text-align: center; font-size: .8em; margin-left: 0em;}
+	img {
+		display: block;
+		width: 250px; margin: 2em auto;
+		@media @mobile {
+			margin: 1em 2em;
+		}
+	}
+		.pure-menu-horizontal {
+			text-align: 
+			center; font-size: .8em; 
+			margin-left: 0em;
+		}
 		.pure-menu.pure-menu-open {
 			margin-left: 2em;
 			background-color: transparent;
