@@ -1,0 +1,31 @@
+<% 
+
+for(var i=0; i<parties.length; i++){ 
+	var party = parties[i];
+	var partial = "partial";
+	if(typeof(party.yelpID) != "undefined"){ 
+		partial = ""; 
+	}
+	%>
+	
+	<div class="party <%= partial %>">
+		<h2><%= party.name %></h2>
+		<h3><%= party.yelp_name %></h3>
+		<p class="what">{ <% for(activity in party.what){ %><%= party.what[activity] %><% if(activity < party.what.length -1){ %>, <% } } %> }</p>
+		<p ><strong>When:</strong> <%= party.when %> <br/><strong>Where:</strong> <a href="<%= party.url %>"><%= party.where %></a></p>
+		<% if(partial.length <= 0){ %>
+			<div class="hero">
+				<img src="<%= party.image %>" alt="Party Hero Image" />
+			</div>
+			<div class="party_map" id="party_map_<%= i %>"></div>
+		<% } %>
+	</div>
+<% } %>
+
+<!-- 
+	google static map image api
+		https://developers.google.com/maps/documentation/staticmaps/index 
+
+http://maps.googleapis.com/maps/api/staticmap?center=42.3362303,+-83.0491634&zoom=14&size=600x300&maptype=roadmap&markers=color:blue %7Clabel:S %7C42.3362303,-83.0491634&sensor=false
+		
+-->

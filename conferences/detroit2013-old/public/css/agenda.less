@@ -1,0 +1,77 @@
+@hour_height: 70;
+@minute_height: @hour_height / 60;
+@margin: @minute_height * 10;
+
+.cell_height(@rows: 0){
+	height: unit((@rows * @minute_height), px);
+	.row_content{
+		height: unit( ((@rows * @minute_height) - 16), px);
+	}
+}
+
+.row_0	{ .cell_height(0); }
+.row_5	{ .cell_height(5); }
+.row_10	{ .cell_height(10); }
+.row_15	{ .cell_height(15); }
+.row_20	{ .cell_height(20); }
+.row_25 { .cell_height(25); }
+.row_30	{ .cell_height(30); span{color: #fff;} small{display: none;}}
+.row_35	{ .cell_height(35); }
+.row_40	{ .cell_height(40); }
+.row_45	{ .cell_height(45); }
+
+.row_50	{ .cell_height(50); }
+.row_55	{ .cell_height(55); }
+.row_60	{ .cell_height(60); }
+.row_65	{ .cell_height(65); }
+.row_70	{ .cell_height(70); }
+.row_75	{ .cell_height(75); }
+.row_80	{ .cell_height(80); }
+.row_85	{ .cell_height(85); }
+.row_90	{ .cell_height(90); }
+.row_95	{ .cell_height(95); }
+
+.row_100{ .cell_height(100); }
+.row_105{ .cell_height(105); }
+.row_110{ .cell_height(110); }
+.row_115{ .cell_height(115); }
+.row_120{ .cell_height(120); }
+.row_125{ .cell_height(125); }
+.row_130{ .cell_height(130); }
+.row_135{ .cell_height(135); }
+.row_140{ .cell_height(140); }
+.row_145{ .cell_height(145); }
+
+.row_150{ .cell_height(150); }
+.row_155{ .cell_height(155); }
+.row_160{ .cell_height(160); }
+.row_165{ .cell_height(165); }
+.row_170{ .cell_height(170); }
+.row_175{ .cell_height(175); }
+.row_180{ .cell_height(180); }
+.row_185{ .cell_height(185); }
+.row_190{ .cell_height(190); }
+.row_195{ .cell_height(195); }
+
+.row_200{ .cell_height(200); }
+.row_205{ .cell_height(205); }
+.row_210{ .cell_height(210); }
+.row_215{ .cell_height(215); }
+.row_220{ .cell_height(220); }
+.row_225{ .cell_height(225); }
+.row_230{ .cell_height(230); }
+.row_235{ .cell_height(235); }
+.row_240{ .cell_height(240); }
+.row_245{ .cell_height(245); }
+
+.row_250{ .cell_height(250); }
+.row_255{ .cell_height(255); }
+.row_260{ .cell_height(260); }
+.row_265{ .cell_height(265); }
+.row_270{ .cell_height(270); }
+.row_275{ .cell_height(275); }
+.row_280{ .cell_height(280); }
+.row_285{ .cell_height(285); }
+.row_290{ .cell_height(290); }
+.row_295{ .cell_height(295); }
+.row_300{ .cell_height(300); }
