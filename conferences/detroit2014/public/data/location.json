@@ -1,17 +1,24 @@
 {
 	locations: [
 		{
-			"yelpID": "the-madison-building-detroit",
+			"yelpID": "waterview-loft-at-port-detroit-detroit",
 			"apicraftType": "main_venue",
 			"apicraftTitle": "APICRAFTCONF",
 			"apicraftDescription": "The Main Event!"
 			
 		},
 		{
-			"yelpID": "detroit-beer-company-detroit",
+			"yelpID": "volt-lounge-detroit",
 			"apicraftType": "venue",
-			"apicraftTitle": "Dinner",
-			"apicraftDescription": "Day 1 post conference drinks!"
+			"apicraftTitle": "AfterParty",
+			"apicraftDescription": "Day 1 After party (after dinner)"
+			
+		},
+		{
+			"yelpID": "andiamo-detroit-riverfront-detroit",
+			"apicraftType": "venue",
+			"apicraftTitle": "ClosingParty",
+			"apicraftDescription": "Closing party on the last night"
 			
 		},
 		{

@@ -94,17 +94,23 @@ body {
 					font-weight: 100;
 					font-size: 1.4em;
 					color: #f05a28;
+				font-weight: 400;
+					@media @small {
+						font-size: 2.2em;
+						
+					}
 				}
 				@media @mobile {
 					margin-bottom: .5em;
 					}
 				@media @small {
-					font-size: 1.8em;
+					font-size: 1.6em;
 					}
 				}
 			.pure-button {
 				font-size: 1.4em;
 				border-radius: .5em;
+			margin-top: .5em;
 				&:hover {
 					color: @brown;
 					background-color: @orange;
@@ -173,7 +179,7 @@ body {
 				.fa-caret-down {display: none;}
 				.ellipsis();
 				cursor: pointer;
-				&:hover {
+				&.pure-u-1-2:hover {
 					color: @orange;
 				}
 			}
@@ -411,48 +417,33 @@ body {
 
 	.parties .rendered{
 		.party { 
-			padding-top: 1em;
-			min-height: 330px; 
-			@media screen and (min-width: 640px) {
-					height: 450px;
-					}
-			margin-bottom: 1em;
 			padding-bottom: 1em;
-			&.partial {
-				min-height: 0;
-			}
-			width: 100%;
-			clear: both;
-
 			h2{
-				font-size: 1.5em;
+				font-size: 1.8em;
+				margin: 0;
 				span {
 					font-weight: 300;
 					font-size: .75em;
 					padding-left: .75em;
 					color: #888;
 				}
+			
+			}
+			h3 {
+				cursor: auto !important;
+				color: @red;
+				&:hover {color: @red;}
 			}
 			.hero, .party_map {
-				width: 50%; 
-				float: left; 
-				margin-top: 0em; 
+				margin: 0; padding: 0;
+				height: 360px;
+			@media @mobile {height: 200px;}
 				}
-			.party_map {
-				clear: right;
-				height: 210px;
-				@media screen and (min-width: 640px) {
-					height: 360px;
-					}
-			}
+			
 			.hero {
-				height: 210px;
-				overflow: hidden;
-				img {width: 100%; }
-				@media screen and (min-width: 640px) {
-					height: 360px;
-					}
+				background-size: cover;
 			}
+			
 		}
 		.content:firstChild{padding-top: 0em;}
 
@@ -525,7 +516,7 @@ body {
 		padding: 3em 0 5em 0;
 	img {
 		display: block;
-		width: 250px; margin: 2em auto;
+		width: 250px; margin: 4em auto;
 		@media @mobile {
 			margin: 1em 2em;
 		}
