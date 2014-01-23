@@ -13,6 +13,7 @@ body,
 }
 
 @mobile: ~"only screen and (max-width: 768px)";
+@small: ~"only screen and (max-width: 640px)";
 body {
 	font-family: "source-sans-pro", Arial, sans-serif;
 	font-size: .9em;
@@ -41,20 +42,39 @@ body {
 		text-align: center;
 		padding: 2em 0;
 		.wrapper {
-			width: 768px; 
+			display: inline-block;
+			width: 100%;
+			max-width: 600px;
+			overflow: hidden;
 			margin: 0 auto;
+			@media @mobile {
+				max-width: 447px;
+			}
+			@media @small {
+				max-width: 380px;
+			}
 		}
 		.bracket{ 
-				float: left;
+				position: absolute;
 				font-size: 13em;
 				line-height: .5em;
 				margin-top: .3em;
 				font-weight: 400;
 				text-shadow: -7px 0px 0 #777;
-			
+				margin-left: 600px;
+				@media @mobile {
+					font-size: 10em;
+					margin-left: 457px;
+					margin-top: .42em;
+				}
+				@media @small {
+					margin-left: 370px;
+				}
 				&.left {
 					text-alight: right;
-					text-shadow: 7px 0px 0 #777
+					text-shadow: 7px 0px 0 #777;
+					margin-left: -85px;
+			@media @mobile {margin-left: -45px;}
 				}
 			}
 		.content {
@@ -62,7 +82,7 @@ body {
 			font-size: .8em;
 			margin-top: 3.5em;
 			padding: 0 1.8em;
-			@media screen and (min-width: 640px) {
+			@media screen and (min-width: 768px) {
 				margin-top: 2em;
 				font-size: 1em;
 				}
@@ -75,8 +95,11 @@ body {
 					font-size: 1.4em;
 					color: #f05a28;
 				}
-				@media screen and (min-width: 640px) {
+				@media @mobile {
 					margin-bottom: .5em;
+					}
+				@media @small {
+					font-size: 1.8em;
 					}
 				}
 			.pure-button {
@@ -86,6 +109,9 @@ body {
 					color: @brown;
 					background-color: @orange;
 					
+				}
+				@media @small {
+					margin: .5em 0;
 				}
 			}
 		}

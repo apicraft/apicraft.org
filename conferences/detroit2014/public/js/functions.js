@@ -1,6 +1,6 @@
 $(function(){
 	var baseURL = "http://api.api-craft.org";
-	var api_url = baseURL + "/conferences/detroit2013";
+	var api_url = baseURL + "/conferences/detroit2014";
 	var template_dir = "templates/";
 
 
