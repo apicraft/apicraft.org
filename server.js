@@ -9,7 +9,7 @@ var api_model = __dirname + '/conferences/detroit2014/views/api_model.json';
 var uberapp = express();
 var apipage = {};
 var APICraft = {
-	"detroit2013": createApp('detroit2013'),
+//	"detroit2013": createApp('detroit2013'),
 	"detroit2013recap": createApp('detroit2013recap'),
 	"detroit2014": createApp('detroit2014')
 }
@@ -57,14 +57,14 @@ fs.readFile(api_model, 'utf8', function (err, data) {
 	});
 
 	uberapp.enable('strict routing');
-	uberapp.all('/conferences/detroit2013', function(req, res) { res.redirect('/conferences/detroit2013/'); });
-	uberapp.use('/conferences/detroit2013/',express.static(__dirname+'/public'));
+	//uberapp.all('/conferences/detroit2013', function(req, res) { res.redirect('/conferences/detroit2013/'); });
+	uberapp.use('/conferences/detroit2013recap/',express.static(__dirname+'/public'));
 	
-	uberapp.all('/conferences/detroit2014', function(req, res) { res.redirect('/conferences/detroit2014/'); });
+	uberapp.all('/conferences/detroit2014', function(req, res) { res.redirect('/'); });
 	uberapp.use('/conferences/detroit2014/',express.static(__dirname+'/public'));
 
 	uberapp
-		.use('/conferences/detroit2013/', APICraft.detroit2013)
+		.use('/conferences/detroit2013/', APICraft.detroit2013recap)
 		.use('/conferences/detroit2014/', APICraft.detroit2014)
 		.use('/', APICraft.detroit2014);
 
