@@ -1,24 +1,4 @@
-<div class="column times">
-	<div class="row_30 spacer"></div>
-	<div class="row_60 time">8:00 am</div>
-	<div class="row_60 time">9:00</div>
-	<div class="row_60 time">10:00</div>
-	<div class="row_60 time">11:00</div>
-	<div class="row_60 time">12:00 pm</div>
-	<div class="row_60 time">1:00</div>
-	<div class="row_60 time">2:00</div>
-	<div class="row_60 time">3:00</div>
-	<div class="row_60 time">4:00</div>
-	<div class="row_60 time">5:00</div>
-	<div class="row_60 time">6:00</div>
-	<div class="row_60 time">7:00</div>
-	<div class="row_60 time">8:00</div>
-	<div class="row_60 time">9:00</div>
-	<div class="row_60 time">10:00</div>
-	<div class="row_60 time">11:00</div>
-	<div class="row_30 time">12:00 am</div>
-</div>
-
+<div class="pure-g-r">
 <%  
 	var days_array = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
@@ -26,36 +6,26 @@
 	var day = days[d];
 	if(day.length > 0){ %>
 		
-		<div class="column">
-			<div class="row_30 header"><%= days_array[d] %></div>
+		<div class="pure-u-1">
+			<h3 class="weekday"><%= days_array[d] %></h3>
 			<%  for(s in day){
 				var session = day[s];
-				
-				if(s == 0){
-					var padding_block = session.start_minutes;
-					while(padding_block > 300){
-					%>
-						<div class="row_300 spacer"></div>
-					<%
-						padding_block -= 300;
-					}
-					%>
-					<div class="row_<%= padding_block %> spacer"></div>
-					<%	
-				}
-
 			%>
 
-				<div class="row_<%= session.duration_minutes %>">
-					<div class="row_content">
-						<strong><%= session.title %></strong><br>
-						<span>@<%= session.location %></span><br/>
-						<%= session.start %> - <%= session.end %>
+					<div class="session pure-g-r">
+						<p class="pure-u-1-3 title">
+							<%= session.title %>
+						</p>
+						<p class="pure-u-1-3 location">
+							@<%= session.location %>
+						</p>	
+						<p class="pure-u-1-3 time">
+							<i class="fa fa-clock-o"></i> <%= session.start %> - <%= session.end %></span>
+						</p>
 					</div>
-				</div>
 			<% } %>
 		</div>
 <% } } %>
-
+</div>
 
 				

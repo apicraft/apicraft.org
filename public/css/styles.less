@@ -9,23 +9,22 @@ body,
 .pure-g [class *= "pure-u"],
 .pure-g-r [class *= "pure-u"] {
     /* Set your content font stack here: */
-    font-family: "source-sans-pro", Helvetica, Arial, sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 @mobile: ~"only screen and (max-width: 768px)";
 @small: ~"only screen and (max-width: 640px)";
 body {
-	font-family: "source-sans-pro", Arial, sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 	font-size: .9em;
 	font-weight: 400;
 	color: @black;
 }
-.wf-loading {visibility: hidden}
 #page {
 
   } 
 
-.wf-active #page {
+#page {
 	font-size: 1.2em;
 	@media screen and (min-width: 640px) {
 		font-size: 1.5em;
@@ -138,7 +137,7 @@ body {
 		padding: 0 2em;
 		font-size: 1.2em; 
 		@media screen and (min-width: 640px) { font-size: 1em; }
-
+		@media @mobile {padding: 0 .5em;}
 		.btt {
 				font-size: .7em;
 				text-align: right;
@@ -274,11 +273,17 @@ body {
 				border-top: none;
 				display: none;
 				
+				@media @mobile {
+					overflow-x: hidden;
+					overflow-y: hidden;
+				}
+			
 				p.raw_response { 
 					text-align: right; 
 					font-size: .8em;
 					padding: .4em 0 0 0;
 					margin: 0;
+				
 					a {
 						.gradient(#ddd, #999);
 						padding: 0 .5em;
@@ -303,6 +308,9 @@ body {
 					@media screen and (min-width: 640px) { 
 						/* size */
 					}
+					@media @mobile {
+						overflow: hidden;
+					}
 					}
 			}
 			.rendered {
@@ -316,7 +324,11 @@ body {
 				border-top: none;
 				.content{ 
 					display: none;
-					padding: 30px; 
+					padding: 2em; 
+					@media @mobile { padding: 1em; }
+					.meta p {
+						@media @mobile { font-size: 1.4em;}
+					}
 				}
 			}
 		}
@@ -336,21 +348,31 @@ body {
 
 
 
-	.goals, .guidelines {
+	.goals, .guidelines, .agenda {
 			.rendered {
+				
+				h3 {
+					text-transform: uppercase;  color: @red; margin-bottom: 0;
+				}
 				ul {
-					margin-left: 1.5em;
+					margin: 0; padding: 0; list-style-type: none;
 				}
 				li {
+					font-family: 'Garamond', serif;
 					margin-bottom: .6em;
-					h4 {font-weight: 300;}
-					p {font-size: .7em; color: #888;}
+					font-size: 1.4em;
+					h4 {font-weight: 300; font-family: 'Source Sans Pro', sans-serif;}
+					p {
+						max-width: 50em;
+						line-height: 1.1em;
+						color: @brown;
+					}
 				}
 			}
 		}
 	
 	.goals .rendered{
-		li {list-style-type: disc;}
+		
 	}
 
 	.guidelines .rendered{
@@ -381,38 +403,47 @@ body {
 
 	.agenda .rendered{
 		
-		background: url("../images/agenda.png") repeat;
-
-		.column {
-			font-size: .75em;
-			width: 28%;
-			float: left;
-			padding-right: 1%;
-			&.times {width: 12%;}
-			div {
+		.pure-u-1 {
+			margin-bottom: 2em;
+			@media @mobile {font-size: 1.6em;}
+		}
+		.session.pure-g-r {
+			color: @brown;
+			padding: .5em;
+			margin: .5em;
+			background-color: rgba(255,255,255,.8);
+			font-size: 1.2em;
+			@media @mobile {font-size: 1em;}
+			strong {
 				
+			}
+			
+			.pure-u-1-3 {
+				color: @brown;
+				padding-bottom: .2em;
 				
-				overflow: hidden;
-				line-height: 1.2em;
-				&.spacer, &.time, &.header {
-					border: none;
-					background-color: transparent;
-
+				&.time {
+					font-weight: 700;
+					font-size: .8em;
+					color: #477838;
 				}
-				&.header {
-					border-bottom: 1px solid #888;
+				&.title {
+					font-family: 'Source Sans Pro', sans-serif;
+					font-weight: 700;
+					color: @black;
 				}
-				&.spacer {
-					color: transparent;
-				}
-				.row_content{
-					padding: 4px .5em;
-					border: 1px solid #888;
-					background-color: #fff;
-					margin: 4px 0;
+				&.location {
+					font-family: 'Garamond', serif;
 				}
 			}
+			p {
+				margin: 0;
+				
+				}
+			
+			
 		}
+		
 	}
 
 	.parties .rendered{
@@ -430,6 +461,7 @@ body {
 			
 			}
 			h3 {
+				font-family: 'Garamond', serif;
 				cursor: auto !important;
 				color: @red;
 				&:hover {color: @red;}

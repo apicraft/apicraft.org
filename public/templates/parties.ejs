@@ -8,12 +8,12 @@ for(var i=0; i<parties.length; i++){
 	}
 	%>
 	
-	<div class="party <%= partial %> pure-g">
+	<div class="party <%= partial %> pure-g-r">
 		<div class="meta pure-u-1">
 			<h2><%= party.name %></h2>
 			<h3><%= party.yelp_name %></h3>
 			<p class="what">{ <% for(activity in party.what){ %><%= party.what[activity] %><% if(activity < party.what.length -1){ %>, <% } } %> }</p>
-		<p ><strong>When:</strong> <%= party.when %> <br/><strong>Where:</strong> <a href="<%= party.url %>"><%= party.where %></a></p>
+		<p ><%= party.when %> <br/><a href="<%= party.url %>"><%= party.where %></a></p>
 		</div>
 		
 		
