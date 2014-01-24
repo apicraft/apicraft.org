@@ -8,6 +8,31 @@ $(function(){
 
 	//what to do when clicking on a resource or landing on the corresponding hash
 	var routes = {
+		"venues": function(){
+			toggle_resource({
+				"ancestor": $("#venues"),
+				"target": $verb.self,
+				"data_callback": function(data){
+					return {"venue": data};
+				},
+				"complete_callback": function(data){
+					log("venue loaded");
+							var venue = data;
+							venue.mapID = 'venue_map';
+							var venue_map = L.map(venue.mapID, {"scrollWheelZoom": false}).setView([venue.location.coordinate.latitude,venue.location.coordinate.longitude], 17);
+							// add an OpenStreetMap tile layer
+							L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+							    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+							}).addTo(venue_map);
+							L.marker([venue.location.coordinate.latitude, venue.location.coordinate.longitude])
+									.addTo(venue_map)
+									.bindPopup(venue.name)
+									.openPopup();
+						
+					
+				}
+			});
+		},
 		"registered": function(){
 			$("#header .button.register").hide();
 			$("#header .thank_you").show();
@@ -126,11 +151,13 @@ $(function(){
 	routie(routes);
 	
 	$(".resource h3").click(function(){ 
-		
+		console.log("title clicked");
 		$verb = {self: $("#"+$(this).data('parentid')+" .verb")}
-		
+		console.log($verb);
 		//$verb = {self: $(this)};
 		var route = $verb.self.data("name");
+		
+		console.log(route);
 		//workaround for browser's onHashChange() not catching some interations (routie is a hash-based router)
 		window.location.hash == "#" + route ? routes[route]() : routie(route);
 		

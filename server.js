@@ -32,7 +32,8 @@ var apipage = {};
 fs.readFile(api_model, 'utf8', function (err, data) {
   if (err) { console.log('Error: ' + err); return; }
   	apipage = JSON.parse(data);
-
+	console.log(apipage);
+	
   	app.get('/', function(req, res) {
   		if(req.url === "/"){
   			console.log("root");

@@ -9,6 +9,18 @@
 	"resources": [
 		
 		{
+			"name": "venues",
+			"title": "/detroit2014",
+			"verbs": [
+				{
+					"type": "get",
+					"url": "",
+					"description": "The main event",
+					"render": "venues"
+				}
+				]
+		},
+		{
 			"name": "goals",
 			"title": "/goals",
 			"verbs": [

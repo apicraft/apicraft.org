@@ -1,13 +1,13 @@
 <% console.log(_resource); %>
 <div class="resource resource_<%= _resource.index + ' ' + _resource.name %>" id="<%= _resource.name %>">
-	<div class="pure-g"><h3 class="pure-u-1-2" data-parentid="<%= _resource.name %>"><i class="fa fa-caret-right fa-fw"></i><i class="fa fa-caret-down fa-fw"></i> <%= _resource.title %></h3><p class="description pure-u-1-2"><%= _resource.verbs[0].description %>&nbsp;&nbsp;</p></div>
+	<div class="pure-g"><h3 class="pure-u-1-2" data-parentid="<%= _resource.name %>"><%= _resource.title %></h3><p class="description pure-u-1-2"><%= _resource.verbs[0].description %>&nbsp;&nbsp;</p></div>
 	<% for(var v=0; v< _resource.verbs.length; v++){ 
 		$v = _resource.verbs[v];
 		console.log($v);
 		%>
 	
 		<div class="resource_group">
-				<div class="verb verb_<%= v %> verb_<%= $v.type %> pure-g" data-verb="<%= $v.type %>" data-resource="<%= $v.url %>" data-name="<%= $v.url.replace(/^(?:\/)+/, "") %>" data-render="<%= $v.render %>">
+				<div class="verb verb_<%= v %> verb_<%= $v.type %> pure-g" data-verb="<%= $v.type %>" data-resource="<%= $v.url %>" data-name="<%= _resource.name %>" data-render="<%= $v.render %>">
 					<div class="pure-u-7-8">
 						<span class="<%= $v.type %> pure-button pure-button-primary"><%= $v.type %></span>
 						<span class="request_url">http://api.api-craft.org/conferences/detroit2014<%= $v.url %></span>
