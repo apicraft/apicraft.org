@@ -19,12 +19,16 @@ body {
 	font-size: .9em;
 	font-weight: 400;
 	color: @black;
+	margin: 0; padding: 0;
+	width: 100%;
+	overflow-x: hidden;
 }
 #page {
-
+	margin: 0; padding: 0;
   } 
 
 #page {
+	text-align: center;
 	font-size: 1.2em;
 	@media screen and (min-width: 640px) {
 		font-size: 1.5em;
@@ -159,7 +163,7 @@ body {
 	}
 	#api {
 		margin: 1em auto 2em auto;
-		padding: 0 2em;
+		text-align: left;
 		font-size: 1.2em; 
 		@media screen and (min-width: 640px) { font-size: 1em; }
 		@media @mobile {padding: 0 .5em;}
@@ -173,6 +177,7 @@ body {
 				}
 			}
 		.resource{
+			padding: 0 2em;
 			.btt {
 				display: none;
 			}
@@ -531,6 +536,7 @@ body {
 			border-bottom: 1px dotted #888;
 			padding: .5em 0 .8em 0;
 			margin-bottom: .5em;
+			list-style-type: none;
 		}
 		ul:last-child{
 			border: none;
