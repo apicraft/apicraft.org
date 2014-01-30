@@ -8,6 +8,9 @@ $(function(){
 
 	//what to do when clicking on a resource or landing on the corresponding hash
 	var routes = {
+		"thanks": function(){
+			$("#header").addClass("thanks")
+		},
 		"venues": function(){
 			toggle_resource({
 				"ancestor": $("#venues"),

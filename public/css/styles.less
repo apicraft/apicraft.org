@@ -96,7 +96,7 @@ body {
 				&.theme {
 					font-weight: 100;
 					font-size: 1.4em;
-					color: #f05a28;
+					color: @orange;
 				font-weight: 400;
 					@media @small {
 						font-size: 2.2em;
@@ -127,12 +127,17 @@ body {
 
 		.thank_you {
 			h3{
-				color: #62a508;
+				color: @orange;
 				font-size: 1.5em;
 			}
 			p { margin-bottom: .1em; }
 			.fineprint { font-size: .7em; color: #888; }
+			
 			display: none;
+		}
+		&.thanks {
+			.thank_you {display: block;}
+			.register {display: none;}
 		}
 	}
 	#video{
