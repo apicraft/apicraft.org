@@ -1,18 +1,16 @@
 <% 
+for(var i=0; i < venues.length; i++){
+  var venue = venues[i];
+  %>
+  <div class="venue pure-g-r">
+    <div class="meta pure-u-1">
+      <h2><%= venue.name %></h2>
+      <h3><%= venue.theme %></h3>
+      <p ><%= venue.start %> - <%= venue.end %><br/><a href="<%= venue.yelp_url %>"><%= venue.location.display_name %></a>
+        <br/><a href="<%= venue.yelp_url %>"><%= venue.location.display_address[0] %>, <%= venue.location.display_address[2] %></a></p>
+    </div>			
+    <div class="hero pure-u-1-2" style="background-image: url('/images/<%= venue.image %>');"></div>
+    <div class="party_map pure-u-1-2" id="venue_map_<%= venue.identifier %>"></div>
+  </div>
 
-for(var i=0; i<venues.length; i++){
-	var venue = venues[i];
-%>
-<div class="venue pure-g-r">
-  <div class="meta pure-u-1">
-    <h2><%= venue.name %></h2>
-    <h3><%= venue.theme %></h3>
-    <p >Tuesday, July 29th - Wednesday, July 30th, 2014 at 8:00 am<br/><a href="http://www.yelp.com/biz/waterview-loft-at-port-detroit-detroit"><%= venue.location.display_name %></a></p>
-  </div>			
-  <div class="hero pure-u-1-2" style="background-image: url('/images/<%= venue.image %>');"></div>
-  <div class="party_map pure-u-1-2" id="venue_map_2"></div>
-  <p class="pure-u-1"><a href="http://www.yelp.com/map/waterview-loft-at-port-detroit-detroit"><%= venue.location.display_address[0] %>, <%= venue.location.display_address[2] %></a></p>
-  <p class="pure-u-1">An <a href="http://en.wikipedia.org/wiki/Open-space_technology">Open Space Conference</a></p>
-</div>
-
-<% } %>
+    <% } %>

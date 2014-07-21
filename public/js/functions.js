@@ -16,21 +16,23 @@ $(function(){
 				"ancestor": $("#venues"),
 				"target": $verb.self,
 				"data_callback": function(data){
-					return {"venue": data};
+					return {"venues": data.venues};
 				},
 				"complete_callback": function(data){
 					log("venue loaded");
-					var venue = data;
-					venue.mapID = 'venue_map_2';
-					var venue_map = L.map(venue.mapID, {"scrollWheelZoom": false}).setView([venue.location.coordinate.latitude,venue.location.coordinate.longitude], 17);
-					// add an OpenStreetMap tile layer
-					L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-						attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-					}).addTo(venue_map);
-					L.marker([venue.location.coordinate.latitude, venue.location.coordinate.longitude])
-					.addTo(venue_map)
-					.bindPopup(venue.name)
-					.openPopup();
+					for(var i=0; i<data.venues.length; i++){
+					  var venue = data.venues[i];
+						venue.mapID = 'venue_map_' + venue.identifier;
+						var venue_map = L.map(venue.mapID, {"scrollWheelZoom": false}).setView([venue.location.coordinate.latitude,venue.location.coordinate.longitude], 17);
+						// add an OpenStreetMap tile layer
+						L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+							attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+						}).addTo(venue_map);
+						L.marker([venue.location.coordinate.latitude, venue.location.coordinate.longitude])
+						.addTo(venue_map)
+						.bindPopup(venue.name)
+						.openPopup();
+					}
 				}
 			});
 		},
@@ -348,3 +350,4 @@ function load_hotel_map(d){
 function log(x){console.log(x);} //silence is close at hand
 //$(".resource .verb:first").click();
 });
+
