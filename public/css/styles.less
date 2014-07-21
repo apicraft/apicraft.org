@@ -420,7 +420,7 @@ body {
 
 	.attendees .rendered{
 		.attendee {
-			width: 110px;
+			width: 108px;
 			height: 100px;
 			margin: .5em;
 			float: left;
@@ -428,13 +428,24 @@ body {
 			padding: 10px 0 10px 130px;
 			background-color: #fff;
 			border-radius: 1em;
+            
+            @media @mobile {
+              width: auto;
+              float: none;
+              
+              margin-bottom: 1em;
+            }
+          
 			.contact {
-				
 				font-size: 1.4em;
-				
+				padding-top: .3em;
 			}
 			.name {
-				strong {font-size: 1.1em;}
+				strong {font-size: 1em; display: block;}
+                @media @mobile {
+                  font-size: 1.4em;
+                  strong {display: inline !important;}
+                }
 			}
 		}
 
