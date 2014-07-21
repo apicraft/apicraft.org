@@ -21,7 +21,7 @@ $(function(){
 				"complete_callback": function(data){
 					log("venue loaded");
 							var venue = data;
-							venue.mapID = 'venue_map';
+							venue.mapID = 'venue_map_2';
 							var venue_map = L.map(venue.mapID, {"scrollWheelZoom": false}).setView([venue.location.coordinate.latitude,venue.location.coordinate.longitude], 17);
 							// add an OpenStreetMap tile layer
 							L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
