@@ -44,13 +44,9 @@ fs.readFile(api_model, 'utf8', function (err, data) {
     });
   });
 	
-  app.get('/conferences/detroit2014', function(req,res){
+  app.get('/conferences/detroit2015', function(req,res){
     res.status = 301;
     res.redirect('/');
-  });
-	
-  app.get('/conferences/detroit2013', function(req,res){
-    res.render('detroit2013recap');
   });
 	
   var port = process.env.PORT || 3000;

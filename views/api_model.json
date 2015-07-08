@@ -10,7 +10,7 @@
 		
 		{
 			"name": "venues",
-			"title": "/detroit2014",
+			"title": "/unconference",
 			"verbs": [
 				{
 					"type": "get",
