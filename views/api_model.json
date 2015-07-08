@@ -9,8 +9,20 @@
 	"resources": [
 		
 		{
+			"name": "agenda",
+			"title": "/agenda",
+			"verbs": [
+				{
+					"type": "get",
+					"url": "/agenda",
+					"description": "Outline of the conference schedule",
+					"render": "agenda"
+				}
+				]
+		},
+		{
 			"name": "venues",
-			"title": "/unconference",
+			"title": "/venues",
 			"verbs": [
 				{
 					"type": "get",
@@ -53,18 +65,6 @@
 					"url": "/attendees",
 					"description": "The API crafters attending",
 					"render": "attendees"
-				}
-				]
-		},
-		{
-			"name": "agenda",
-			"title": "/agenda",
-			"verbs": [
-				{
-					"type": "get",
-					"url": "/agenda",
-					"description": "Outline of the conference schedule",
-					"render": "agenda"
 				}
 				]
 		},
