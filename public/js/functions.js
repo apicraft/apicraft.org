@@ -11,31 +11,6 @@ $(function(){
 		"thanks": function(){
 			$("#header").addClass("thanks")
 		},
-		"venues": function(){
-			toggle_resource({
-				"ancestor": $("#venues"),
-				"target": $verb.self,
-				"data_callback": function(data){
-					return {"venues": data.venues};
-				},
-				"complete_callback": function(data){
-					log("venue loaded");
-					for(var i=0; i<data.venues.length; i++){
-					  var venue = data.venues[i];
-						venue.mapID = 'venue_map_' + venue.identifier;
-						var venue_map = L.map(venue.mapID, {"scrollWheelZoom": false}).setView([venue.location.coordinate.latitude,venue.location.coordinate.longitude], 17);
-						// add an OpenStreetMap tile layer
-						L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-							attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-						}).addTo(venue_map);
-						L.marker([venue.location.coordinate.latitude, venue.location.coordinate.longitude])
-						.addTo(venue_map)
-						.bindPopup(venue.name)
-						.openPopup();
-					}
-				}
-			});
-		},
 		"registered": function(){
 			$("#header .button.register").hide();
 			$("#header .thank_you").show();
@@ -58,12 +33,12 @@ $(function(){
 			"ancestor": $("#transit"),
 			"target": $verb.self 
 		}); },
-		"parties": function(){
+		"venues": function(){
 			toggle_resource({
-				"ancestor": $("#parties"),
+				"ancestor": $("#venues"),
 				"target": $verb.self, 
 				"data_callback": function(data){
-					return {"parties": data};
+					return {"venues": data};
 				},
 				"complete_callback": function(data){
 					log("party complete");
