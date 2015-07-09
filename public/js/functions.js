@@ -273,12 +273,17 @@ function load_hotel_map(d){
 
 
 	// create a map in the "hotel_map" div, set the view to a given place and zoom
+  console.log("api_url: " + api_url);
 	$.get(api_url, function(data){
+    console.log("load_hotel_map 1");
+    console.log("data: " + data);
 		var text = typeof data === 'object' ? JSON.stringify(data, undefined, 1) : JSON.stringify(JSON.parse(data), undefined, 1);
+    console.log("text: " + text);
 		var obj = typeof data === 'string' ? JSON.parse(data) : data;
+    console.log("obj: " + obj);
 
 		//create the map and center it on the conference
-		var hotel_map = L.map('hotel_map', {"scrollWheelZoom": false}).setView([obj.location.coordinate.latitude, obj.location.coordinate.longitude], 15);
+		var hotel_map = L.map('hotel_map', {"scrollWheelZoom": false}).setView([obj.event.location.coordinate.latitude, obj.event.location.coordinate.longitude], 15);
 
 		// add an OpenStreetMap tile layer
 		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
@@ -286,12 +291,12 @@ function load_hotel_map(d){
 		}).addTo(hotel_map);
 
 		//add the main venue
-		var madison = L.marker([obj.location.coordinate.latitude, obj.location.coordinate.longitude])
+		var madison = L.marker([obj.event.location.coordinate.latitude, obj.event.location.coordinate.longitude])
 		.addTo(hotel_map)
-		.bindPopup(obj.name)
+		.bindPopup(obj.event.name)
 		.openPopup();
 		//add a circle to call out walking distances
-		var circle = L.circle([obj.location.coordinate.latitude, obj.location.coordinate.longitude], 1200, {
+		var circle = L.circle([obj.event.location.coordinate.latitude, obj.event.location.coordinate.longitude], 1200, {
 			color: 'green',
 			fillColor: '#0f0',
 			fillOpacity: 0.05
